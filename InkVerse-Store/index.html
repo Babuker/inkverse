@@ -1,297 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>InkVerse Store - Premium Digital Books</title>
-    <meta name="description" content="InkVerse Store - Premium digital books. Pay securely with USDT (TRC20). Instant delivery.">
+    <meta name="description" content="Premium digital books. Pay securely with USDT (TRC20). Instant delivery.">
     <meta name="keywords" content="digital books, USDT, TRC20, ebooks, cryptocurrency payment">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button id="themeToggle" class="theme-toggle">
-        <i class="fas fa-moon"></i>
-    </button>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="index.html" class="lang-btn active">EN</a>
+        <a href="index-ar.html" class="lang-btn">AR</a>
+    </div>
 
     <!-- WhatsApp Button -->
     <a class="whatsapp" href="https://wa.me/249123638638" target="_blank">
         <i class="fab fa-whatsapp"></i> WhatsApp Support
     </a>
 
-    <!-- Cart Button -->
-    <button id="cartToggle" class="cart-toggle">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="cartCount" class="cart-count">0</span>
-    </button>
-
-    <!-- Shopping Cart Sidebar -->
-    <div id="cartSidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
-            <button class="close-cart">&times;</button>
-        </div>
-        <div id="cartItems" class="cart-items">
-            <!-- Cart items will be added here -->
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <strong>Total:</strong> <span id="cartTotal">0 USDT</span>
-            </div>
-            <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
-        </div>
-    </div>
-    <div id="cartOverlay" class="cart-overlay"></div>
-
     <header>
-        <img src="logo-app.png" alt="InkVerse Logo" />
+        <img src="logo-app.png" alt="InkVerse Logo">
         <h1>InkVerse Store</h1>
         <p class="tagline">Premium Digital Reads • Pay with USDT (TRC20)</p>
-        
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" id="bookSearch" placeholder="Search books...">
-            <i class="fas fa-search"></i>
-        </div>
     </header>
 
-    <div class="status-steps">
-        <div class="step active"><span>1</span> Browse Books</div>
-        <div class="step"><span>2</span> Add to Cart</div>
-        <div class="step"><span>3</span> Make Payment</div>
-        <div class="step"><span>4</span> Confirm & Receive</div>
-    </div>
-
-    <section class="trust-badges">
-        <div class="badge"><i class="fas fa-shield-alt"></i> Secure TRC20 Payments</div>
-        <div class="badge"><i class="fas fa-headset"></i> 24/7 WhatsApp Support</div>
-        <div class="badge"><i class="fas fa-bolt"></i> Instant Digital Delivery</div>
-        <div class="badge"><i class="fas fa-star"></i> 100+ Happy Readers</div>
+    <!-- Hero Section -->
+    <section class="hero-book">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge">Bestseller</span>
+                <h2>When Right Becomes Wrong</h2>
+                <p class="hero-desc">
+                    A powerful and thought-provoking book exploring ethics, justice, and moral conflict 
+                    when the line between right and wrong disappears.
+                </p>
+                
+                <ul class="hero-points">
+                    <li><i class="fas fa-check-circle"></i> Deep moral questions</li>
+                    <li><i class="fas fa-check-circle"></i> Real-world relevance</li>
+                    <li><i class="fas fa-check-circle"></i> Instant digital delivery</li>
+                    <li><i class="fas fa-check-circle"></i> PDF + EPUB formats</li>
+                </ul>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="buyBook('When Right Becomes Wrong', 12)">
+                        <i class="fas fa-shopping-cart"></i> Buy Now – 12 USDT
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
+                        <i class="fas fa-info-circle"></i> How to Pay
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="book-cover.jpg" alt="When Right Becomes Wrong Book Cover">
+            </div>
+        </div>
     </section>
 
-    <!-- Book Categories -->
-    <div class="category-filter">
-        <button class="category-btn active" data-category="all">All Books</button>
-        <button class="category-btn" data-category="fiction">Fiction</button>
-        <button class="category-btn" data-category="non-fiction">Non-Fiction</button>
-        <button class="category-btn" data-category="business">Business</button>
-        <button class="category-btn" data-category="tech">Technology</button>
-    </div>
-
+    <!-- Book List -->
     <section class="book-list">
-        <h2>Featured Digital Books</h2>
-        <div class="books-container" id="booksContainer">
-            <!-- Books will be loaded via JavaScript -->
-        </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section class="stats">
-        <div class="stat-item">
-            <i class="fas fa-book-open"></i>
-            <h3>50+</h3>
-            <p>Digital Titles</p>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-users"></i>
-            <h3>1,000+</h3>
-            <p>Happy Readers</p>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-bolt"></i>
-            <h3>Instant</h3>
-            <p>Delivery</p>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-lock"></i>
-            <h3>100%</h3>
-            <p>Secure Payments</p>
-        </div>
-    </section>
-
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-lock"></i> Complete Your Purchase</h3>
-                <button class="close-modal">&times;</button>
+        <h2>Other Digital Books</h2>
+        <div class="books-container">
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Digital Horizons">
+                <h3>Digital Horizons</h3>
+                <p>The future of technology and human interaction.</p>
+                <div class="price">15 USDT</div>
+                <button onclick="buyBook('Digital Horizons', 15)">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </button>
             </div>
-            <div class="modal-body">
-                <div class="order-summary-modal">
-                    <h4>Order Summary</h4>
-                    <div id="modalCartItems"></div>
-                    <div class="modal-total">
-                        <strong>Total Amount:</strong> <span id="modalTotal">0 USDT</span>
-                    </div>
-                </div>
-                
-                <div class="payment-instructions">
-                    <h4>Payment Instructions</h4>
-                    <p>Send <strong id="paymentAmount">0 USDT</strong> via <strong>TRON Network (TRC20)</strong> to:</p>
-                    <div class="wallet-modal">
-                        <span id="walletAddrModal">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
-                        <button onclick="copyWalletAddressModal()">
-                            <i class="far fa-copy"></i> Copy
-                        </button>
-                    </div>
-                    <p class="note"><i class="fas fa-info-circle"></i> Ensure you're sending via TRC20 network only</p>
-                </div>
-                
-                <div class="confirmation-steps">
-                    <h4>Next Steps:</h4>
-                    <ol>
-                        <li>Make payment to the address above</li>
-                        <li>Save your transaction hash (TXID)</li>
-                        <li>Click the button below to confirm via WhatsApp</li>
-                    </ol>
-                    <a href="https://wa.me/249123638638" class="whatsapp-confirm-modal" target="_blank" id="whatsappLink">
-                        <i class="fab fa-whatsapp"></i> Confirm Payment on WhatsApp
-                    </a>
-                </div>
+            
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="The Crypto Mindset">
+                <h3>The Crypto Mindset</h3>
+                <p>Master cryptocurrency investing with proven strategies.</p>
+                <div class="price">18 USDT</div>
+                <button onclick="buyBook('The Crypto Mindset', 18)">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </button>
             </div>
-            <div class="modal-footer">
-                <button id="closePaymentBtn" class="btn-secondary">Close</button>
-                <button id="markAsPaidBtn" class="btn-primary">
-                    <i class="fas fa-check"></i> I've Sent Payment
+            
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Silent Echoes">
+                <h3>Silent Echoes</h3>
+                <p>A haunting tale of love, loss, and redemption.</p>
+                <div class="price">10 USDT</div>
+                <button onclick="buyBook('Silent Echoes', 10)">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
                 </button>
             </div>
         </div>
-    </div>
-    <div id="modalOverlay" class="modal-overlay"></div>
+    </section>
 
+    <!-- Payment Section -->
     <section class="pay-info" id="payment">
-        <h2><i class="fas fa-lock"></i> How to Purchase</h2>
+        <h2><i class="fas fa-lock"></i> Secure Payment Instructions</h2>
         
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-icon">1</div>
-                <h3>Select Books</h3>
-                <p>Browse our collection and add books to your cart</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon">2</div>
-                <h3>Checkout</h3>
-                <p>Review your order and proceed to payment</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon">3</div>
-                <h3>Pay with USDT</h3>
-                <p>Send USDT via TRC20 network to our wallet</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon">4</div>
-                <h3>Receive Instantly</h3>
-                <p>Get your digital books delivered within minutes</p>
-            </div>
+        <div class="order-summary">
+            <h3>Your Order</h3>
+            <p>Book: <strong id="selectedBook">When Right Becomes Wrong</strong></p>
+            <p>Amount: <strong id="selectedPrice">12 USDT</strong></p>
         </div>
-    </section>
-
-    <section class="testimonials">
-        <h2><i class="fas fa-comment-alt"></i> What Readers Say</h2>
-        <div class="testimonial-container">
-            <div class="testimonial">
-                <div class="testimonial-content">
-                    <p>"Instant delivery after payment. The books are high-quality and worth every USDT!"</p>
-                </div>
-                <div class="testimonial-author">
-                    <img src="https://i.pravatar.cc/150?img=1" alt="Alex Morgan">
-                    <div>
-                        <h4>Alex Morgan</h4>
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
+        
+        <div class="payment-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Copy Wallet Address</h4>
+                    <div class="wallet">
+                        <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
+                        <button id="copyBtn" onclick="copyWalletAddress()">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="testimonial">
-                <div class="testimonial-content">
-                    <p>"Smooth payment process with USDT. Great selection of digital books!"</p>
-                </div>
-                <div class="testimonial-author">
-                    <img src="https://i.pravatar.cc/150?img=2" alt="Sarah Chen">
-                    <div>
-                        <h4>Sarah Chen</h4>
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Send USDT (TRC20)</h4>
+                    <p>Send <strong>12 USDT</strong> via TRON Network (TRC20) to the address above.</p>
+                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> Make sure to select TRC20 network only</p>
                 </div>
             </div>
-            <div class="testimonial">
-                <div class="testimonial-content">
-                    <p>"Love the cryptocurrency payment option. Fast and secure!"</p>
-                </div>
-                <div class="testimonial-author">
-                    <img src="https://i.pravatar.cc/150?img=3" alt="James Wilson">
-                    <div>
-                        <h4>James Wilson</h4>
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                    </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Confirm via WhatsApp</h4>
+                    <p>After payment, send the Transaction Hash (TXID) to our WhatsApp:</p>
+                    <a href="https://wa.me/249123638638" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Send Confirmation
+                    </a>
                 </div>
             </div>
         </div>
+        
+        <div class="payment-note">
+            <p><i class="fas fa-shield-alt"></i> Your payment is secure. We'll deliver your book within 24 hours.</p>
+        </div>
     </section>
 
+    <!-- FAQ Section -->
     <section class="faq">
         <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
         <div class="faq-container">
             <div class="faq-item">
-                <div class="faq-question">
-                    <h3><i class="fas fa-wallet"></i> How do I pay with USDT?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Use any TRC20 compatible wallet (Trust Wallet, Binance, etc.) to send USDT to our address. Make sure to select TRC20 network during the transaction.</p>
-                </div>
+                <h3><i class="fas fa-wallet"></i> How do I pay with USDT?</h3>
+                <p>Use any TRC20 compatible wallet (Trust Wallet, Binance, etc.) to send USDT to our address. Make sure to select TRC20 network.</p>
             </div>
             <div class="faq-item">
-                <div class="faq-question">
-                    <h3><i class="fas fa-clock"></i> When will I receive my book?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>After sending payment and the transaction hash via WhatsApp, we'll deliver your digital book within 24 hours (usually within 1-2 hours).</p>
-                </div>
+                <h3><i class="fas fa-clock"></i> When will I receive my book?</h3>
+                <p>After sending payment and the transaction hash via WhatsApp, we'll deliver your digital book within 24 hours.</p>
             </div>
             <div class="faq-item">
-                <div class="faq-question">
-                    <h3><i class="fas fa-redo"></i> What if I send to wrong network?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>We only accept TRC20. If you send via another network (ERC20, BEP20), we cannot recover your funds. Please double-check before sending!</p>
-                </div>
+                <h3><i class="fas fa-file-pdf"></i> What format are the books?</h3>
+                <p>All books are delivered in PDF and EPUB formats, compatible with any e-reader, tablet, or computer.</p>
             </div>
             <div class="faq-item">
-                <div class="faq-question">
-                    <h3><i class="fas fa-file-pdf"></i> What format are the books?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>All books are delivered in PDF and EPUB formats, compatible with any e-reader, tablet, or computer. Some titles also include MOBI format for Kindle.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3><i class="fas fa-undo"></i> Can I get a refund?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Due to the digital nature of our products, we don't offer refunds. However, if you don't receive your book within 24 hours, contact us via WhatsApp.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3><i class="fas fa-download"></i> How many times can I download?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>You get unlimited downloads for all purchased books. The download link will be sent to your email and will remain active indefinitely.</p>
-                </div>
+                <h3><i class="fas fa-headset"></i> How can I contact support?</h3>
+                <p>Contact us via WhatsApp at +249123638638 for any questions or support.</p>
             </div>
         </div>
     </section>
@@ -299,51 +174,27 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <img src="logo-app.png" alt="InkVerse Logo" class="footer-logo">
+                <h3>InkVerse Store</h3>
                 <p>Premium digital books delivered instantly via cryptocurrency.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> All Books</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Best Sellers</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> New Releases</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> How to Buy</a></li>
-                </ul>
             </div>
             
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p><i class="fab fa-whatsapp"></i> WhatsApp: +249123638638</p>
                 <p><i class="fas fa-envelope"></i> Email: support@inkverse.store</p>
-                <p><i class="fas fa-clock"></i> Support: 24/7</p>
             </div>
             
             <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                </div>
-                <div class="newsletter">
-                    <p>Subscribe for updates</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Your email">
-                        <button><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
+                <h3>Payment Methods</h3>
+                <p><i class="fas fa-coins"></i> USDT (TRC20)</p>
+                <p><i class="fas fa-shield-alt"></i> Secure Transactions</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>© 2026 InkVerse Store. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Refund Policy</a></p>
-            <p class="crypto-badges">
-                <span><i class="fab fa-bitcoin"></i> Bitcoin</span>
-                <span><i class="fab fa-ethereum"></i> Ethereum</span>
-                <span><i class="fas fa-coins"></i> USDT</span>
+            <p>© 2026 InkVerse Store. All rights reserved. | 
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a>
             </p>
         </div>
         
