@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>متجر إنكفيرس - كتب رقمية مميزة</title>
+    <meta name="description" content="كتب رقمية مميزة. الدفع بأمان باستخدام USDT (TRC20). توصيل فوري.">
+    <meta name="keywords" content="كتب رقمية, USDT, TRC20, كتب إلكترونية, دفع بالعملات المشفرة">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* RTL Specific Styles */
+        .language-switcher { left: 20px; right: auto; }
+        .whatsapp { right: auto; left: 20px; }
+        .hero-points li i { margin-left: 10px; margin-right: 0; }
+        .step-number { margin-left: 15px; margin-right: 0; }
+        .faq-container { text-align: right; }
+        .footer-content { text-align: right; }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="index-ar.html" class="lang-btn active">AR</a>
+        <a href="index.html" class="lang-btn">EN</a>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a class="whatsapp" href="https://wa.me/249123638638" target="_blank">
+        <i class="fab fa-whatsapp"></i> دعم واتساب
+    </a>
+
+    <header>
+        <img src="logo-app.png" alt="شعار إنكفيرس">
+        <h1>متجر إنكفيرس</h1>
+        <p class="tagline">كتب رقمية مميزة • الدفع باستخدام USDT (TRC20)</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-book">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge">الأكثر مبيعاً</span>
+                <h2>عندما يصبح الصحيح خطأ</h2>
+                <p class="hero-desc">
+                    كتاب قوي ومثير للتفكير يستكشف الأخلاق والعدالة والصراع الأخلاقي 
+                    عندما يختفي الخط الفاصل بين الصحيح والخاطئ.
+                </p>
+                
+                <ul class="hero-points">
+                    <li><i class="fas fa-check-circle"></i> أسئلة أخلاقية عميقة</li>
+                    <li><i class="fas fa-check-circle"></i> صلة بالواقع المعاصر</li>
+                    <li><i class="fas fa-check-circle"></i> توصيل رقمي فوري</li>
+                    <li><i class="fas fa-check-circle"></i> صيغ PDF + EPUB</li>
+                </ul>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="buyBook('عندما يصبح الصحيح خطأ', 12)">
+                        <i class="fas fa-shopping-cart"></i> شراء الآن – 12 USDT
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
+                        <i class="fas fa-info-circle"></i> طريقة الدفع
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="book-cover.jpg" alt="غلاف كتاب عندما يصبح الصحيح خطأ">
+            </div>
+        </div>
+    </section>
+
+    <!-- Book List -->
+    <section class="book-list">
+        <h2>كتب رقمية أخرى</h2>
+        <div class="books-container">
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="آفاق رقمية">
+                <h3>آفاق رقمية</h3>
+                <p>مستقبل التكنولوجيا والتفاعل البشري.</p>
+                <div class="price">15 USDT</div>
+                <button onclick="buyBook('آفاق رقمية', 15)">
+                    <i class="fas fa-shopping-cart"></i> شراء الآن
+                </button>
+            </div>
+            
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عقلية العملات المشفرة">
+                <h3>عقلية العملات المشفرة</h3>
+                <p>إتقان استثمار العملات المشفرة باستراتيجيات مجربة.</p>
+                <div class="price">18 USDT</div>
+                <button onclick="buyBook('عقلية العملات المشفرة', 18)">
+                    <i class="fas fa-shopping-cart"></i> شراء الآن
+                </button>
+            </div>
+            
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="أصداء صامتة">
+                <h3>أصداء صامتة</h3>
+                <p>قصة مؤثرة عن الحب والخسارة والخلاص.</p>
+                <div class="price">10 USDT</div>
+                <button onclick="buyBook('أصداء صامتة', 10)">
+                    <i class="fas fa-shopping-cart"></i> شراء الآن
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="pay-info" id="payment">
+        <h2><i class="fas fa-lock"></i> تعليمات الدفع الآمن</h2>
+        
+        <div class="order-summary">
+            <h3>طلبك</h3>
+            <p>الكتاب: <strong id="selectedBook">عندما يصبح الصحيح خطأ</strong></p>
+            <p>المبلغ: <strong id="selectedPrice">12 USDT</strong></p>
+        </div>
+        
+        <div class="payment-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>انسخ عنوان المحفظة</h4>
+                    <div class="wallet">
+                        <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
+                        <button id="copyBtn" onclick="copyWalletAddress()">
+                            <i class="far fa-copy"></i> نسخ
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>أرسل USDT (TRC20)</h4>
+                    <p>أرسل <strong>12 USDT</strong> عبر شبكة TRON (TRC20) إلى العنوان أعلاه.</p>
+                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> تأكد من اختيار شبكة TRC20 فقط</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>أكد عبر واتساب</h4>
+                    <p>بعد الدفع، أرسل رمز المعاملة (TXID) إلى واتسابنا:</p>
+                    <a href="https://wa.me/249123638638" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> إرسال التأكيد
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-note">
+            <p><i class="fas fa-shield-alt"></i> دفعتك آمنة. سنوصل كتابك خلال 24 ساعة.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2><i class="fas fa-question-circle"></i> الأسئلة الشائعة</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3><i class="fas fa-wallet"></i> كيف أدفع باستخدام USDT؟</h3>
+                <p>استخدم أي محفظة متوافقة مع TRC20 (Trust Wallet، Binance، إلخ) لإرسال USDT إلى عنواننا. تأكد من اختيار شبكة TRC20.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-clock"></i> متى سأستلم كتابي؟</h3>
+                <p>بعد إرسال الدفع ورمز المعاملة عبر واتساب، سنوصل كتابك الرقمي خلال 24 ساعة.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-file-pdf"></i> ما هي صيغ الكتب؟</h3>
+                <p>جميع الكتب يتم توصيلها بصيغ PDF و EPUB، متوافقة مع أي قارئ إلكتروني أو جهاز لوحي أو كمبيوتر.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-headset"></i> كيف يمكنني التواصل مع الدعم؟</h3>
+                <p>اتصل بنا عبر واتساب على الرقم +249123638638 لأي استفسارات أو دعم.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>متجر إنكفيرس</h3>
+                <p>كتب رقمية مميزة يتم توصيلها فورياً عبر العملات المشفرة.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>اتصل بنا</h3>
+                <p><i class="fab fa-whatsapp"></i> واتساب: +249123638638</p>
+                <p><i class="fas fa-envelope"></i> البريد: support@inkverse.store</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>طرق الدفع</h3>
+                <p><i class="fas fa-coins"></i> USDT (TRC20)</p>
+                <p><i class="fas fa-shield-alt"></i> معاملات آمنة</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 متجر إنكفيرس. جميع الحقوق محفوظة. | 
+                <a href="#">سياسة الخصوصية</a> | 
+                <a href="#">شروط الخدمة</a>
+            </p>
+        </div>
+        
+        <button id="backToTop" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
