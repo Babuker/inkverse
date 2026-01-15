@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>InkVerse Store</title>
+    <style>
+        :root {
+            --primary:#4a148c;
+            --secondary:#6a1b9a;
+            --bg:#f3ecff;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; background: var(--bg); color:#333; }
+        header { text-align:center; padding:30px 20px; }
+        header img { max-width:140px; }
+        h1 { color:var(--primary); margin:10px 0 5px; }
+        .tagline { color:#555; }
+        .whatsapp { position:fixed; top:20px; right:20px; background:#25D366; color:white; padding:10px 15px; border-radius:30px; font-weight:bold; }
+        .book-list { display:flex; flex-wrap:wrap; gap:25px; justify-content:center; padding:40px 20px; }
+        .book { background:white; padding:15px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.1); width:260px; text-align:center; }
+        .book img { width:100%; height:360px; object-fit:cover; border-radius:8px; }
+        .book h3 { color:var(--primary); margin:15px 0 5px; }
+        .price { font-weight:bold; margin:15px 0; color:var(--secondary); font-size:1.2em; }
+        button { background:var(--secondary); color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-weight:bold; }
+        button:hover { background:var(--primary); }
+        .pay-info { max-width:700px; margin:40px auto; background:#ede7f6; padding:30px; border-radius:16px; }
+        .wallet { background:#d1c4e9; padding:15px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; }
+        footer { text-align:center; padding:30px; color:#777; }
+    </style>
+</head>
+<body>
+
+<a class="whatsapp" href="https://wa.me/249123638638" target="_blank">WhatsApp: +249123638638</a>
+
+<header>
+    <img src="logo-app.png" alt="InkVerse Logo" />
+    <h1>InkVerse Store</h1>
+    <p class="tagline">Premium Digital Reads • Pay with USDT (TRC20)</p>
+</header>
+
+<section class="book-list">
+    <div class="book">
+        <img src="https://via.placeholder.com/300x420?text=When+Right+Becomes+Wrong" />
+        <h3>When Right Becomes Wrong</h3>
+        <p>A powerful exploration of ethics, justice, and moral conflict.</p>
+        <div class="price">12 USDT</div>
+        <button onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">Buy Now</button>
+    </div>
+</section>
+
+<section class="pay-info" id="payment">
+    <h2>Secure Payment Instructions</h2>
+    <p>Send the exact USDT amount via <strong>TRON Network (TRC20)</strong> to:</p>
+    <div class="wallet">
+        <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('walletAddr').innerText)">Copy</button>
+    </div>
+    <p style="margin-top:15px;">After payment, send Transaction Hash & Book Title via WhatsApp.</p>
+</section>
+
+<footer>
+    © 2026 InkVerse Store. All rights reserved.
+</footer>
+
+</body>
+</html>
