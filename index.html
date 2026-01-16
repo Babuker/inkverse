@@ -1,250 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>InkVerse Store - Premium Digital Books</title>
-    <meta name="description" content="Premium digital books. Pay securely with USDT (TRC20)." />
-    <meta name="keywords" content="digital books, USDT, TRC20, ebooks, cryptocurrency payment" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InkVerse Store - Premium Digital Books</title>
+  <meta
+    name="description"
+    content="Premium digital books. Pay securely with USDT (TRC20). Instant delivery."
+  />
+  <meta
+    name="keywords"
+    content="digital books, USDT, TRC20, ebooks, cryptocurrency payment"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <a href="index.html" class="lang-btn active">EN</a>
-        <a href="index-ar.html" class="lang-btn">AR</a>
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <a href="index.html" class="lang-btn active">EN</a>
+    <a href="index-ar.html" class="lang-btn">AR</a>
+  </div>
+
+  <header>
+    <img src="logo-app.png" alt="InkVerse Logo" />
+    <h1>InkVerse Store</h1>
+    <p class="tagline">Premium Digital Reads • Pay with USDT (TRC20)</p>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-book">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="badge">Bestseller</span>
+        <h2>When Right Becomes Wrong</h2>
+        <p class="hero-desc">
+          A powerful and thought-provoking book exploring ethics, justice, and
+          moral conflict when the line between right and wrong disappears.
+        </p>
+
+        <ul class="hero-points">
+          <li><i class="fas fa-check-circle"></i> Deep moral questions</li>
+          <li><i class="fas fa-check-circle"></i> Real-world relevance</li>
+          <li><i class="fas fa-check-circle"></i> Instant digital delivery</li>
+          <li><i class="fas fa-check-circle"></i> PDF + EPUB formats</li>
+        </ul>
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="buyBook('When Right Becomes Wrong', 12)">
+            <i class="fas fa-shopping-cart"></i> Buy Now – 12 USDT
+          </button>
+          <button
+            class="btn-secondary"
+            onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})"
+          >
+            <i class="fas fa-info-circle"></i> How to Pay
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="book-cover.jpg" alt="When Right Becomes Wrong Book Cover" />
+      </div>
     </div>
+  </section>
 
-    <!-- WhatsApp Button (existing) -->
-    <a class="whatsapp" href="https://wa.me/249123638638" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp Support
-    </a>
-
-    <header>
-        <img src="logo-app.png" alt="InkVerse Logo" />
-        <h1>InkVerse Store</h1>
-        <p class="tagline">Premium Digital Reads • Pay with USDT (TRC20)</p>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-book">
-        <div class="hero-content">
-            <div class="hero-text">
-                <span class="badge">Bestseller</span>
-                <h2>When Right Becomes Wrong</h2>
-                <p class="hero-desc">
-                    A powerful and thought-provoking book exploring ethics, justice, and moral conflict
-                    when the line between right and wrong disappears.
-                </p>
-
-                <ul class="hero-points">
-                    <li><i class="fas fa-check-circle"></i> Deep moral questions</li>
-                    <li><i class="fas fa-check-circle"></i> Real-world relevance</li>
-                    <li><i class="fas fa-check-circle"></i> Instant digital delivery</li>
-                    <li><i class="fas fa-check-circle"></i> PDF + EPUB formats</li>
-                </ul>
-
-                <div class="hero-actions">
-                    <button class="btn-primary" onclick="buyBook('When Right Becomes Wrong', 12)">
-                        <i class="fas fa-shopping-cart"></i> Buy Now – 12 USDT
-                    </button>
-                    <button class="btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
-                        <i class="fas fa-info-circle"></i> How to Pay
-                    </button>
-                </div>
-            </div>
-
-            <div class="hero-image">
-                <img src="book-cover.jpg" alt="When Right Becomes Wrong Book Cover" />
-            </div>
-        </div>
-    </section>
-
-    <!-- Book List -->
-    <section class="book-list">
-        <h2>Other Digital Books</h2>
-        <div class="books-container">
-            <div class="book">
-                <img
-                    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Digital Horizons"
-                />
-                <h3>Digital Horizons</h3>
-                <p>The future of technology and human interaction.</p>
-                <div class="price">15 USDT</div>
-                <button onclick="buyBook('Digital Horizons', 15)">
-                    <i class="fas fa-shopping-cart"></i> Buy Now
-                </button>
-            </div>
-
-            <div class="book">
-                <img
-                    src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="The Crypto Mindset"
-                />
-                <h3>The Crypto Mindset</h3>
-                <p>Master cryptocurrency investing with proven strategies.</p>
-                <div class="price">18 USDT</div>
-                <button onclick="buyBook('The Crypto Mindset', 18)">
-                    <i class="fas fa-shopping-cart"></i> Buy Now
-                </button>
-            </div>
-
-            <div class="book">
-                <img
-                    src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Silent Echoes"
-                />
-                <h3>Silent Echoes</h3>
-                <p>A haunting tale of love, loss, and redemption.</p>
-                <div class="price">10 USDT</div>
-                <button onclick="buyBook('Silent Echoes', 10)">
-                    <i class="fas fa-shopping-cart"></i> Buy Now
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Payment Section -->
-    <section class="pay-info" id="payment">
-        <h2><i class="fas fa-lock"></i> Secure Payment Instructions</h2>
-
-        <div class="order-summary">
-            <h3>Your Order</h3>
-            <p>Book: <strong id="selectedBook">When Right Becomes Wrong</strong></p>
-            <p>Amount: <strong id="selectedPrice">12 USDT</strong></p>
-        </div>
-
-        <div class="payment-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Copy Wallet Address</h4>
-                    <div class="wallet">
-                        <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
-                        <button id="copyBtn" onclick="copyWalletAddress()">
-                            <i class="far fa-copy"></i> Copy
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>Send USDT (TRC20)</h4>
-                    <p>Send <strong>12 USDT</strong> via TRON Network (TRC20) to the address above.</p>
-                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> Make sure to select TRC20 network only</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>Confirm via WhatsApp</h4>
-                    <p>After payment, send the Transaction Hash (TXID) to our WhatsApp:</p>
-                    <a href="https://wa.me/249123638638" class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Send Confirmation
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="payment-note">
-            <p><i class="fas fa-shield-alt"></i> Your payment is secure. We'll deliver your book within 24 hours.</p>
-        </div>
-
-        <!-- Pi Payment Box (Added) -->
-        <div class="pi-payment">
-            <h3>Pay with Pi Network (π)</h3>
-            <p>Send payment to Pi Username:</p>
-            <p><strong>your_pi_username</strong></p>
-            <p>
-                After payment, please
-                <a href="https://wa.me/249123638638" target="_blank">contact us on WhatsApp</a> to confirm
-                your payment and receive your book.
-            </p>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3><i class="fas fa-wallet"></i> How do I pay with USDT?</h3>
-                <p>
-                    Use any TRC20 compatible wallet (Trust Wallet, Binance, etc.) to send USDT to our address. Make sure to
-                    select TRC20 network.
-                </p>
-            </div>
-            <div class="faq-item">
-                <h3><i class="fas fa-clock"></i> When will I receive my book?</h3>
-                <p>
-                    After sending payment and the transaction hash via WhatsApp, we'll deliver your digital book within 24
-                    hours.
-                </p>
-            </div>
-            <div class="faq-item">
-                <h3><i class="fas fa-file-pdf"></i> What format are the books?</h3>
-                <p>All books are delivered in PDF and EPUB formats, compatible with any e-reader, tablet, or computer.</p>
-            </div>
-            <div class="faq-item">
-                <h3><i class="fas fa-headset"></i> How can I contact support?</h3>
-                <p>Contact us via WhatsApp at +249123638638 for any questions or support.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>InkVerse Store</h3>
-                <p>Premium digital books delivered instantly via cryptocurrency.</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p><i class="fab fa-whatsapp"></i> WhatsApp: +249123638638</p>
-                <p><i class="fas fa-envelope"></i> Email: support@inkverse.store</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Payment Methods</h3>
-                <p><i class="fas fa-coins"></i> USDT (TRC20)</p>
-                <p><i class="fas fa-shield-alt"></i> Secure Transactions</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>
-                © 2026 InkVerse Store. All rights reserved. |
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Terms of Service</a>
-            </p>
-        </div>
-
-        <button id="backToTop" onclick="scrollToTop()">
-            <i class="fas fa-arrow-up"></i>
+  <!-- Book List -->
+  <section class="book-list">
+    <h2>Other Digital Books</h2>
+    <div class="books-container">
+      <div class="book">
+        <img
+          src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          alt="Digital Horizons"
+        />
+        <h3>Digital Horizons</h3>
+        <p>The future of technology and human interaction.</p>
+        <div class="price">15 USDT</div>
+        <button onclick="buyBook('Digital Horizons', 15)">
+          <i class="fas fa-shopping-cart"></i> Buy Now
         </button>
-    </footer>
+      </div>
 
-    <!-- WhatsApp Floating Button (Added) -->
-    <a
-        href="https://wa.me/249123638638"
-        class="whatsapp-float"
-        target="_blank"
-        aria-label="Chat on WhatsApp"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24">
-            <path
-                d="M20.52 3.48A11.93 11.93 0 0012 0C5.373 0 0 5.373 0 12c0 2.116.553 4.1 1.52 5.82L0 24l6.432-1.476A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12 0-3.19-1.244-6.188-3.48-8.52zM12 21.5a9.45 9.45 0 01-4.9-1.37l-.35-.213-3.816.875.808-3.72-.23-.37a9.438 9.438 0 01-1.38-5.348c0-5.203 4.247-9.45 9.45-9.45 2.52 0 4.88.984 6.647 2.762a9.357 9.357 0 012.767 6.688c0 5.203-4.247 9.45-9.45 9.45zm5.207-6.468c-.286-.143-1.693-.834-1.955-.93-.26-.094-.45-.143-.64.143-.19.286-.73.93-.9 1.12-.165.19-.33.214-.616.072-.286-.143-1.204-.444-2.294-1.414-.848-.756-1.42-1.69-1.587-1.976-.165-.286-.018-.44.125-.584.128-.128.286-.33.43-.495.143-.165.19-.286.286-.476.094-.19.047-.357-.024-.5-.072-.143-.64-1.54-.876-2.11-.23-.553-.464-.478-.64-.487l-.547-.01c-.19 0-.5.07-.76.357-.26.286-1 1-.98 2.45.02 1.45 1.025 2.85 1.17 3.05.143.19 2.02 3.08 4.9 4.31.685.296 1.218.473 1.635.606.685.22 1.31.19 1.8.115.55-.084 1.69-.69 1.93-1.357.238-.665.238-1.235.165-1.357-.072-.12-.26-.19-.547-.33z"
-            />
-        </svg>
-    </a>
+      <div class="book">
+        <img
+          src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          alt="The Crypto Mindset"
+        />
+        <h3>The Crypto Mindset</h3>
+        <p>Master cryptocurrency investing with proven strategies.</p>
+        <div class="price">18 USDT</div>
+        <button onclick="buyBook('The Crypto Mindset', 18)">
+          <i class="fas fa-shopping-cart"></i> Buy Now
+        </button>
+      </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+      <div class="book">
+        <img
+          src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=
