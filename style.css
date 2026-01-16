@@ -74,4 +74,190 @@ a:hover {
 @media (max-width: 768px) {
   .book {
     max-width: 100%;
-    margi
+    margin: 10px 0;
+  }
+}
+
+/* === WhatsApp Floating Button === */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe57;
+}
+
+/* === Pi Payment Box === */
+.pi-payment {
+  border: 2px solid #6C63FF;
+  background-color: #F0F0FF;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  color: #1E1E2F;
+  max-width: 400px;
+}
+
+.pi-payment h3 {
+  color: #6C63FF;
+  margin-top: 0;
+}
+
+.pi-payment a {
+  color: #00C896;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pi-payment a:hover {
+  text-decoration: underline;
+}
+
+/* === Payment Section === */
+.pay-info {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.order-summary, .payment-steps, .payment-note {
+  margin-bottom: 25px;
+}
+
+.payment-steps .step {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.step-number {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #6C63FF;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #E5E3FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.step-content h4 {
+  margin: 0 0 5px 0;
+}
+
+.wallet {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+#walletAddr {
+  font-family: monospace;
+  margin-right: 10px;
+  user-select: all;
+}
+
+#copyBtn {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#copyBtn:hover {
+  background-color: #574fbd;
+}
+
+.warning {
+  color: #b00020;
+  font-weight: 600;
+}
+
+.payment-note p {
+  font-style: italic;
+  color: #555;
+}
+
+/* === Footer === */
+footer {
+  background-color: #1E1E2F;
+  color: #EEE;
+  padding: 40px 15px 15px 15px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  color: #6C63FF;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 15px;
+}
+
+footer a {
+  color: #6C63FF;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 70px;
+  right: 25px;
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+  z-index: 999;
+}
+
+#backToTop:hover {
+  background-color: #574fbd;
+}
