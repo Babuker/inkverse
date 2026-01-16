@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css - Unified styles for both languages */
 
 /* Reset and base */
 * {
@@ -12,19 +12,22 @@ body {
   background-color: #F7F7FB;
   color: #111827;
   line-height: 1.6;
-  direction: rtl;
-  text-align: right;
-  padding-bottom: 80px;
+  min-height: 100vh;
 }
 
 /* Language Switcher */
 .language-switcher {
   position: fixed;
   top: 15px;
-  left: 20px;
+  right: 20px;
   z-index: 999;
   display: flex;
   gap: 10px;
+}
+
+[dir="rtl"] .language-switcher {
+  right: auto;
+  left: 20px;
 }
 
 .lang-btn {
@@ -45,11 +48,40 @@ body {
   color: white;
 }
 
-/* WhatsApp button */
-.whatsapp {
+/* WhatsApp buttons */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  font-size: 24px;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  text-decoration: none;
+}
+
+[dir="rtl"] .whatsapp-float {
+  right: auto;
+  left: 20px;
+}
+
+.whatsapp-float:hover {
+  background-color: #128c4a;
+}
+
+.whatsapp-text {
   position: fixed;
   top: 80px;
-  left: 20px;
+  right: 20px;
   background-color: #25d366;
   color: white;
   padding: 12px 18px;
@@ -64,7 +96,12 @@ body {
   z-index: 999;
 }
 
-.whatsapp:hover {
+[dir="rtl"] .whatsapp-text {
+  right: auto;
+  left: 20px;
+}
+
+.whatsapp-text:hover {
   background-color: #128c4a;
 }
 
@@ -72,6 +109,9 @@ body {
 header {
   text-align: center;
   padding: 50px 20px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
+  margin-bottom: 30px;
 }
 
 header img {
@@ -96,8 +136,8 @@ header .tagline {
 .hero-book {
   background: white;
   max-width: 1100px;
-  margin: 20px auto 50px;
-  padding: 25px 30px;
+  margin: 0 auto 50px;
+  padding: 30px;
   border-radius: 20px;
   box-shadow: 0 12px 25px rgb(0 0 0 / 0.06);
   display: flex;
@@ -108,25 +148,25 @@ header .tagline {
 }
 
 .hero-content {
-  flex: 1 1 460px;
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .hero-text {
-  flex: 1 1 280px;
+  flex: 1 1 400px;
 }
 
 .badge {
   display: inline-block;
   background-color: #2563eb;
   color: white;
-  padding: 4px 14px;
+  padding: 6px 14px;
   border-radius: 15px;
   font-weight: 700;
   font-size: 0.9rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .hero-text h2 {
@@ -138,15 +178,15 @@ header .tagline {
 
 .hero-desc {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #374151;
   margin-bottom: 20px;
+  line-height: 1.7;
 }
 
 .hero-points {
   list-style: none;
   margin-bottom: 25px;
-  padding-right: 12px;
 }
 
 .hero-points li {
@@ -155,12 +195,17 @@ header .tagline {
   color: #4b5563;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+[dir="rtl"] .hero-points li {
+  flex-direction: row-reverse;
 }
 
 .hero-points li i {
   color: #2563eb;
   font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .hero-actions {
@@ -171,7 +216,7 @@ header .tagline {
 
 .btn-primary,
 .btn-secondary {
-  padding: 12px 22px;
+  padding: 14px 24px;
   font-weight: 700;
   border-radius: 12px;
   border: none;
@@ -180,7 +225,7 @@ header .tagline {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -190,6 +235,7 @@ header .tagline {
 
 .btn-primary:hover {
   background-color: #1d4ed8;
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -199,18 +245,64 @@ header .tagline {
 
 .btn-secondary:hover {
   background-color: #cbd5e1;
+  transform: translateY(-2px);
 }
 
 .hero-image {
   flex: 1 1 320px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.hero-image img {
-  max-width: 280px;
-  border-radius: 16px;
-  box-shadow: 0 8px 18px rgb(0 0 0 / 0.07);
+.book-cover-container {
+  width: 280px;
+  height: 400px;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 25px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+  color: white;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cover-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.cover-subtitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 20px 0;
+  opacity: 0.9;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+.cover-author {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 30px;
+  letter-spacing: 2px;
+}
+
+.cover-publisher {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 10px;
+  width: 100%;
 }
 
 /* Book List */
@@ -218,7 +310,6 @@ header .tagline {
   max-width: 1100px;
   margin: 0 auto 60px;
   padding: 0 20px;
-  text-align: right;
 }
 
 .book-list h2 {
@@ -226,37 +317,49 @@ header .tagline {
   font-size: 2.1rem;
   font-weight: 800;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .books-container {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .book {
   background: white;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgb(0 0 0 / 0.07);
-  padding: 18px 15px 25px;
-  width: 260px;
+  padding: 20px;
+  width: 280px;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.book:hover {
+  transform: translateY(-5px);
 }
 
 .book img {
-  max-width: 100%;
+  width: 100%;
+  height: 180px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgb(0 0 0 / 0.07);
+  object-fit: cover;
 }
 
 .book h3 {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #2563eb;
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book p {
@@ -264,32 +367,36 @@ header .tagline {
   color: #374151;
   font-size: 0.95rem;
   flex-grow: 1;
+  line-height: 1.5;
 }
 
 .price {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #111827;
-  margin-bottom: 12px;
+  margin: 10px 0;
 }
 
 .book button {
   background-color: #2563eb;
   border: none;
   color: white;
-  padding: 12px 15px;
+  padding: 14px 20px;
   border-radius: 14px;
   cursor: pointer;
   font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6px;
-  transition: background-color 0.3s ease;
+  gap: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
 }
 
 .book button:hover {
   background-color: #1d4ed8;
+  transform: translateY(-2px);
 }
 
 /* Payment Section */
@@ -299,8 +406,7 @@ header .tagline {
   background: white;
   border-radius: 20px;
   box-shadow: 0 14px 26px rgb(0 0 0 / 0.07);
-  padding: 30px 30px 40px;
-  text-align: right;
+  padding: 35px 30px 40px;
 }
 
 .pay-info h2 {
@@ -308,30 +414,45 @@ header .tagline {
   font-weight: 800;
   font-size: 2rem;
   margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.order-summary {
+  margin-bottom: 30px;
+  text-align: center;
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #2563eb;
 }
 
 .order-summary h3 {
   font-weight: 700;
   font-size: 1.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #1e40af;
 }
 
 .order-summary p {
   font-weight: 600;
   font-size: 1.1rem;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #111827;
 }
 
 .payment-steps {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 25px;
 }
 
 .step {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   align-items: flex-start;
 }
 
@@ -339,31 +460,46 @@ header .tagline {
   background-color: #2563eb;
   color: white;
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   text-align: center;
-  line-height: 38px;
+  line-height: 40px;
   font-weight: 700;
   font-size: 1.2rem;
   flex-shrink: 0;
-  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content {
+  flex: 1;
 }
 
 .step-content h4 {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #111827;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .wallet {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   background-color: #f3f4f6;
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-family: monospace;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-family: 'Courier New', monospace;
   font-weight: 700;
   user-select: all;
+  margin-top: 8px;
+  border: 2px solid #e5e7eb;
+}
+
+.wallet span {
+  word-break: break-all;
+  padding-right: 10px;
 }
 
 .wallet button {
@@ -371,13 +507,15 @@ header .tagline {
   background: #2563eb;
   border: none;
   color: white;
-  border-radius: 6px;
-  padding: 6px 10px;
+  border-radius: 8px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 0.9rem;
+  font-weight: 600;
   transition: background-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .wallet button:hover {
@@ -387,20 +525,27 @@ header .tagline {
 .warning {
   color: #b45309;
   font-weight: 600;
-  margin-top: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  background: #fef3c7;
+  border-radius: 8px;
+  border-left: 4px solid #f59e0b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .whatsapp-btn {
   background-color: #25d366;
   color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
   transition: background-color 0.3s ease;
 }
 
@@ -409,10 +554,17 @@ header .tagline {
 }
 
 .payment-note {
-  margin-top: 25px;
+  margin-top: 30px;
   text-align: center;
   font-weight: 600;
   color: #2563eb;
+  padding: 15px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 /* FAQ Section */
@@ -420,7 +572,6 @@ header .tagline {
   max-width: 900px;
   margin: 60px auto 40px;
   padding: 0 20px;
-  text-align: right;
 }
 
 .faq h2 {
@@ -428,6 +579,10 @@ header .tagline {
   margin-bottom: 35px;
   color: #1e40af;
   font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .faq-container {
@@ -435,36 +590,42 @@ header .tagline {
   flex-wrap: wrap;
   gap: 25px;
   justify-content: center;
-  text-align: right;
 }
 
 .faq-item {
   background: white;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 25px;
   width: 420px;
   box-shadow: 0 6px 15px rgb(0 0 0 / 0.07);
-  text-align: right;
+  transition: transform 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
 }
 
 .faq-item h3 {
   color: #111827;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .faq-item p {
   color: #4b5563;
   font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Footer */
 footer {
   background-color: #1e40af;
   color: white;
-  padding: 35px 20px 50px;
+  padding: 40px 20px 50px;
   margin-top: 60px;
-  text-align: center;
   position: relative;
 }
 
@@ -474,36 +635,45 @@ footer {
   justify-content: center;
   gap: 60px;
   margin-bottom: 30px;
-  text-align: right;
+  max-width: 1200px;
+  margin: 0 auto 40px;
 }
 
 .footer-section {
-  max-width: 280px;
-  text-align: right;
+  max-width: 300px;
 }
 
 .footer-section h3 {
   font-size: 1.4rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  color: #bfdbfe;
 }
 
 .footer-section p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .footer-bottom {
   font-size: 0.9rem;
   opacity: 0.8;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 footer a {
   color: #bfdbfe;
   text-decoration: none;
   margin: 0 8px;
+  transition: color 0.3s ease;
 }
 
 footer a:hover {
+  color: white;
   text-decoration: underline;
 }
 
@@ -511,7 +681,7 @@ footer a:hover {
 #backToTop {
   position: fixed;
   bottom: 90px;
-  left: 25px;
+  right: 25px;
   background-color: #2563eb;
   border: none;
   border-radius: 50%;
@@ -520,19 +690,37 @@ footer a:hover {
   font-size: 18px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   z-index: 1000;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+[dir="rtl"] #backToTop {
+  right: auto;
+  left: 25px;
 }
 
 #backToTop:hover {
   background-color: #1d4ed8;
+  transform: translateY(-2px);
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .hero-book {
-    flex-direction: column;
-    padding: 20px;
+    padding: 25px;
+    margin: 0 20px 40px;
   }
 
   .hero-content {
@@ -544,14 +732,23 @@ footer a:hover {
     flex: 1 1 100%;
   }
 
+  .book-cover-container {
+    width: 240px;
+    height: 340px;
+    padding: 25px 20px;
+  }
+
+  .cover-title {
+    font-size: 1.6rem;
+  }
+
   .books-container {
-    flex-direction: column;
-    align-items: center;
+    gap: 20px;
   }
 
   .book {
     width: 100%;
-    max-width: 380px;
+    max-width: 350px;
   }
 
   .faq-container {
@@ -561,11 +758,109 @@ footer a:hover {
 
   .faq-item {
     width: 100%;
-    max-width: 420px;
+    max-width: 500px;
   }
 
   .footer-content {
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .pay-info {
+    margin: 0 20px 40px;
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .language-switcher {
+    right: 10px;
+    top: 10px;
+  }
+  
+  [dir="rtl"] .language-switcher {
+    left: 10px;
+  }
+  
+  .whatsapp-text {
+    top: 70px;
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  
+  [dir="rtl"] .whatsapp-text {
+    left: 10px;
+  }
+  
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+  
+  [dir="rtl"] .whatsapp-float {
+    left: 15px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  header .tagline {
+    font-size: 1rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .step {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .step-number {
+    margin: 0 auto;
+  }
+  
+  .wallet {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .wallet button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  #backToTop {
+    bottom: 70px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  [dir="rtl"] #backToTop {
+    left: 15px;
   }
 }
