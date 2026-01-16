@@ -1378,4 +1378,125 @@ footer a:hover {
   
   .pay-info {
     margin: 0 20px 40px;
-    padding
+    padding: 25px 20px;
+  }
+  
+  .pi-payment {
+    margin: 20px;
+    padding: 25px 20px;
+  }
+  
+  .pi-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .pi-features {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pi-feature {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .language-switcher {
+    right: 10px;
+    top: 10px;
+  }
+  
+  [dir="rtl"] .language-switcher {
+    left: 10px;
+  }
+  
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+  
+  [dir="rtl"] .whatsapp-float {
+    left: 15px;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  header .tagline {
+    font-size: 1rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .step {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .step-number {
+    margin: 0 auto;
+  }
+  
+  .wallet-address {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .wallet-address button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .qr-code {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .qr-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .countdown-timer {
+    gap: 10px;
+  }
+  
+  .countdown-unit {
+    min-width: 70px;
+    padding: 12px;
+  }
+  
+  .countdown-value {
+    font-size: 2rem;
+  }
+  
+  #backToTop {
+    bottom: 70px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  [dir="rtl"] #backToTop {
+    left: 15px;
+  }
+}
