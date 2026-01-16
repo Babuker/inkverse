@@ -9,15 +9,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        /* RTL Specific Styles */
-        .language-switcher { left: 20px; right: auto; }
-        .whatsapp { right: auto; left: 20px; }
-        .hero-points li i { margin-left: 10px; margin-right: 0; }
-        .step-number { margin-left: 15px; margin-right: 0; }
-        .faq-container { text-align: right; }
-        .footer-content { text-align: right; }
-    </style>
 </head>
 <body>
     <!-- Language Switcher -->
@@ -26,9 +17,13 @@
         <a href="index.html" class="lang-btn">EN</a>
     </div>
 
-    <!-- WhatsApp Button -->
-    <a class="whatsapp" href="https://wa.me/249123638638" target="_blank">
+    <!-- WhatsApp Buttons -->
+    <a class="whatsapp-text" href="https://wa.me/249123638638" target="_blank">
         <i class="fab fa-whatsapp"></i> دعم واتساب
+    </a>
+    
+    <a class="whatsapp-float" href="https://wa.me/249123638638" target="_blank">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <header>
@@ -45,14 +40,15 @@
                 <h2>عندما يصبح الصحيح خطأ</h2>
                 <p class="hero-desc">
                     كتاب قوي ومثير للتفكير يستكشف الأخلاق والعدالة والصراع الأخلاقي 
-                    عندما يختفي الخط الفاصل بين الصحيح والخاطئ.
+                    عندما يختفي الخط الفاصل بين الصحيح والخاطئ. هذا الكتاب يتحدى التفكير التقليدي 
+                    ويقدم رؤى عميقة في المعضلات الأخلاقية الحديثة.
                 </p>
                 
                 <ul class="hero-points">
-                    <li><i class="fas fa-check-circle"></i> أسئلة أخلاقية عميقة</li>
-                    <li><i class="fas fa-check-circle"></i> صلة بالواقع المعاصر</li>
-                    <li><i class="fas fa-check-circle"></i> توصيل رقمي فوري</li>
-                    <li><i class="fas fa-check-circle"></i> صيغ PDF + EPUB</li>
+                    <li><i class="fas fa-check-circle"></i> أسئلة وتحليلات أخلاقية عميقة</li>
+                    <li><i class="fas fa-check-circle"></i> صلة وثيقة بالواقع المعاصر</li>
+                    <li><i class="fas fa-check-circle"></i> توصيل رقمي فوري بعد الدفع</li>
+                    <li><i class="fas fa-check-circle"></i> متوفر بصيغ PDF + EPUB</li>
                 </ul>
                 
                 <div class="hero-actions">
@@ -60,13 +56,19 @@
                         <i class="fas fa-shopping-cart"></i> شراء الآن – 12 USDT
                     </button>
                     <button class="btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
-                        <i class="fas fa-info-circle"></i> طريقة الدفع
+                        <i class="fas fa-info-circle"></i> تعليمات الدفع
                     </button>
                 </div>
             </div>
             
             <div class="hero-image">
-                <img src="book-cover.jpg" alt="غلاف كتاب عندما يصبح الصحيح خطأ">
+                <div class="book-cover-container">
+                    <div class="cover-title">When Right</div>
+                    <div class="cover-title">Becomes Wrong</div>
+                    <div class="cover-subtitle">How Correct Rules Turn into Destruction</div>
+                    <div class="cover-author">BAKRI</div>
+                    <div class="cover-publisher">Genspark</div>
+                </div>
             </div>
         </div>
     </section>
@@ -78,7 +80,7 @@
             <div class="book">
                 <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="آفاق رقمية">
                 <h3>آفاق رقمية</h3>
-                <p>مستقبل التكنولوجيا والتفاعل البشري.</p>
+                <p>استكشف مستقبل التكنولوجيا والتفاعل البشري في العصر الرقمي. دليل شامل لفهم التقنيات الناشئة والتحولات التكنولوجية.</p>
                 <div class="price">15 USDT</div>
                 <button onclick="buyBook('آفاق رقمية', 15)">
                     <i class="fas fa-shopping-cart"></i> شراء الآن
@@ -88,7 +90,7 @@
             <div class="book">
                 <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عقلية العملات المشفرة">
                 <h3>عقلية العملات المشفرة</h3>
-                <p>إتقان استثمار العملات المشفرة باستراتيجيات مجربة.</p>
+                <p>أتقن استثمار العملات المشفرة باستراتيجيات مجربة. تعلم كيفية التنقل في سوق العملات الرقمية بثقة ونجاح.</p>
                 <div class="price">18 USDT</div>
                 <button onclick="buyBook('عقلية العملات المشفرة', 18)">
                     <i class="fas fa-shopping-cart"></i> شراء الآن
@@ -98,7 +100,7 @@
             <div class="book">
                 <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="أصداء صامتة">
                 <h3>أصداء صامتة</h3>
-                <p>قصة مؤثرة عن الحب والخسارة والخلاص.</p>
+                <p>قصة مؤثرة عن الحب والخسارة والخلاص. هذا الرواية تلامس القلب وتستكشف أعماق المشاعر الإنسانية.</p>
                 <div class="price">10 USDT</div>
                 <button onclick="buyBook('أصداء صامتة', 10)">
                     <i class="fas fa-shopping-cart"></i> شراء الآن
@@ -115,6 +117,7 @@
             <h3>طلبك</h3>
             <p>الكتاب: <strong id="selectedBook">عندما يصبح الصحيح خطأ</strong></p>
             <p>المبلغ: <strong id="selectedPrice">12 USDT</strong></p>
+            <p>الحالة: <strong>بانتظار الدفع</strong></p>
         </div>
         
         <div class="payment-steps">
@@ -122,10 +125,11 @@
                 <div class="step-number">1</div>
                 <div class="step-content">
                     <h4>انسخ عنوان المحفظة</h4>
+                    <p>انسخ عنوان محفظة TRON (TRC20) التالي:</p>
                     <div class="wallet">
                         <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
                         <button id="copyBtn" onclick="copyWalletAddress()">
-                            <i class="far fa-copy"></i> نسخ
+                            <i class="far fa-copy"></i> نسخ العنوان
                         </button>
                     </div>
                 </div>
@@ -135,8 +139,8 @@
                 <div class="step-number">2</div>
                 <div class="step-content">
                     <h4>أرسل USDT (TRC20)</h4>
-                    <p>أرسل <strong>12 USDT</strong> عبر شبكة TRON (TRC20) إلى العنوان أعلاه.</p>
-                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> تأكد من اختيار شبكة TRC20 فقط</p>
+                    <p>أرسل <strong id="amountToSend">12 USDT</strong> عبر شبكة TRON (TRC20) إلى العنوان أعلاه.</p>
+                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> مهم: تأكد من اختيار شبكة TRC20 فقط في محفظتك. الشبكات الأخرى قد تؤدي إلى فقدان الأموال.</p>
                 </div>
             </div>
             
@@ -144,16 +148,16 @@
                 <div class="step-number">3</div>
                 <div class="step-content">
                     <h4>أكد عبر واتساب</h4>
-                    <p>بعد الدفع، أرسل رمز المعاملة (TXID) إلى واتسابنا:</p>
-                    <a href="https://wa.me/249123638638" class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> إرسال التأكيد
+                    <p>بعد إتمام الدفع، أرسل رمز المعاملة (TXID) إلى دعم واتساب للتحقق:</p>
+                    <a href="https://wa.me/249123638638?text=مرحباً!%20لقد%20دفعت%20مؤخراً%20ثمن%20كتاب%20'عندما%20يصبح%20الصحيح%20خطأ'%20هذا%20هو%20رمز%20المعاملة%3A%20" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> إرسال التأكيد على واتساب
                     </a>
                 </div>
             </div>
         </div>
         
         <div class="payment-note">
-            <p><i class="fas fa-shield-alt"></i> دفعتك آمنة. سنوصل كتابك خلال 24 ساعة.</p>
+            <p><i class="fas fa-shield-alt"></i> دفعتك آمنة. سنتحقق ونوصل كتابك خلال 24 ساعة بعد التأكيد.</p>
         </div>
     </section>
 
@@ -163,19 +167,19 @@
         <div class="faq-container">
             <div class="faq-item">
                 <h3><i class="fas fa-wallet"></i> كيف أدفع باستخدام USDT؟</h3>
-                <p>استخدم أي محفظة متوافقة مع TRC20 (Trust Wallet، Binance، إلخ) لإرسال USDT إلى عنواننا. تأكد من اختيار شبكة TRC20.</p>
+                <p>استخدم أي محفظة متوافقة مع TRC20 (Trust Wallet، Binance، إلخ) لإرسال USDT إلى عنواننا. تأكد من اختيار شبكة TRC20 عند الإرسال.</p>
             </div>
             <div class="faq-item">
                 <h3><i class="fas fa-clock"></i> متى سأستلم كتابي؟</h3>
-                <p>بعد إرسال الدفع ورمز المعاملة عبر واتساب، سنوصل كتابك الرقمي خلال 24 ساعة.</p>
+                <p>بعد إرسال الدفع ورمز المعاملة عبر واتساب، سنتحقق ونوصل كتابك الرقمي خلال 24 ساعة.</p>
             </div>
             <div class="faq-item">
-                <h3><i class="fas fa-file-pdf"></i> ما هي صيغ الكتب؟</h3>
-                <p>جميع الكتب يتم توصيلها بصيغ PDF و EPUB، متوافقة مع أي قارئ إلكتروني أو جهاز لوحي أو كمبيوتر.</p>
+                <h3><i class="fas fa-file-pdf"></i> ما هي صيغ الكتب المتاحة؟</h3>
+                <p>جميع الكتب يتم توصيلها بصيغ PDF و EPUB، متوافقة مع أي قارئ إلكتروني أو جهاز لوحي أو كمبيوتر. يمكنك قراءتها على أي جهاز.</p>
             </div>
             <div class="faq-item">
                 <h3><i class="fas fa-headset"></i> كيف يمكنني التواصل مع الدعم؟</h3>
-                <p>اتصل بنا عبر واتساب على الرقم +249123638638 لأي استفسارات أو دعم.</p>
+                <p>اتصل بنا عبر واتساب على الرقم +249123638638 لأي استفسارات أو دعم. نحن متاحون لمساعدتك في عملية الشراء.</p>
             </div>
         </div>
     </section>
@@ -184,26 +188,30 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>متجر إنكفيرس</h3>
-                <p>كتب رقمية مميزة يتم توصيلها فورياً عبر العملات المشفرة.</p>
+                <p><i class="fas fa-book"></i> كتب رقمية مميزة يتم توصيلها فورياً عبر العملات المشفرة.</p>
+                <p><i class="fas fa-bolt"></i> توصيل سريع خلال 24 ساعة بعد تأكيد الدفع.</p>
             </div>
             
             <div class="footer-section">
                 <h3>اتصل بنا</h3>
                 <p><i class="fab fa-whatsapp"></i> واتساب: +249123638638</p>
                 <p><i class="fas fa-envelope"></i> البريد: support@inkverse.store</p>
+                <p><i class="fas fa-clock"></i> ساعات الدعم: 24/7</p>
             </div>
             
             <div class="footer-section">
                 <h3>طرق الدفع</h3>
-                <p><i class="fas fa-coins"></i> USDT (TRC20)</p>
-                <p><i class="fas fa-shield-alt"></i> معاملات آمنة</p>
+                <p><i class="fas fa-coins"></i> USDT (TRC20) فقط</p>
+                <p><i class="fas fa-shield-alt"></i> معاملات بلوكشين آمنة</p>
+                <p><i class="fas fa-globe"></i> قبول المدفوعات العالمية</p>
             </div>
         </div>
         
         <div class="footer-bottom">
             <p>© 2026 متجر إنكفيرس. جميع الحقوق محفوظة. | 
                 <a href="#">سياسة الخصوصية</a> | 
-                <a href="#">شروط الخدمة</a>
+                <a href="#">شروط الخدمة</a> |
+                <a href="#">سياسة الاسترجاع</a>
             </p>
         </div>
         
