@@ -1,311 +1,225 @@
-/* Reset & basics */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inkverse Store - Premium Digital Books</title>
+    <meta name="description" content="Premium digital books. Pay securely with USDT (TRC20). Instant delivery.">
+    <meta name="keywords" content="digital books, USDT, TRC20, ebooks, cryptocurrency payment">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="index-ar.html" class="lang-btn">AR</a>
+        <a href="index.html" class="lang-btn active">EN</a>
+    </div>
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f7f7fb;
-  color: #222;
-  line-height: 1.6;
-  min-height: 100vh;
-  padding-bottom: 100px;
-}
+    <!-- WhatsApp Buttons -->
+    <a class="whatsapp-text" href="https://wa.me/249123638638" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Support
+    </a>
+    
+    <a class="whatsapp-float" href="https://wa.me/249123638638" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-.language-switcher {
-  text-align: right;
-  padding: 10px 20px;
-  background-color: #e2e8f0;
-}
+    <header>
+        <img src="logo-app.png" alt="Inkverse Logo">
+        <h1>Inkverse Store</h1>
+        <p class="tagline">Premium Digital Books • Pay with USDT (TRC20)</p>
+    </header>
 
-.lang-btn {
-  margin-left: 10px;
-  text-decoration: none;
-  color: #555;
-  font-weight: 600;
-}
+    <!-- Hero Section -->
+    <section class="hero-book">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge">Bestseller</span>
+                <h2>When Right Becomes Wrong</h2>
+                <p class="hero-desc">
+                    A powerful and thought-provoking book exploring ethics, justice, and moral conflict 
+                    when the line between right and wrong disappears. This book challenges conventional 
+                    thinking and offers deep insights into modern ethical dilemmas.
+                </p>
+                
+                <ul class="hero-points">
+                    <li><i class="fas fa-check-circle"></i> Deep ethical questions and analysis</li>
+                    <li><i class="fas fa-check-circle"></i> Relevance to contemporary reality</li>
+                    <li><i class="fas fa-check-circle"></i> Instant digital delivery after payment</li>
+                    <li><i class="fas fa-check-circle"></i> Available in PDF + EPUB formats</li>
+                </ul>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="buyBook('When Right Becomes Wrong', 12)">
+                        <i class="fas fa-shopping-cart"></i> Buy Now – 12 USDT
+                    </button>
+                    <button class="btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
+                        <i class="fas fa-info-circle"></i> Payment Instructions
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="book-cover-container">
+                    <div class="cover-title">When Right</div>
+                    <div class="cover-title">Becomes Wrong</div>
+                    <div class="cover-subtitle">How Correct Rules Turn into Destruction</div>
+                    <div class="cover-author">BAKRI</div>
+                    <div class="cover-publisher">Genspark</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.lang-btn.active {
-  color: #1e40af;
-}
+    <!-- Book List -->
+    <section class="book-list">
+        <h2>Other Digital Books</h2>
+        <div class="books-container">
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Digital Horizons">
+                <h3>Digital Horizons</h3>
+                <p>Explore the future of technology and human interaction in the digital age. A comprehensive guide to understanding emerging technologies.</p>
+                <div class="price">15 USDT</div>
+                <button onclick="buyBook('Digital Horizons', 15)">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </button>
+            </div>
+            
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Crypto Mindset">
+                <h3>Crypto Mindset</h3>
+                <p>Master cryptocurrency investment with proven strategies. Learn how to navigate the crypto market with confidence and success.</p>
+                <div class="price">18 USDT</div>
+                <button onclick="buyBook('Crypto Mindset', 18)">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </button>
+            </div>
+            
+            <div class="book">
+                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Silent Echoes">
+                <h3>Silent Echoes</h3>
+                <p>A moving story about love, loss, and redemption. This novel touches the heart and explores the depths of human emotion.</p>
+                <div class="price">10 USDT</div>
+                <button onclick="buyBook('Silent Echoes', 10)">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </button>
+            </div>
+        </div>
+    </section>
 
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25d366;
-  color: white;
-  font-size: 24px;
-  padding: 12px;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 1000;
-  transition: background 0.3s ease;
-}
+    <!-- Payment Section -->
+    <section class="pay-info" id="payment">
+        <h2><i class="fas fa-lock"></i> Secure Payment Instructions</h2>
+        
+        <div class="order-summary">
+            <h3>Your Order</h3>
+            <p>Book: <strong id="selectedBook">When Right Becomes Wrong</strong></p>
+            <p>Amount: <strong id="selectedPrice">12 USDT</strong></p>
+            <p>Status: <strong>Pending Payment</strong></p>
+        </div>
+        
+        <div class="payment-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Copy Wallet Address</h4>
+                    <p>Copy the following TRON (TRC20) wallet address:</p>
+                    <div class="wallet">
+                        <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
+                        <button id="copyBtn" onclick="copyWalletAddress()">
+                            <i class="far fa-copy"></i> Copy Address
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Send USDT (TRC20)</h4>
+                    <p>Send <strong id="amountToSend">12 USDT</strong> via TRON network (TRC20) to the address above.</p>
+                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> Important: Ensure you select TRC20 network only in your wallet. Other networks may result in loss of funds.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Confirm via WhatsApp</h4>
+                    <p>After completing the payment, send your transaction ID (TXID) to our WhatsApp support for verification:</p>
+                    <a href="https://wa.me/249123638638?text=Hello!%20I%20just%20paid%20for%20the%20book%20'When%20Right%20Becomes%20Wrong'%20Here%20is%20my%20transaction%20ID%3A%20" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Send Confirmation on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-note">
+            <p><i class="fas fa-shield-alt"></i> Your payment is secure. We'll verify and deliver your book within 24 hours after confirmation.</p>
+        </div>
+    </section>
 
-.whatsapp-float:hover {
-  background: #128c4a;
-}
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3><i class="fas fa-wallet"></i> How do I pay with USDT?</h3>
+                <p>Use any TRC20 compatible wallet (Trust Wallet, Binance, etc.) to send USDT to our address. Make sure to select TRC20 network when sending.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-clock"></i> When will I receive my book?</h3>
+                <p>After sending payment and transaction ID via WhatsApp, we'll verify and deliver your digital book within 24 hours.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-file-pdf"></i> What book formats are available?</h3>
+                <p>All books are delivered in PDF and EPUB formats, compatible with any e-reader, tablet, or computer. You can read them on any device.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-headset"></i> How can I contact support?</h3>
+                <p>Contact us via WhatsApp at +249123638638 for any inquiries or support. We're available to help you with the purchase process.</p>
+            </div>
+        </div>
+    </section>
 
-header {
-  text-align: center;
-  padding: 20px 10px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
-}
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Inkverse Store</h3>
+                <p><i class="fas fa-book"></i> Premium digital books delivered instantly via cryptocurrency.</p>
+                <p><i class="fas fa-bolt"></i> Fast delivery within 24 hours after payment confirmation.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fab fa-whatsapp"></i> WhatsApp: +249123638638</p>
+                <p><i class="fas fa-envelope"></i> Email: support@inkverse.store</p>
+                <p><i class="fas fa-clock"></i> Support Hours: 24/7</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Payment Methods</h3>
+                <p><i class="fas fa-coins"></i> USDT (TRC20) only</p>
+                <p><i class="fas fa-shield-alt"></i> Secure blockchain transactions</p>
+                <p><i class="fas fa-globe"></i> Global payments accepted</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Inkverse Store. All rights reserved. | 
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> |
+                <a href="#">Refund Policy</a>
+            </p>
+        </div>
+        
+        <button id="backToTop" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
 
-header .logo {
-  max-width: 150px;
-  margin-bottom: 10px;
-}
-
-header h1 {
-  font-weight: 700;
-  font-size: 2.4rem;
-  margin-bottom: 5px;
-  color: #1e40af;
-}
-
-header .tagline {
-  font-size: 1.1rem;
-  color: #4b5563;
-}
-
-.hero-book {
-  background: white;
-  max-width: 1100px;
-  margin: 30px auto;
-  padding: 30px;
-  border-radius: 10px;
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.07);
-}
-
-.hero-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  width: 100%;
-}
-
-.hero-text {
-  flex: 1 1 400px;
-}
-
-.badge {
-  background-color: #2563eb;
-  color: white;
-  padding: 5px 12px;
-  font-weight: 700;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  display: inline-block;
-  margin-bottom: 15px;
-}
-
-.hero-text h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: #111827;
-}
-
-.hero-desc {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  color: #374151;
-}
-
-.hero-points {
-  list-style: none;
-  margin-bottom: 20px;
-}
-
-.hero-points li {
-  margin-bottom: 10px;
-  font-size: 1rem;
-  color: #4b5563;
-}
-
-.hero-points li i {
-  color: #2563eb;
-  margin-right: 8px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.btn-primary,
-.btn-secondary {
-  cursor: pointer;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-  background-color: #2563eb;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #1d4ed8;
-}
-
-.btn-secondary {
-  background-color: #e0e7ff;
-  color: #2563eb;
-}
-
-.btn-secondary:hover {
-  background-color: #c7d2fe;
-}
-
-.hero-image {
-  flex: 1 1 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image img {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgb(0 0 0 / 0.1);
-}
-
-.book-list {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.book-list h2 {
-  font-size: 2rem;
-  margin-bottom: 25px;
-  color: #1e40af;
-  text-align: center;
-}
-
-.books-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.book {
-  background: white;
-  border-radius: 10px;
-  padding: 15px;
-  width: 280px;
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.07);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.book img {
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  height: 180px;
-}
-
-.book h3 {
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #1e40af;
-}
-
-.book p {
-  color: #6b7280;
-  font-size: 1rem;
-  flex-grow: 1;
-}
-
-.price {
-  font-weight: 700;
-  color: #2563eb;
-  font-size: 1.1rem;
-}
-
-.book button {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.book button:hover {
-  background-color: #1d4ed8;
-}
-
-.pay-info {
-  max-width: 900px;
-  margin: 50px auto 60px;
-  background: white;
-  border-radius: 12px;
-  padding: 25px 30px;
-  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-}
-
-.pay-info h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-  color: #1e40af;
-}
-
-.order-summary {
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.order-summary h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #111827;
-}
-
-.order-summary p {
-  font-size: 1.1rem;
-  color: #4b5563;
-}
-
-.payment-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.step {
-  display: flex;
-  gap: 15px;
-}
-
-.step-number {
-  background-color: #2563eb;
-  color: white;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  text-align
+    <script src="script.js"></script>
+</body>
+</html>
