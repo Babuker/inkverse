@@ -1,225 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inkverse Store - Premium Digital Books</title>
-    <meta name="description" content="Premium digital books. Pay securely with USDT (TRC20). Instant delivery.">
-    <meta name="keywords" content="digital books, USDT, TRC20, ebooks, cryptocurrency payment">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <a href="index-ar.html" class="lang-btn">AR</a>
-        <a href="index.html" class="lang-btn active">EN</a>
-    </div>
-
-    <!-- WhatsApp Buttons -->
-    <a class="whatsapp-text" href="https://wa.me/249123638638" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp Support
-    </a>
-    
-    <a class="whatsapp-float" href="https://wa.me/249123638638" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <header>
-        <img src="logo-app.png" alt="Inkverse Logo">
-        <h1>Inkverse Store</h1>
-        <p class="tagline">Premium Digital Books • Pay with USDT (TRC20)</p>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-book">
-        <div class="hero-content">
-            <div class="hero-text">
-                <span class="badge">Bestseller</span>
-                <h2>When Right Becomes Wrong</h2>
-                <p class="hero-desc">
-                    A powerful and thought-provoking book exploring ethics, justice, and moral conflict 
-                    when the line between right and wrong disappears. This book challenges conventional 
-                    thinking and offers deep insights into modern ethical dilemmas.
-                </p>
-                
-                <ul class="hero-points">
-                    <li><i class="fas fa-check-circle"></i> Deep ethical questions and analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Relevance to contemporary reality</li>
-                    <li><i class="fas fa-check-circle"></i> Instant digital delivery after payment</li>
-                    <li><i class="fas fa-check-circle"></i> Available in PDF + EPUB formats</li>
-                </ul>
-                
-                <div class="hero-actions">
-                    <button class="btn-primary" onclick="buyBook('When Right Becomes Wrong', 12)">
-                        <i class="fas fa-shopping-cart"></i> Buy Now – 12 USDT
-                    </button>
-                    <button class="btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
-                        <i class="fas fa-info-circle"></i> Payment Instructions
-                    </button>
-                </div>
-            </div>
-            
-            <div class="hero-image">
-                <div class="book-cover-container">
-                    <div class="cover-title">When Right</div>
-                    <div class="cover-title">Becomes Wrong</div>
-                    <div class="cover-subtitle">How Correct Rules Turn into Destruction</div>
-                    <div class="cover-author">BAKRI</div>
-                    <div class="cover-publisher">Genspark</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Book List -->
-    <section class="book-list">
-        <h2>Other Digital Books</h2>
-        <div class="books-container">
-            <div class="book">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Digital Horizons">
-                <h3>Digital Horizons</h3>
-                <p>Explore the future of technology and human interaction in the digital age. A comprehensive guide to understanding emerging technologies.</p>
-                <div class="price">15 USDT</div>
-                <button onclick="buyBook('Digital Horizons', 15)">
-                    <i class="fas fa-shopping-cart"></i> Buy Now
-                </button>
-            </div>
-            
-            <div class="book">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Crypto Mindset">
-                <h3>Crypto Mindset</h3>
-                <p>Master cryptocurrency investment with proven strategies. Learn how to navigate the crypto market with confidence and success.</p>
-                <div class="price">18 USDT</div>
-                <button onclick="buyBook('Crypto Mindset', 18)">
-                    <i class="fas fa-shopping-cart"></i> Buy Now
-                </button>
-            </div>
-            
-            <div class="book">
-                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Silent Echoes">
-                <h3>Silent Echoes</h3>
-                <p>A moving story about love, loss, and redemption. This novel touches the heart and explores the depths of human emotion.</p>
-                <div class="price">10 USDT</div>
-                <button onclick="buyBook('Silent Echoes', 10)">
-                    <i class="fas fa-shopping-cart"></i> Buy Now
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Payment Section -->
-    <section class="pay-info" id="payment">
-        <h2><i class="fas fa-lock"></i> Secure Payment Instructions</h2>
+    <!-- Authors & Publishers Section -->
+    <section class="authors-section" id="authors">
+        <h2><i class="fas fa-pen-fancy"></i> For Authors & Publishers</h2>
+        <p class="authors-tagline">
+            Publish your digital book with us and reach a global audience. We handle sales, payments, and distribution.
+        </p>
         
-        <div class="order-summary">
-            <h3>Your Order</h3>
-            <p>Book: <strong id="selectedBook">When Right Becomes Wrong</strong></p>
-            <p>Amount: <strong id="selectedPrice">12 USDT</strong></p>
-            <p>Status: <strong>Pending Payment</strong></p>
+        <div class="author-benefits">
+            <div class="author-benefit">
+                <i class="fas fa-globe"></i>
+                <h3>Global Reach</h3>
+                <p>Your book available worldwide in multiple languages with cryptocurrency payments.</p>
+            </div>
+            
+            <div class="author-benefit">
+                <i class="fas fa-chart-line"></i>
+                <h3>High Royalties</h3>
+                <p>Keep 90% of sales revenue. We take only 10% commission for platform and services.</p>
+            </div>
+            
+            <div class="author-benefit">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Payments</h3>
+                <p>Receive payments in USDT (TRC20) automatically. No chargebacks, no payment delays.</p>
+            </div>
         </div>
         
-        <div class="payment-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Copy Wallet Address</h4>
-                    <p>Copy the following TRON (TRC20) wallet address:</p>
-                    <div class="wallet">
-                        <span id="walletAddr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt</span>
-                        <button id="copyBtn" onclick="copyWalletAddress()">
-                            <i class="far fa-copy"></i> Copy Address
-                        </button>
+        <div class="commission-model">
+            <h3><i class="fas fa-percentage"></i> Simple 10% Commission Model</h3>
+            
+            <div class="commission-card">
+                <div class="commission-rate">10<span>%</span></div>
+                <div class="commission-title">Platform Commission</div>
+                <p>You keep <strong>90%</strong> of every sale</p>
+                
+                <div class="commission-details">
+                    <div class="commission-detail">
+                        <h4>📈 No Upfront Fees</h4>
+                        <p>Pay nothing to publish. We only earn when you earn.</p>
+                    </div>
+                    <div class="commission-detail">
+                        <h4>💰 Weekly Payouts</h4>
+                        <p>Get paid every week in USDT (TRC20) to your wallet.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="step">
-                <div class="step-number">2</div>
+        </div>
+        
+        <div class="publish-steps">
+            <div class="publish-step">
+                <div class="step-icon">1</div>
                 <div class="step-content">
-                    <h4>Send USDT (TRC20)</h4>
-                    <p>Send <strong id="amountToSend">12 USDT</strong> via TRON network (TRC20) to the address above.</p>
-                    <p class="warning"><i class="fas fa-exclamation-triangle"></i> Important: Ensure you select TRC20 network only in your wallet. Other networks may result in loss of funds.</p>
+                    <h4>Submit Your Book</h4>
+                    <p>Send us your book in PDF/EPUB format with cover image and description. We accept all genres: fiction, non-fiction, academic, poetry, etc.</p>
                 </div>
             </div>
             
-            <div class="step">
-                <div class="step-number">3</div>
+            <div class="publish-step">
+                <div class="step-icon">2</div>
                 <div class="step-content">
-                    <h4>Confirm via WhatsApp</h4>
-                    <p>After completing the payment, send your transaction ID (TXID) to our WhatsApp support for verification:</p>
-                    <a href="https://wa.me/249123638638?text=Hello!%20I%20just%20paid%20for%20the%20book%20'When%20Right%20Becomes%20Wrong'%20Here%20is%20my%20transaction%20ID%3A%20" class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Send Confirmation on WhatsApp
-                    </a>
+                    <h4>We Create Your Listing</h4>
+                    <p>We design a professional book page, set your price, and make it available in both English and Arabic versions of our store.</p>
+                </div>
+            </div>
+            
+            <div class="publish-step">
+                <div class="step-icon">3</div>
+                <div class="step-content">
+                    <h4>Start Selling</h4>
+                    <p>Your book goes live immediately. We handle all customer support, payment processing, and book delivery.</p>
+                </div>
+            </div>
+            
+            <div class="publish-step">
+                <div class="step-icon">4</div>
+                <div class="step-content">
+                    <h4>Get Paid Weekly</h4>
+                    <p>Every Monday, we send 90% of your sales revenue in USDT (TRC20) to your designated wallet address.</p>
                 </div>
             </div>
         </div>
         
-        <div class="payment-note">
-            <p><i class="fas fa-shield-alt"></i> Your payment is secure. We'll verify and deliver your book within 24 hours after confirmation.</p>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3><i class="fas fa-wallet"></i> How do I pay with USDT?</h3>
-                <p>Use any TRC20 compatible wallet (Trust Wallet, Binance, etc.) to send USDT to our address. Make sure to select TRC20 network when sending.</p>
-            </div>
-            <div class="faq-item">
-                <h3><i class="fas fa-clock"></i> When will I receive my book?</h3>
-                <p>After sending payment and transaction ID via WhatsApp, we'll verify and deliver your digital book within 24 hours.</p>
-            </div>
-            <div class="faq-item">
-                <h3><i class="fas fa-file-pdf"></i> What book formats are available?</h3>
-                <p>All books are delivered in PDF and EPUB formats, compatible with any e-reader, tablet, or computer. You can read them on any device.</p>
-            </div>
-            <div class="faq-item">
-                <h3><i class="fas fa-headset"></i> How can I contact support?</h3>
-                <p>Contact us via WhatsApp at +249123638638 for any inquiries or support. We're available to help you with the purchase process.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Inkverse Store</h3>
-                <p><i class="fas fa-book"></i> Premium digital books delivered instantly via cryptocurrency.</p>
-                <p><i class="fas fa-bolt"></i> Fast delivery within 24 hours after payment confirmation.</p>
-            </div>
+        <div class="author-cta">
+            <h3>Ready to Publish Your Book?</h3>
+            <p>Contact us on WhatsApp to discuss publishing your book on Inkverse Store.</p>
             
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fab fa-whatsapp"></i> WhatsApp: +249123638638</p>
-                <p><i class="fas fa-envelope"></i> Email: support@inkverse.store</p>
-                <p><i class="fas fa-clock"></i> Support Hours: 24/7</p>
-            </div>
+            <a href="https://wa.me/249123638638?text=Hello!%20I%27m%20an%20author%20interested%20in%20publishing%20my%20book%20on%20Inkverse%20Store.%20Please%20send%20me%20more%20information." class="author-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contact About Publishing
+            </a>
             
-            <div class="footer-section">
-                <h3>Payment Methods</h3>
-                <p><i class="fas fa-coins"></i> USDT (TRC20) only</p>
-                <p><i class="fas fa-shield-alt"></i> Secure blockchain transactions</p>
-                <p><i class="fas fa-globe"></i> Global payments accepted</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© 2026 Inkverse Store. All rights reserved. | 
-                <a href="#">Privacy Policy</a> | 
-                <a href="#">Terms of Service</a> |
-                <a href="#">Refund Policy</a>
+            <p class="author-note">
+                <i class="fas fa-info-circle"></i> We accept books in any language. Our team will handle translation to Arabic if needed.
             </p>
         </div>
-        
-        <button id="backToTop" onclick="scrollToTop()">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    </section>
