@@ -1,7 +1,8 @@
-// script.js - Common JavaScript for both languages
+// script.js - Complete JavaScript for Inkverse Store
 
-let selectedBook = 'عندما يصبح الصحيح خطأ';
+let selectedBook = 'When Right Becomes Wrong';
 let selectedPrice = 12;
+let orders = [];
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     updateWhatsAppLinks();
     startPiCountdown();
+    generateQRCode();
 });
 
 function initializePage() {
@@ -16,12 +18,13 @@ function initializePage() {
     const savedOrders = localStorage.getItem('inkverse_orders');
     if (savedOrders) {
         try {
-            window.orders = JSON.parse(savedOrders);
+            orders = JSON.parse(savedOrders);
         } catch (e) {
-            window.orders = [];
+            orders = [];
+            console.error('Error loading orders:', e);
         }
     } else {
-        window.orders = [];
+        orders = [];
     }
     
     // Initialize back to top button
@@ -40,9 +43,9 @@ function setupEventListeners() {
         if (!button.hasAttribute('data-event-bound')) {
             button.setAttribute('data-event-bound', 'true');
             
+            // Skip main hero button (already has onclick)
             if (button.classList.contains('btn-primary') && 
                 (button.textContent.includes('Buy Now') || button.textContent.includes('شراء الآن'))) {
-                // Main hero button - keep its original function
                 return;
             }
             
@@ -78,6 +81,33 @@ function setupEventListeners() {
             }
         });
     });
+    
+    // Payment logo click handlers
+    const usdtLogo = document.getElementById('usdtLogo');
+    const piLogo = document.getElementById('piLogo');
+    
+    if (usdtLogo) {
+        usdtLogo.addEventListener('click', function() {
+            document.querySelectorAll('.payment-logo').forEach(logo => {
+                logo.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // Scroll to payment section
+            const paymentSection = document.getElementById('payment');
+            if (paymentSection) {
+                paymentSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+    
+    if (piLogo) {
+        piLogo.addEventListener('click', function() {
+            notifyPiLaunch();
+        });
+    }
 }
 
 function buyBook(bookName, price) {
@@ -85,8 +115,11 @@ function buyBook(bookName, price) {
     selectedPrice = price;
 
     // Update order summary
-    document.getElementById('selectedBook').textContent = bookName;
-    document.getElementById('selectedPrice').textContent = price + ' USDT';
+    const selectedBookElement = document.getElementById('selectedBook');
+    const selectedPriceElement = document.getElementById('selectedPrice');
+    
+    if (selectedBookElement) selectedBookElement.textContent = bookName;
+    if (selectedPriceElement) selectedPriceElement.textContent = price + ' USDT';
     
     // Update amounts in payment steps
     document.querySelectorAll('#amountToSend, #amountToSend2').forEach(el => {
@@ -103,8 +136,11 @@ function buyBook(bookName, price) {
         status: 'pending'
     };
     
-    window.orders.push(order);
-    localStorage.setItem('inkverse_orders', JSON.stringify(window.orders));
+    orders.push(order);
+    localStorage.setItem('inkverse_orders', JSON.stringify(orders));
+
+    // Generate new QR code with updated amount
+    generateQRCode();
 
     // Smooth scroll to payment section
     const paymentSection = document.getElementById('payment');
@@ -127,11 +163,11 @@ function buyBook(bookName, price) {
 function copyWalletAddress() {
     const walletText = document.getElementById('walletAddr').textContent;
     const copyBtn = document.getElementById('copyBtn');
-    const originalText = copyBtn.innerHTML;
-    const originalWidth = copyBtn.style.width;
     
-    // Store original button width
-    copyBtn.style.width = getComputedStyle(copyBtn).width;
+    if (!copyBtn) return;
+    
+    const originalText = copyBtn.innerHTML;
+    const originalBackground = copyBtn.style.background;
     
     navigator.clipboard.writeText(walletText).then(() => {
         // Success feedback
@@ -141,13 +177,12 @@ function copyWalletAddress() {
             copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied';
         }
         
-        copyBtn.style.backgroundColor = '#10b981';
+        copyBtn.style.background = '#10b981';
         
         // Reset button after 2 seconds
         setTimeout(() => {
             copyBtn.innerHTML = originalText;
-            copyBtn.style.backgroundColor = '';
-            copyBtn.style.width = originalWidth;
+            copyBtn.style.background = originalBackground;
         }, 2000);
         
     }).catch((err) => {
@@ -165,12 +200,11 @@ function copyWalletAddress() {
             } else {
                 copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied';
             }
-            copyBtn.style.backgroundColor = '#10b981';
+            copyBtn.style.background = '#10b981';
             
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
-                copyBtn.style.backgroundColor = '';
-                copyBtn.style.width = originalWidth;
+                copyBtn.style.background = originalBackground;
             }, 2000);
             
         } catch (fallbackErr) {
@@ -180,12 +214,11 @@ function copyWalletAddress() {
             } else {
                 copyBtn.innerHTML = '<i class="fas fa-times"></i> Failed';
             }
-            copyBtn.style.backgroundColor = '#ef4444';
+            copyBtn.style.background = '#ef4444';
             
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
-                copyBtn.style.backgroundColor = '';
-                copyBtn.style.width = originalWidth;
+                copyBtn.style.background = originalBackground;
             }, 2000);
         }
         
@@ -238,10 +271,128 @@ function updateWhatsAppLinks() {
     });
 }
 
+// QR Code Functions
+function generateQRCode() {
+    const canvas = document.getElementById('qrCanvas');
+    const loading = document.getElementById('qrLoading');
+    
+    if (!canvas) return;
+    
+    if (loading) loading.style.display = 'flex';
+    
+    // Get wallet address
+    const walletAddress = document.getElementById('walletAddr').textContent;
+    
+    // Create TRON payment URL
+    const tronPaymentURL = `tron:${walletAddress}?amount=${selectedPrice}&token=USDT&network=TRC20`;
+    
+    // Check if QRCode library is available
+    if (typeof QRCode !== 'undefined') {
+        // Clear previous QR code
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Generate new QR code
+        QRCode.toCanvas(canvas, tronPaymentURL, {
+            width: 200,
+            margin: 2,
+            color: {
+                dark: '#000000',
+                light: '#FFFFFF'
+            }
+        }, function(error) {
+            if (error) {
+                console.error('QR Code generation error:', error);
+                if (loading) loading.innerHTML = 'Error generating QR code';
+                drawSimpleQRCode(canvas, tronPaymentURL);
+            }
+            if (loading) loading.style.display = 'none';
+        });
+    } else {
+        // Fallback to simple QR code
+        drawSimpleQRCode(canvas, tronPaymentURL);
+        if (loading) loading.style.display = 'none';
+    }
+    
+    // Store QR data for download
+    window.qrData = {
+        text: tronPaymentURL,
+        wallet: walletAddress,
+        amount: selectedPrice
+    };
+}
+
+function drawSimpleQRCode(canvas, text) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Clear canvas
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Simple QR-like pattern
+    const cellSize = 8;
+    const margin = 20;
+    const size = Math.min(canvas.width, canvas.height) - 2 * margin;
+    const cells = 21;
+    
+    // Draw QR pattern
+    ctx.fillStyle = '#000000';
+    
+    // Position markers (3 corners)
+    drawPositionMarker(ctx, margin, margin, cellSize);
+    drawPositionMarker(ctx, margin + (cells - 7) * cellSize, margin, cellSize);
+    drawPositionMarker(ctx, margin, margin + (cells - 7) * cellSize, cellSize);
+    
+    // Timing pattern
+    for (let i = 8; i < cells - 8; i++) {
+        if (i % 2 === 0) {
+            ctx.fillRect(margin + i * cellSize, margin + 6 * cellSize, cellSize, cellSize);
+            ctx.fillRect(margin + 6 * cellSize, margin + i * cellSize, cellSize, cellSize);
+        }
+    }
+    
+    // Add text
+    ctx.fillStyle = '#2563eb';
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'center';
+    if (document.documentElement.lang === 'ar') {
+        ctx.fillText('دفع USDT', canvas.width / 2, canvas.height - 20);
+    } else {
+        ctx.fillText('USDT Payment', canvas.width / 2, canvas.height - 20);
+    }
+}
+
+function drawPositionMarker(ctx, x, y, cellSize) {
+    // Outer square
+    ctx.fillRect(x, y, 7 * cellSize, 7 * cellSize);
+    
+    // Inner white square
+    ctx.fillStyle = 'white';
+    ctx.fillRect(x + cellSize, y + cellSize, 5 * cellSize, 5 * cellSize);
+    
+    // Inner black square
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(x + 2 * cellSize, y + 2 * cellSize, 3 * cellSize, 3 * cellSize);
+}
+
+function downloadQRCode() {
+    const canvas = document.getElementById('qrCanvas');
+    if (!canvas) {
+        alert(document.documentElement.lang === 'ar' ? 'لم يتم إنشاء رمز QR بعد. يرجى الانتظار.' : 'QR code not generated yet. Please wait.');
+        return;
+    }
+    
+    const link = document.createElement('a');
+    link.download = `usdt-payment-${selectedPrice}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
+
 // Pi Network Functions
 const piLaunchDate = new Date();
-piLaunchDate.setDate(piLaunchDate.getDate() + 30); // 30 days from now
-piLaunchDate.setHours(12, 0, 0, 0); // Set to noon
+piLaunchDate.setDate(piLaunchDate.getDate() + 30);
+piLaunchDate.setHours(12, 0, 0, 0);
 
 function startPiCountdown() {
     updatePiCountdown();
@@ -286,10 +437,15 @@ function updatePiCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
     // Update display
-    document.getElementById('piDays').textContent = days.toString().padStart(2, '0');
-    document.getElementById('piHours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('piMinutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('piSeconds').textContent = seconds.toString().padStart(2, '0');
+    const piDays = document.getElementById('piDays');
+    const piHours = document.getElementById('piHours');
+    const piMinutes = document.getElementById('piMinutes');
+    const piSeconds = document.getElementById('piSeconds');
+    
+    if (piDays) piDays.textContent = days.toString().padStart(2, '0');
+    if (piHours) piHours.textContent = hours.toString().padStart(2, '0');
+    if (piMinutes) piMinutes.textContent = minutes.toString().padStart(2, '0');
+    if (piSeconds) piSeconds.textContent = seconds.toString().padStart(2, '0');
 }
 
 function notifyPiLaunch() {
@@ -405,56 +561,17 @@ function closeSuccessModal() {
     if (modal) modal.remove();
 }
 
-// Utility function to format price
+// Utility functions
 function formatPrice(price) {
     return price.toFixed(2);
 }
 
-// Function to generate QR code (placeholder - in real implementation, use a QR library)
-function generateQRCode() {
-    // This is a placeholder function
-    // In a real implementation, you would use a QR code library like qrcode.js
-    const walletAddress = document.getElementById('walletAddr').textContent;
-    const amount = selectedPrice;
-    
-    // Example QR code data for USDT TRC20
-    const qrData = `tron:${walletAddress}?amount=${amount}&token=USDT`;
-    
-    console.log('QR Code data:', qrData);
-    // To implement actual QR code, you would use:
-    // new QRCode(document.getElementById("qrcode"), qrData);
-    
-    return qrData;
-}
-
-// Track purchase for analytics
-function trackPurchase(bookName, price) {
-    // This function would typically send data to analytics service
-    console.log('Purchase tracked:', { book: bookName, price: price, timestamp: new Date().toISOString() });
-    
-    // Example: Send to Google Analytics (if implemented)
-    // if (typeof gtag !== 'undefined') {
-    //     gtag('event', 'purchase', {
-    //         'transaction_id': orderId,
-    //         'value': price,
-    //         'currency': 'USDT',
-    //         'items': [{
-    //             'item_name': bookName,
-    //             'price': price
-    //         }]
-    //     });
-    // }
-}
-
-// Function to check if user has already purchased a book
 function hasPurchasedBook(bookName) {
     const purchases = JSON.parse(localStorage.getItem('inkverse_purchases') || '[]');
     return purchases.some(purchase => purchase.book === bookName && purchase.status === 'delivered');
 }
 
-// Function to mark book as delivered
 function markAsDelivered(orderId) {
-    const orders = JSON.parse(localStorage.getItem('inkverse_orders') || '[]');
     const orderIndex = orders.findIndex(order => order.id === orderId);
     
     if (orderIndex !== -1) {
@@ -477,19 +594,15 @@ function markAsDelivered(orderId) {
     return false;
 }
 
-// Function to get user's pending orders
 function getPendingOrders() {
-    const orders = JSON.parse(localStorage.getItem('inkverse_orders') || '[]');
     return orders.filter(order => order.status === 'pending');
 }
 
-// Function to get user's completed orders
 function getCompletedOrders() {
-    const orders = JSON.parse(localStorage.getItem('inkverse_orders') || '[]');
     return orders.filter(order => order.status === 'delivered');
 }
 
-// Export functions for debugging (optional)
+// Export functions for debugging
 if (typeof window !== 'undefined') {
     window.inkverse = {
         buyBook,
@@ -497,6 +610,8 @@ if (typeof window !== 'undefined') {
         scrollToTop,
         scrollToAuthors,
         notifyPiLaunch,
+        generateQRCode,
+        downloadQRCode,
         hasPurchasedBook,
         getPendingOrders,
         getCompletedOrders,
