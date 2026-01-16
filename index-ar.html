@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
     <!-- Language Switcher -->
@@ -218,6 +219,28 @@
     <section class="pay-info" id="payment">
         <h2><i class="fas fa-lock"></i> تعليمات الدفع الآمن</h2>
         
+        <!-- Payment Method Logos -->
+        <div class="payment-logos">
+            <div class="payment-logo active" id="usdtLogo">
+                <div class="payment-logo-img">
+                    <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="شعار USDT" width="50" height="50">
+                </div>
+                <div class="payment-logo-text">USDT (TRC20)</div>
+            </div>
+            <div class="payment-logo" id="piLogo">
+                <div class="payment-logo-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pi_symbol.svg/1200px-Pi_symbol.svg.png" alt="شعار شبكة باي" width="50" height="50">
+                </div>
+                <div class="payment-logo-text">شبكة باي (قريباً)</div>
+            </div>
+        </div>
+        
+        <!-- Active Payment Method -->
+        <div class="payment-method-active">
+            <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT" width="40" height="40">
+            <span>طريقة الدفع النشطة حالياً: USDT (TRC20)</span>
+        </div>
+        
         <div class="order-summary">
             <h3>طلبك</h3>
             <p>الكتاب: <strong id="selectedBook">عندما يصبح الصحيح خطأ</strong></p>
@@ -249,8 +272,14 @@
                             <p>امسح رمز QR هذا بتطبيق المحفظة الخاص بك:</p>
                             <div class="qr-container">
                                 <div class="qr-code">
-                                    <div class="qr-placeholder"></div>
+                                    <canvas id="qrCanvas" width="200" height="200"></canvas>
+                                    <div class="qr-loading" id="qrLoading">
+                                        <span class="qr-loading-text">جاري إنشاء رمز QR...</span>
+                                    </div>
                                 </div>
+                                <button class="qr-download-btn" onclick="downloadQRCode()">
+                                    <i class="fas fa-download"></i> تحميل رمز QR
+                                </button>
                                 <p class="qr-instructions">افتح تطبيق المحفظة → امسح رمز QR → أرسل <strong id="amountToSend">12 USDT</strong></p>
                             </div>
                         </div>
