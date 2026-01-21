@@ -1,187 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>InkVerse Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* تقييم النجوم */
-    .rating-section {
-      max-width: 500px;
-      margin: 40px auto 60px;
-      background: #fff;
-      padding: 24px 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-      text-align: center;
-    }
-    .rating-section h2 {
-      margin-bottom: 20px;
-      color: #2f2e41;
-    }
-    .stars {
-      font-size: 2.5rem;
-      color: #ccc;
-      cursor: pointer;
-      user-select: none;
-    }
-    .star.selected,
-    .star.hover {
-      color: #e91e63;
-    }
-    #submit-rating {
-      margin-top: 20px;
-      padding: 12px 30px;
-      background: #e91e63;
-      color: white;
-      font-weight: 700;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      user-select: none;
-    }
-    #submit-rating:disabled {
-      background: #bbb;
-      cursor: not-allowed;
-    }
-    #rating-result {
-      margin-top: 20px;
-      font-weight: 600;
-      color: #2f2e41;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>InkVerse | متجر الكتب الرقمية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="site-header">
-  <h1>InkVerse</h1>
-  <p class="tagline">Elegant Digital Books • Instant Delivery</p>
+  <div class="container">
+    <h1>InkVerse</h1>
+    <p class="tagline">كتب رقمية فاخرة • تسليم آلي فوري</p>
+  </div>
 </header>
 
-<section class="featured-book" aria-label="Featured Book">
-  <img src="assets/cover-main.jpg" alt="Cover of When Right Becomes Wrong" />
-  <div>
-    <h2>When Right Becomes Wrong</h2>
-    <p class="author">By Babuker</p>
-    <p class="price">
-      <span class="old-price">10 USDT</span>
-      <span class="new-price">5 USDT</span>
-    </p>
-    <span class="badge-sale">50% OFF</span>
-    <p class="delivery-note">📦 Instant delivery after payment</p>
-  </div>
-</section>
-
-<section class="payment-section" aria-label="Payment Section">
-  <h3>Scan to Pay (USDT)</h3>
-  <img src="assets/payment-qr.jpg" alt="USDT Payment QR Code" class="payment-qr" />
-  <p class="network">Network: TRC20</p>
-  <a href="download.html" class="confirm-btn" aria-label="Confirm payment and get the book">
-    ✅ I Have Paid – Get My Book
-  </a>
-  <p class="contact">Support: WhatsApp +249123638638</p>
-</section>
-
-<section class="books" aria-label="Public Domain Books">
-  <h2>Public Domain Books</h2>
-  <div class="books-grid">
-
-    <div class="book-card" tabindex="0" role="group" aria-labelledby="artofwar-title">
-      <img src="assets/covers/art-of-war.jpg" alt="Cover of The Art of War" />
-      <h3 id="artofwar-title">The Art of War</h3>
-      <p class="author">Sun Tzu</p>
-      <span class="badge">Public Domain</span>
-      <p class="price">3 USDT</p>
+<main class="container">
+  <section class="featured-book card">
+    <div class="book-flex">
+      <div class="book-cover">
+        <img src="assets/cover-main.jpg" alt="When Right Becomes Wrong">
+        <span class="badge-sale">خصم 50%</span>
+      </div>
+      <div class="book-details">
+        <h2>When Right Becomes Wrong</h2>
+        <p class="author">بواسطة: Babuker</p>
+        <div class="price-tag">
+          <span class="new-price">5 USDT</span>
+          <span class="old-price">10 USDT</span>
+        </div>
+        <p class="description">اكتشف أسرار التحول في المفاهيم في هذا الكتاب الأكثر مبيعاً.</p>
+        <button class="buy-btn main-btn" onclick="openPayment(5)">اشترِ الآن - استلام فوري</button>
+      </div>
     </div>
+  </section>
 
-    <div class="book-card" tabindex="0" role="group" aria-labelledby="pride-title">
-      <img src="assets/covers/pride-prejudice.jpg" alt="Cover of Pride and Prejudice" />
-      <h3 id="pride-title">Pride and Prejudice</h3>
-      <p class="author">Jane Austen</p>
-      <span class="badge">Public Domain</span>
-      <p class="price">3 USDT</p>
+  <section class="other-books">
+    <h3 class="section-title">المكتبة الرقمية (2 USDT للكتاب)</h3>
+    <div class="books-grid">
+      <div class="book-card">
+        <img src="assets/covers/art-of-war.jpg" alt="The Art of War">
+        <h4>The Art of War</h4>
+        <p class="price">2 USDT</p>
+        <button class="buy-btn sm" onclick="openPayment(2)">شراء</button>
+      </div>
+      <div class="book-card">
+        <img src="assets/covers/pride-prejudice.jpg" alt="Pride and Prejudice">
+        <h4>Pride and Prejudice</h4>
+        <p class="price">2 USDT</p>
+        <button class="buy-btn sm" onclick="openPayment(2)">شراء</button>
+      </div>
     </div>
+  </section>
 
+  <section class="rating-section card">
+    <h3>ما هو تقييمك لخدمتنا؟</h3>
+    <div class="stars" id="star-rating">
+      <span class="star" data-value="5">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="1">★</span>
+    </div>
+    <textarea id="review-text" placeholder="اكتب رأيك هنا..."></textarea>
+    <button class="submit-review-btn">إرسال التقييم</button>
+  </section>
+</main>
+
+<div id="payment-modal" class="modal">
+  <div class="modal-content">
+    <h3>تأكيد الدفع الآلي</h3>
+    <p>أرسل المبلغ إلى المحفظة أدناه عبر شبكة <strong style="color:#ff4d4d">TRC20</strong></p>
+    <img src="assets/payment-qr.jpg" class="qr-code" alt="QR Code">
+    <code class="address">TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</code>
+    <p class="timer">بانتظار التأكيد الآلي... <span id="clock">05:00</span></p>
+    <button class="confirm-btn disabled" disabled>جاري التحقق من الدفع...</button>
   </div>
-</section>
+</div>
 
-<!-- تقييم الزوار -->
-<section class="rating-section" aria-label="Visitor rating">
-  <h2>قيم تجربتك معنا</h2>
-  <div class="stars">
-    <span data-value="1" class="star">&#9734;</span>
-    <span data-value="2" class="star">&#9734;</span>
-    <span data-value="3" class="star">&#9734;</span>
-    <span data-value="4" class="star">&#9734;</span>
-    <span data-value="5" class="star">&#9734;</span>
-  </div>
-  <button id="submit-rating" disabled>إرسال التقييم</button>
-  <p id="rating-result"></p>
-</section>
-
-<footer class="site-footer" role="contentinfo">
-  <p>© 2026 InkVerse</p>
+<footer class="site-footer">
+  <p>© 2026 InkVerse | دعم واتساب: +249123638638</p>
 </footer>
 
-<script>
-  const stars = document.querySelectorAll('.star');
-  const submitBtn = document.getElementById('submit-rating');
-  const result = document.getElementById('rating-result');
-  let selectedRating = 0;
-
-  stars.forEach(star => {
-    star.addEventListener('mouseover', () => {
-      clearHover();
-      highlightStars(star.dataset.value);
-    });
-    star.addEventListener('mouseout', () => {
-      clearHover();
-      if (selectedRating) highlightStars(selectedRating);
-    });
-    star.addEventListener('click', () => {
-      selectedRating = star.dataset.value;
-      highlightStars(selectedRating);
-      submitBtn.disabled = false;
-    });
-  });
-
-  submitBtn.addEventListener('click', () => {
-    if (!selectedRating) return;
-
-    const ratings = JSON.parse(localStorage.getItem('inkverseRatings')) || [];
-    ratings.push(Number(selectedRating));
-    localStorage.setItem('inkverseRatings', JSON.stringify(ratings));
-
-    displayAverageRating();
-
-    submitBtn.disabled = true;
-    result.textContent = 'شكرًا على تقييمك! ⭐';
-  });
-
-  function highlightStars(count) {
-    stars.forEach(star => {
-      star.classList.toggle('hover', star.dataset.value <= count);
-    });
-  }
-  function clearHover() {
-    stars.forEach(star => star.classList.remove('hover'));
-  }
-
-  function displayAverageRating() {
-    const ratings = JSON.parse(localStorage.getItem('inkverseRatings')) || [];
-    if (ratings.length === 0) {
-      result.textContent = 'لم يتم تسجيل أي تقييم بعد.';
-      return;
-    }
-    const avg = ratings.reduce((a,b) => a+b,0) / ratings.length;
-    result.textContent = `متوسط التقييم: ${avg.toFixed(1)} / 5 من ${ratings.length} تقييم`;
-  }
-
-  displayAverageRating();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
