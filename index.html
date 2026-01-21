@@ -1,93 +1,89 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>InkVerse | متجر الكتب الرقمية</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>InkVerse Store | متجر إنك فيرس</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="site-header">
-  <div class="header-content">
     <h1 class="logo">InkVerse</h1>
     <p class="tagline">Elegant Digital Books • Instant Delivery</p>
-  </div>
 </header>
 
 <main class="container">
-  <section class="featured-book-card">
-    <div class="badge">الأكثر مبيعاً</div>
-    <div class="book-grid">
-      <div class="book-media">
-        <img src="when-right-becomes-wrong-old.jpg" alt="When Right Becomes Wrong" class="main-cover">
-      </div>
-      <div class="book-info">
-        <h2>When Right Becomes Wrong</h2>
-        <p class="author">By <strong>Bakri</strong></p>
-        <div class="price-box">
-          <span class="current-price">5 USDT</span>
-          <span class="discount-label">خصم 50%</span>
+    <section class="featured-card">
+        <div class="badge">الأكثر مبيعاً</div>
+        <div class="book-grid">
+            <div class="book-cover">
+                <img src="when-right-becomes-wrong-old.jpg" alt="When Right Becomes Wrong">
+            </div>
+            <div class="book-info">
+                <h2>When Right Becomes Wrong</h2>
+                <p class="author">By <strong>Bakri</strong></p>
+                <div class="price-container">
+                    <span class="price-new">5 USDT</span>
+                    <span class="price-old">10 USDT</span>
+                </div>
+                <p class="summary">اكتشف القواعد التي قد تؤدي للدمار في هذا الكتاب الفلسفي العميق. تسليم فوري بعد الدفع.</p>
+                <button class="buy-button main-btn" onclick="openPayment(5)">شراء الآن - استلام آلي</button>
+            </div>
         </div>
-        <p class="description">استكشف كيف يمكن للقواعد الصحيحة أن تتحول إلى دمار. كتاب فلسفي عميق متاح الآن للتحميل الفوري.</p>
-        <button class="cta-button" onclick="showPayment('5')">اشترِ الآن واستلم فوراً</button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="others-section">
-    <h3 class="section-title">إصدارات أخرى (2 USDT فقط)</h3>
-    <div class="books-grid">
-      <div class="mini-card">
-        <img src="assets/covers/art-of-war.jpg" alt="Book">
-        <h4>The Art of War</h4>
-        <p class="mini-price">2 USDT</p>
-        <button class="buy-sm" onclick="showPayment('2')">شراء</button>
-      </div>
-      <div class="mini-card">
-        <img src="assets/covers/pride-prejudice.jpg" alt="Book">
-        <h4>Pride and Prejudice</h4>
-        <p class="mini-price">2 USDT</p>
-        <button class="buy-sm" onclick="showPayment('2')">شراء</button>
-      </div>
-    </div>
-  </section>
+    <section class="other-books">
+        <h3 class="section-title">المكتبة الرقمية (2 USDT للكتاب)</h3>
+        <div class="grid-small">
+            <div class="mini-card">
+                <img src="assets/covers/art-of-war.jpg" alt="Book">
+                <h4>The Art of War</h4>
+                <p class="small-price">2 USDT</p>
+                <button class="buy-button sm" onclick="openPayment(2)">شراء</button>
+            </div>
+            <div class="mini-card">
+                <img src="assets/covers/pride-prejudice.jpg" alt="Book">
+                <h4>Pride and Prejudice</h4>
+                <p class="small-price">2 USDT</p>
+                <button class="buy-button sm" onclick="openPayment(2)">شراء</button>
+            </div>
+        </div>
+    </section>
 
-  <section class="feedback-card">
-    <h3>رأيك يهمنا</h3>
-    <p>قيم تجربتك في متجرنا:</p>
-    <div class="rating-stars">
-      <span class="star" data-v="5">★</span>
-      <span class="star" data-v="4">★</span>
-      <span class="star" data-v="3">★</span>
-      <span class="star" data-v="2">★</span>
-      <span class="star" data-v="1">★</span>
-    </div>
-    <textarea placeholder="اكتب ملاحظاتك هنا..."></textarea>
-    <button class="submit-btn">إرسال التقييم</button>
-  </section>
+    <section class="feedback-section">
+        <h3>قيم تجربتك معنا</h3>
+        <div class="stars-container" id="starRating">
+            <span class="star" data-v="5">★</span>
+            <span class="star" data-v="4">★</span>
+            <span class="star" data-v="3">★</span>
+            <span class="star" data-v="2">★</span>
+            <span class="star" data-v="1">★</span>
+        </div>
+        <textarea id="reviewMsg" placeholder="اكتب رأيك في الخدمة هنا..."></textarea>
+        <button class="wa-submit-btn" onclick="sendRatingToWA()">إرسال التقييم عبر واتساب</button>
+    </section>
 </main>
 
-<div id="payment-modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3>الدفع الآلي (USDT TRC20)</h3>
-    <p>المبلغ المطلوب: <strong id="modal-price"></strong> USDT</p>
-    <img src="QR code.jpeg" alt="Payment QR" class="qr-img">
-    <div class="wallet-copy">
-      <code>TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</code>
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePayment()">&times;</span>
+        <h3>تأكيد الدفع الآلي</h3>
+        <p>يرجى تحويل <strong id="amountText"></strong> USDT عبر شبكة <strong>TRC20</strong></p>
+        <img src="QR code.jpeg" class="qr-image" alt="QR Code">
+        <div class="address-box">
+            <code>TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</code>
+        </div>
+        <div class="status-indicator">
+            <div class="dots-loader"></div>
+            <p>بانتظار تأكيد الشبكة آلياً...</p>
+        </div>
     </div>
-    <div class="payment-status">
-      <div class="spinner"></div>
-      <p>بانتظار تأكيد الشبكة آلياً...</p>
-    </div>
-    <p class="support-text">الدعم الفني: WhatsApp +249123638638</p>
-  </div>
 </div>
 
-<footer class="footer">
-  <p>© 2026 InkVerse - جميع الحقوق محفوظة</p>
+<footer class="site-footer">
+    <p>© 2026 InkVerse | WhatsApp: +249123638638</p>
 </footer>
 
 <script src="script.js"></script>
