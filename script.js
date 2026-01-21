@@ -1,4 +1,4 @@
-let currentRating = 0;
+let rating = 0;
 
 function switchLang(lang) {
     const html = document.getElementById('main-html');
@@ -18,27 +18,33 @@ function switchLang(lang) {
     }
 }
 
-// محاكاة الاستلام التلقائي
-function startAutoPay(price, title) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('payModal').style.display = 'block';
+function openPayment(price, title) {
+    document.getElementById('modal-book-title').innerText = title;
+    document.getElementById('payment-modal').style.display = 'block';
     document.getElementById('payment-status').style.display = 'block';
-    document.getElementById('success-download').style.display = 'none';
+    document.getElementById('download-section').style.display = 'none';
 
-    // بعد 7 ثوانٍ يظهر رابط التحميل تلقائياً (محاكاة التأكيد)
+    // محاكاة الأتمتة: يظهر الرابط تلقائياً بعد 8 ثوانٍ
     setTimeout(() => {
         document.getElementById('payment-status').style.display = 'none';
-        document.getElementById('success-download').style.display = 'block';
-    }, 7000);
+        document.getElementById('download-section').style.display = 'block';
+    }, 8000);
 }
 
-function closeModal() { document.getElementById('payModal').style.display = 'none'; }
+function closeModal() { document.getElementById('payment-modal').style.display = 'none'; }
 
-function setStar(n) {
-    currentRating = n;
-    alert("You rated us " + n + " stars!");
+function copyAddr() {
+    navigator.clipboard.writeText("THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt1");
+    alert("Address Copied!");
 }
 
-function sendWA() {
-    window.open(`https://wa.me/249123638638?text=Rating: ${currentRating} stars`, '_blank');
+function setRating(n) {
+    rating = n;
+    const stars = document.querySelectorAll('.stars span');
+    stars.forEach((s, i) => s.style.color = i >= (5-n) ? "#d4af37" : "#475569");
+}
+
+function sendToWA() {
+    const text = document.getElementById('review-text').value;
+    window.open(`https://wa.me/249123638638?text=Rating: ${rating}/5 Stars%0AFeedback: ${text}`, '_blank');
 }
