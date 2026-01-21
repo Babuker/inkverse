@@ -2,14 +2,14 @@
 <html lang="en" id="main-html">
 <head>
     <meta charset="UTF-8">
-    <title>InkVerse Store</title>
+    <title>InkVerse | Digital Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="lang-nav">
+<div class="lang-switcher">
     <button onclick="switchLang('ar')" id="lang-btn">العربية</button>
 </div>
 
@@ -19,78 +19,71 @@
 </header>
 
 <main class="container">
-    <section class="featured-book card">
-        <div class="book-flex">
-            <div class="book-cover">
-                <img src="when-right-becomes-wrong-old.jpg" alt="When Right Becomes Wrong">
-                <span class="badge-sale">50% OFF</span>
+    <section class="main-book-card">
+        <div class="grid-layout">
+            <div class="cover-area">
+                <img src="when-right-becomes-wrong-old.jpg" alt="Book Cover" class="main-img">
+                <span class="discount-badge">50% OFF</span>
             </div>
-            <div class="book-details">
+            <div class="info-area">
                 <h2 data-en="When Right Becomes Wrong" data-ar="عندما يتحول الحق إلى باطل">When Right Becomes Wrong</h2>
                 <p class="author" data-en="By Bakri" data-ar="تأليف: بكري">By Bakri</p>
-                <div class="price-tag">
-                    <span class="new-price">5 USDT</span>
-                    <span class="old-price">10 USDT</span>
+                <div class="price">
+                    <span class="new">5 USDT</span>
+                    <span class="old">10 USDT</span>
                 </div>
-                <button class="buy-btn main-btn" onclick="openPayment(5, 'When Right Becomes Wrong')" data-en="Buy Now - Instant Download" data-ar="شراء الآن - تحميل فوري">Buy Now - Instant Download</button>
+                <button class="buy-btn" onclick="startAutoPay(5, 'When Right Becomes Wrong')" data-en="Buy Now - Instant Delivery" data-ar="شراء الآن - استلام فوري">Buy Now - Instant Delivery</button>
             </div>
         </div>
     </section>
 
     <section class="other-books">
-        <h3 class="section-title" data-en="Digital Library (2 USDT Each)" data-ar="المكتبة الرقمية (2 USDT للكتاب)">Digital Library (2 USDT Each)</h3>
-        <div class="books-grid">
-            <div class="book-card">
-                <img src="assets/covers/art-of-war.jpg" alt="The Art of War">
+        <h3 data-en="Other Books (2 USDT)" data-ar="كتب أخرى (2 USDT)">Other Books (2 USDT)</h3>
+        <div class="small-grid">
+            <div class="book-item">
+                <img src="assets/covers/art-of-war.jpg" alt="Art of War">
                 <h4>The Art of War</h4>
-                <p class="price">2 USDT</p>
-                <button class="buy-btn sm" onclick="openPayment(2, 'The Art of War')" data-en="Buy" data-ar="شراء">Buy</button>
+                <button class="buy-sm" onclick="startAutoPay(2, 'The Art of War')">2 USDT</button>
             </div>
-            <div class="book-card">
-                <img src="assets/covers/pride-prejudice.jpg" alt="Pride and Prejudice">
-                <h4>Pride and Prejudice</h4>
-                <p class="price">2 USDT</p>
-                <button class="buy-btn sm" onclick="openPayment(2, 'Pride and Prejudice')" data-en="Buy" data-ar="شراء">Buy</button>
+            <div class="book-item">
+                <img src="assets/covers/pride-prejudice.jpg" alt="Pride & Prejudice">
+                <h4>Pride & Prejudice</h4>
+                <button class="buy-sm" onclick="startAutoPay(2, 'Pride & Prejudice')">2 USDT</button>
             </div>
         </div>
     </section>
 
-    <section class="rating-section card">
-        <h3 data-en="Rate Our Service" data-ar="قيم خدمتنا">Rate Our Service</h3>
-        <div class="stars" id="star-rating">
-            <span onclick="setRating(5)">★</span><span onclick="setRating(4)">★</span><span onclick="setRating(3)">★</span><span onclick="setRating(2)">★</span><span onclick="setRating(1)">★</span>
+    <section class="rating-box">
+        <h3 data-en="Rate Our Store" data-ar="قيم متجرنا">Rate Our Store</h3>
+        <div class="stars" id="star-box">
+            <span onclick="setStar(5)">★</span><span onclick="setStar(4)">★</span><span onclick="setStar(3)">★</span><span onclick="setStar(2)">★</span><span onclick="setStar(1)">★</span>
         </div>
-        <textarea id="review-text" placeholder="Write your feedback..."></textarea>
-        <button class="submit-review-btn" onclick="sendToWA()" data-en="Submit via WhatsApp" data-ar="إرسال عبر الواتساب">Submit via WhatsApp</button>
+        <button class="wa-send" onclick="sendWA()" data-en="Send via WhatsApp" data-ar="إرسال عبر واتساب">Send via WhatsApp</button>
     </section>
 </main>
 
-<div id="payment-modal" class="modal">
+<div id="payModal" class="modal">
     <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h3 id="modal-book-title">Confirm Payment</h3>
-        <p data-en="Send to USDT (TRC20) Network" data-ar="أرسل المبلغ عبر شبكة (TRC20)">Send to USDT (TRC20) Network</p>
-        <img src="QR code.jpeg" class="payment-qr" alt="QR Code">
-        <div class="wallet-box">
-            <code id="wallet-addr">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt1</code>
-            <button class="copy-btn" onclick="copyAddr()" data-en="Copy" data-ar="نسخ">Copy</button>
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p data-en="Transfer to USDT (TRC20)" data-ar="حول عبر شبكة (TRC20)">Transfer to USDT (TRC20)</p>
+        <img src="QR code.jpeg" class="qr-pay" alt="QR Payment">
+        <div class="address-box">
+            <code id="wallet-text">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt1</code>
+            <button onclick="copyWallet()" class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
         </div>
         
         <div id="payment-status">
             <div class="spinner"></div>
-            <p data-en="Verifying payment automatically..." data-ar="جاري التحقق من الدفع آلياً...">Verifying payment automatically...</p>
+            <p data-en="Verifying payment..." data-ar="جاري التأكيد...">Verifying payment...</p>
         </div>
 
-        <div id="download-section" style="display:none;">
-            <p class="success-msg" data-en="✅ Payment Confirmed!" data-ar="✅ تم تأكيد الدفع!">✅ Payment Confirmed!</p>
-            <a href="books/book.pdf" class="download-link" download data-en="Download Your Book Now" data-ar="حمل كتابك الآن">Download Your Book Now</a>
+        <div id="success-download" style="display:none;">
+            <p class="success-msg" data-en="✅ Confirmed!" data-ar="✅ تم التأكيد!">✅ Confirmed!</p>
+            <a href="books/main.pdf" class="dl-link" download data-en="Download Book" data-ar="تحميل الكتاب">Download Book</a>
         </div>
     </div>
 </div>
-
-<footer class="site-footer">
-    <p>© 2026 InkVerse | Support: WhatsApp +249123638638</p>
-</footer>
 
 <script src="script.js"></script>
 </body>
