@@ -6,6 +6,53 @@
   <title>InkVerse Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* تقييم النجوم */
+    .rating-section {
+      max-width: 500px;
+      margin: 40px auto 60px;
+      background: #fff;
+      padding: 24px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+    .rating-section h2 {
+      margin-bottom: 20px;
+      color: #2f2e41;
+    }
+    .stars {
+      font-size: 2.5rem;
+      color: #ccc;
+      cursor: pointer;
+      user-select: none;
+    }
+    .star.selected,
+    .star.hover {
+      color: #e91e63;
+    }
+    #submit-rating {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #e91e63;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+    }
+    #submit-rating:disabled {
+      background: #bbb;
+      cursor: not-allowed;
+    }
+    #rating-result {
+      margin-top: 20px;
+      font-weight: 600;
+      color: #2f2e41;
+    }
+  </style>
 </head>
 <body>
 
@@ -61,9 +108,80 @@
   </div>
 </section>
 
+<!-- تقييم الزوار -->
+<section class="rating-section" aria-label="Visitor rating">
+  <h2>قيم تجربتك معنا</h2>
+  <div class="stars">
+    <span data-value="1" class="star">&#9734;</span>
+    <span data-value="2" class="star">&#9734;</span>
+    <span data-value="3" class="star">&#9734;</span>
+    <span data-value="4" class="star">&#9734;</span>
+    <span data-value="5" class="star">&#9734;</span>
+  </div>
+  <button id="submit-rating" disabled>إرسال التقييم</button>
+  <p id="rating-result"></p>
+</section>
+
 <footer class="site-footer" role="contentinfo">
   <p>© 2026 InkVerse</p>
 </footer>
+
+<script>
+  const stars = document.querySelectorAll('.star');
+  const submitBtn = document.getElementById('submit-rating');
+  const result = document.getElementById('rating-result');
+  let selectedRating = 0;
+
+  stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+      clearHover();
+      highlightStars(star.dataset.value);
+    });
+    star.addEventListener('mouseout', () => {
+      clearHover();
+      if (selectedRating) highlightStars(selectedRating);
+    });
+    star.addEventListener('click', () => {
+      selectedRating = star.dataset.value;
+      highlightStars(selectedRating);
+      submitBtn.disabled = false;
+    });
+  });
+
+  submitBtn.addEventListener('click', () => {
+    if (!selectedRating) return;
+
+    const ratings = JSON.parse(localStorage.getItem('inkverseRatings')) || [];
+    ratings.push(Number(selectedRating));
+    localStorage.setItem('inkverseRatings', JSON.stringify(ratings));
+
+    displayAverageRating();
+
+    submitBtn.disabled = true;
+    result.textContent = 'شكرًا على تقييمك! ⭐';
+  });
+
+  function highlightStars(count) {
+    stars.forEach(star => {
+      star.classList.toggle('hover', star.dataset.value <= count);
+    });
+  }
+  function clearHover() {
+    stars.forEach(star => star.classList.remove('hover'));
+  }
+
+  function displayAverageRating() {
+    const ratings = JSON.parse(localStorage.getItem('inkverseRatings')) || [];
+    if (ratings.length === 0) {
+      result.textContent = 'لم يتم تسجيل أي تقييم بعد.';
+      return;
+    }
+    const avg = ratings.reduce((a,b) => a+b,0) / ratings.length;
+    result.textContent = `متوسط التقييم: ${avg.toFixed(1)} / 5 من ${ratings.length} تقييم`;
+  }
+
+  displayAverageRating();
+</script>
 
 </body>
 </html>
