@@ -1,52 +1,44 @@
-// Switch Language Function
+let currentRating = 0;
+
 function switchLang(lang) {
     const html = document.getElementById('main-html');
     const elements = document.querySelectorAll('[data-en]');
-    
+    const btn = document.getElementById('lang-btn');
+
     if(lang === 'ar') {
-        html.setAttribute('dir', 'rtl');
-        html.setAttribute('lang', 'ar');
+        html.dir = "rtl";
         elements.forEach(el => el.innerText = el.getAttribute('data-ar'));
-        document.getElementById('btn-ar').classList.add('active');
-        document.getElementById('btn-en').classList.remove('active');
+        btn.innerText = "English";
+        btn.onclick = () => switchLang('en');
     } else {
-        html.setAttribute('dir', 'ltr');
-        html.setAttribute('lang', 'en');
+        html.dir = "ltr";
         elements.forEach(el => el.innerText = el.getAttribute('data-en'));
-        document.getElementById('btn-en').classList.add('active');
-        document.getElementById('btn-ar').classList.remove('active');
+        btn.innerText = "العربية";
+        btn.onclick = () => switchLang('ar');
     }
 }
 
-// Automated Payment & Delivery Logic
-function openAutoPayment(price, title) {
-    document.getElementById('mTitle').innerText = title;
-    document.getElementById('mPrice').innerText = price;
+// محاكاة الاستلام التلقائي
+function startAutoPay(price, title) {
+    document.getElementById('modalTitle').innerText = title;
     document.getElementById('payModal').style.display = 'block';
+    document.getElementById('payment-status').style.display = 'block';
+    document.getElementById('success-download').style.display = 'none';
 
-    // Real automation would use an API. This simulates the wait for confirmation.
+    // بعد 7 ثوانٍ يظهر رابط التحميل تلقائياً (محاكاة التأكيد)
     setTimeout(() => {
-        document.querySelector('.status-box').style.display = 'none';
-        document.getElementById('downloadArea').style.display = 'block';
-    }, 4000); 
+        document.getElementById('payment-status').style.display = 'none';
+        document.getElementById('success-download').style.display = 'block';
+    }, 7000);
 }
 
 function closeModal() { document.getElementById('payModal').style.display = 'none'; }
 
-// WhatsApp Rating
-function sendFeedback() {
-    let stars = document.querySelectorAll('.star.active').length;
-    let msg = document.getElementById('revText').value;
-    let waUrl = `https://wa.me/249123638638?text=New Rating: ${stars} Stars%0AMessage: ${msg}`;
-    window.open(waUrl, '_blank');
+function setStar(n) {
+    currentRating = n;
+    alert("You rated us " + n + " stars!");
 }
 
-// Star logic
-document.querySelectorAll('.star').forEach(s => {
-    s.onclick = function() {
-        document.querySelectorAll('.star').forEach(st => st.classList.remove('active'));
-        this.classList.add('active');
-        let prev = this.nextElementSibling;
-        while(prev) { prev.classList.add('active'); prev = prev.nextElementSibling; }
-    }
-});
+function sendWA() {
+    window.open(`https://wa.me/249123638638?text=Rating: ${currentRating} stars`, '_blank');
+}
