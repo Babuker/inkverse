@@ -1,4 +1,4 @@
-let rating = 0;
+let currentRating = 0;
 
 function switchLang(lang) {
     const html = document.getElementById('main-html');
@@ -18,33 +18,31 @@ function switchLang(lang) {
     }
 }
 
-function openPayment(price, title) {
-    document.getElementById('modal-book-title').innerText = title;
-    document.getElementById('payment-modal').style.display = 'block';
+function startAutoPay(price, title) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('payModal').style.display = 'block';
     document.getElementById('payment-status').style.display = 'block';
-    document.getElementById('download-section').style.display = 'none';
+    document.getElementById('success-download').style.display = 'none';
 
-    // محاكاة الأتمتة: يظهر الرابط تلقائياً بعد 8 ثوانٍ
+    // محاكاة الاستلام الآلي بعد 8 ثوانٍ
     setTimeout(() => {
         document.getElementById('payment-status').style.display = 'none';
-        document.getElementById('download-section').style.display = 'block';
+        document.getElementById('success-download').style.display = 'block';
     }, 8000);
 }
 
-function closeModal() { document.getElementById('payment-modal').style.display = 'none'; }
-
-function copyAddr() {
+function copyWallet() {
     navigator.clipboard.writeText("THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt1");
     alert("Address Copied!");
 }
 
-function setRating(n) {
-    rating = n;
-    const stars = document.querySelectorAll('.stars span');
-    stars.forEach((s, i) => s.style.color = i >= (5-n) ? "#d4af37" : "#475569");
+function closeModal() { document.getElementById('payModal').style.display = 'none'; }
+
+function setStar(n) {
+    currentRating = n;
+    alert("Thanks for rating " + n + " stars!");
 }
 
-function sendToWA() {
-    const text = document.getElementById('review-text').value;
-    window.open(`https://wa.me/249123638638?text=Rating: ${rating}/5 Stars%0AFeedback: ${text}`, '_blank');
+function sendWA() {
+    window.open(`https://wa.me/249123638638?text=Store Rating: ${currentRating} stars`, '_blank');
 }
