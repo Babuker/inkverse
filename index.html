@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>InkVerse Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
 <header class="site-header">
@@ -15,8 +14,8 @@
   <p class="tagline">Elegant Digital Books • Instant Delivery</p>
 </header>
 
-<section class="featured-book">
-  <img src="assets/cover-main.jpg" alt="When Right Becomes Wrong">
+<section class="featured-book" aria-label="Featured Book">
+  <img src="assets/cover-main.jpg" alt="Cover of When Right Becomes Wrong" />
   <div>
     <h2>When Right Becomes Wrong</h2>
     <p class="author">By Babuker</p>
@@ -25,50 +24,44 @@
       <span class="new-price">5 USDT</span>
     </p>
     <span class="badge-sale">50% OFF</span>
-
-    <p class="delivery-note">
-      📦 Instant delivery after payment
-    </p>
+    <p class="delivery-note">📦 Instant delivery after payment</p>
   </div>
 </section>
 
-<section class="payment-section">
+<section class="payment-section" aria-label="Payment Section">
   <h3>Scan to Pay (USDT)</h3>
-  <img src="assets/payment-qr.jpg" class="payment-qr" alt="Payment QR">
+  <img src="assets/payment-qr.jpg" alt="USDT Payment QR Code" class="payment-qr" />
   <p class="network">Network: TRC20</p>
-
-  <a href="download.html" class="confirm-btn">
+  <a href="download.html" class="confirm-btn" aria-label="Confirm payment and get the book">
     ✅ I Have Paid – Get My Book
   </a>
-
   <p class="contact">Support: WhatsApp +249123638638</p>
 </section>
 
-<section class="books">
+<section class="books" aria-label="Public Domain Books">
   <h2>Public Domain Books</h2>
-
   <div class="books-grid">
 
-    <div class="book-card">
-      <img src="assets/covers/art-of-war.jpg" alt="The Art of War">
-      <h3>The Art of War</h3>
+    <div class="book-card" tabindex="0" role="group" aria-labelledby="artofwar-title">
+      <img src="assets/covers/art-of-war.jpg" alt="Cover of The Art of War" />
+      <h3 id="artofwar-title">The Art of War</h3>
       <p class="author">Sun Tzu</p>
       <span class="badge">Public Domain</span>
-      <p class="price">FREE</p>
+      <p class="price">3 USDT</p>
     </div>
 
-    <div class="book-card">
-      <img src="assets/covers/pride-prejudice.jpg" alt="Pride and Prejudice">
-      <h3>Pride and Prejudice</h3>
+    <div class="book-card" tabindex="0" role="group" aria-labelledby="pride-title">
+      <img src="assets/covers/pride-prejudice.jpg" alt="Cover of Pride and Prejudice" />
+      <h3 id="pride-title">Pride and Prejudice</h3>
       <p class="author">Jane Austen</p>
       <span class="badge">Public Domain</span>
-      <p class="price">FREE</p>
+      <p class="price">3 USDT</p>
     </div>
 
   </div>
 </section>
 
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo">
   <p>© 2026 InkVerse</p>
 </footer>
 
