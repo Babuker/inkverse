@@ -1,133 +1,301 @@
-:root {
-  --bg: #0f172a;
-  --card: #111827;
-  --primary: #22c55e;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-}
-
+/* Reset & base */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
 .site-header {
+  background: #2f2e41;
+  color: #fff;
+  padding: 30px 20px;
   text-align: center;
-  padding: 40px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.tagline {
-  color: var(--muted);
+.site-header h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  color: #ffc107;
 }
 
+.site-header .tagline {
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: #eee;
+  font-style: italic;
+}
+
+/* Featured book */
 .featured-book {
   max-width: 900px;
-  margin: auto;
-  background: var(--card);
-  padding: 25px;
-  border-radius: 20px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   display: flex;
-  gap: 20px;
+  gap: 24px;
+  overflow: hidden;
+  padding: 24px;
   align-items: center;
 }
 
 .featured-book img {
-  max-width: 180px;
-  border-radius: 16px;
+  width: 280px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.featured-book img:hover {
+  transform: scale(1.05);
+}
+
+.featured-book > div {
+  flex: 1;
+}
+
+.featured-book h2 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+  color: #2f2e41;
+  font-weight: 700;
+}
+
+.featured-book .author {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 14px;
+  font-weight: 600;
 }
 
 .price {
-  margin: 10px 0;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .old-price {
   text-decoration: line-through;
-  color: #888;
+  color: #bbb;
+  font-weight: 600;
 }
 
 .new-price {
-  color: var(--primary);
+  color: #e91e63;
   font-weight: 700;
-  margin-left: 8px;
 }
 
 .badge-sale {
-  background: #dc2626;
+  display: inline-block;
+  background: #e91e63;
   color: white;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: .75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  user-select: none;
 }
 
 .delivery-note {
-  margin-top: 10px;
-  font-size: .85rem;
-  color: var(--muted);
+  margin-top: 12px;
+  font-weight: 600;
+  color: #2f2e41;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* Payment Section */
 .payment-section {
+  max-width: 400px;
+  margin: 30px auto 50px;
+  background: white;
+  padding: 22px 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: 50px 0;
+}
+
+.payment-section h3 {
+  font-weight: 700;
+  color: #2f2e41;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  letter-spacing: 1.2px;
 }
 
 .payment-qr {
-  width: 220px;
-  border-radius: 16px;
-  margin: 20px auto;
-  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.payment-qr:hover {
+  box-shadow: 0 8px 20px #e91e63aa;
+}
+
+.network {
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 18px;
 }
 
 .confirm-btn {
   display: inline-block;
-  background: var(--primary);
-  color: #000;
-  padding: 14px 26px;
-  border-radius: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  margin-top: 10px;
+  background: #e91e63;
+  color: white;
+  font-weight: 700;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #e91e63cc;
+  user-select: none;
+  transition: background-color 0.3s ease;
 }
 
+.confirm-btn:hover {
+  background: #c2185b;
+  box-shadow: 0 8px 25px #c2185bcc;
+}
+
+.contact {
+  margin-top: 16px;
+  font-weight: 600;
+  color: #2f2e41;
+  font-size: 1rem;
+}
+
+/* Books Section */
 .books {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.books h2 {
+  font-weight: 700;
+  color: #2f2e41;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 1.3px;
 }
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 26px;
 }
 
 .book-card {
-  background: var(--card);
+  background: white;
+  border-radius: 12px;
   padding: 16px;
-  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
 }
 
 .book-card img {
-  width: 100%;
-  border-radius: 14px;
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.07);
+}
+
+.book-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2f2e41;
+  margin-bottom: 6px;
+}
+
+.book-card .author {
+  font-style: italic;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 10px;
 }
 
 .badge {
-  background: #1f2933;
-  color: var(--primary);
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: .7rem;
+  display: inline-block;
+  background: #4caf50;
+  color: white;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  user-select: none;
 }
 
+.price {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e91e63;
+}
+
+/* Footer */
 .site-footer {
   text-align: center;
-  padding: 30px;
-  color: var(--muted);
+  padding: 16px 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #888;
+  border-top: 1px solid #ddd;
+  background: #fefefe;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .featured-book {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .featured-book img {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 20px;
+  }
 }
