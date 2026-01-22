@@ -1,29 +1,41 @@
-// Link your PDF files here
+// إضافة مسارات الملفات
 const bookFiles = {
     main: "books/right-wrong.pdf",
     book1: "books/art-of-war.pdf",
-    book2: "books/the-prince.pdf"
+    book2: "books/the-prince.pdf",
+    book3: "books/think-grow-rich.pdf"
 };
 
-let currentBookId = "";
-let selectedRating = 5;
+let currentBookId = ""; // متغير لحفظ الكتاب المختار حالياً
 
 const dictionary = {
     en: {
         btn: "العربية",
         slogan: "The leading platform for digital books and products, powered by secure Crypto payments.",
-        revTitle: "Community Feedback",
-        commentPlaceholder: "Share your experience with us...",
-        postBtn: "Post Review",
-        vMsg: "Thank you! Your download will start now."
+        mTitle: "When Right Becomes Wrong",
+        mDesc: "A powerful book about leadership and rules. Written by BAKRI.",
+        b1T: "The Art of War", b1D: "Strategy secrets for everyone.",
+        b2T: "The Prince", b2D: "Classic guide on power.",
+        b3T: "Think & Grow Rich", b3D: "Master plan for success.",
+        offT: "Publish Your Book!",
+        offD: "Sell your digital works and keep 90% of revenue.",
+        payH: "Crypto Payment",
+        vMsg: "Thank you! Your download will start now.",
+        vErr: "Verification pending. Please ensure the transfer is complete."
     },
     ar: {
         btn: "English",
         slogan: "المنصة الرائدة للكتب والمنتجات الرقمية، مدعومة بوسائل دفع كريبتو آمنة.",
-        revTitle: "تفاعل المجتمع",
-        commentPlaceholder: "شاركنا تجربتك هنا...",
-        postBtn: "انشر التقييم",
-        vMsg: "شكراً لك! سيبدأ تحميل كتابك الآن."
+        mTitle: "عندما يصبح الحق خطأ",
+        mDesc: "كتاب قوي عن القيادة والقواعد. تأليف بكري.",
+        b1T: "فن الحرب", b1D: "أسرار الاستراتيجية للجميع.",
+        b2T: "الأمير", b2D: "الدليل الكلاسيكي عن القوة.",
+        b3T: "فكر وازدد ثراءً", b3D: "الخطة الشاملة للنجاح.",
+        offT: "انشر كتابك هنا!",
+        offD: "بع أعمالك الرقمية واحتفظ بـ 90% من الأرباح.",
+        payH: "الدفع بالكريبتو",
+        vMsg: "شكراً لك! سيبدأ تحميل كتابك الآن.",
+        vErr: "جاري التحقق. يرجى التأكد من إتمام عملية التحويل."
     }
 };
 
@@ -32,57 +44,25 @@ function toggleLang() {
     const lang = html.lang === 'en' ? 'ar' : 'en';
     html.lang = lang;
     document.body.className = (lang === 'ar') ? 'rtl' : 'ltr';
-
+    
     document.getElementById('langBtn').innerText = dictionary[lang].btn;
     document.getElementById('site-slogan').innerText = dictionary[lang].slogan;
-    document.getElementById('rev-title').innerText = dictionary[lang].revTitle;
-    document.getElementById('comment-text').placeholder = dictionary[lang].commentPlaceholder;
-    document.getElementById('post-btn').innerText = dictionary[lang].postBtn;
+    document.getElementById('m-title').innerText = dictionary[lang].mTitle;
+    document.getElementById('m-desc').innerText = dictionary[lang].mDesc;
+    document.getElementById('book1-title').innerText = dictionary[lang].b1T;
+    document.getElementById('book1-desc').innerText = dictionary[lang].b1D;
+    document.getElementById('book2-title').innerText = dictionary[lang].b2T;
+    document.getElementById('book2-desc').innerText = dictionary[lang].b2D;
+    document.getElementById('book3-title').innerText = dictionary[lang].b3T;
+    document.getElementById('book3-desc').innerText = dictionary[lang].b3D;
+    document.getElementById('offer-title').innerText = dictionary[lang].offT;
+    document.getElementById('offer-desc').innerText = dictionary[lang].offD;
+    document.getElementById('pay-head').innerText = dictionary[lang].payH;
 }
 
-// Star Selection Logic
-document.querySelectorAll('.star').forEach(star => {
-    star.onclick = function() {
-        selectedRating = this.getAttribute('data-value');
-        document.querySelectorAll('.star').forEach(s => {
-            s.style.color = s.getAttribute('data-value') <= selectedRating ? '#d4af37' : '#ccc';
-        });
-    }
-});
-
-// Interactive Comment Function
-function addNewComment() {
-    const text = document.getElementById('comment-text').value;
-    if (!text.trim()) return;
-
-    const container = document.getElementById('comments-container');
-    const id = Date.now();
-    
-    const commentHtml = `
-        <div class="comment-card" id="c-${id}">
-            <strong>Visitor</strong> <span style="color:#d4af37; margin-left:10px;">${'★'.repeat(selectedRating)}</span>
-            <p>${text}</p>
-            <div class="comment-actions">
-                <span class="action-btn" onclick="this.innerHTML='👍 Liked'">👍 Like</span>
-                <span class="action-btn" onclick="addReply(${id})">💬 Reply</span>
-            </div>
-            <div id="r-${id}"></div>
-        </div>
-    `;
-    
-    container.insertAdjacentHTML('afterbegin', commentHtml);
-    document.getElementById('comment-text').value = '';
-}
-
-function addReply(id) {
-    const replyZone = document.getElementById(`r-${id}`);
-    if (replyZone.innerHTML !== "") return;
-    replyZone.innerHTML = `<div class="reply-box"><strong>InkVerse Team:</strong> Thank you for your feedback! We are glad you enjoyed the store.</div>`;
-}
-
-// Payment & Download Logic
-function openPay(id) {
-    currentBookId = id;
+// تعديل وظيفة فتح الدفع لتحديد نوع الكتاب
+function openPay(bookKey) {
+    currentBookId = bookKey; // حفظ مفتاح الكتاب (main, book1, etc)
     document.getElementById('payModal').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
 }
@@ -92,15 +72,18 @@ function closePay() {
     document.getElementById('overlay').style.display = 'none';
 }
 
+// وظيفة التحقق وبدء التحميل
 function verifyStatus() {
     const lang = document.getElementById('mainHtml').lang;
     alert(dictionary[lang].vMsg);
     
-    const a = document.createElement('a');
-    a.href = bookFiles[currentBookId];
-    a.download = "";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    // محاكاة بدء التحميل
+    const link = document.createElement('a');
+    link.href = bookFiles[currentBookId];
+    link.download = bookFiles[currentBookId].split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     closePay();
 }
