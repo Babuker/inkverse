@@ -1,56 +1,53 @@
-// Localization Dictionary
-const texts = {
+const dictionary = {
     en: {
         btn: "العربية",
         mTitle: "When Right Becomes Wrong",
-        mDesc: "A deep exploration of how correct rules can become a trap. By BAKRI.",
-        awTitle: "The Art of War",
-        pTitle: "The Prince",
-        oTitle: "Author Surprise!",
-        oDesc: "Get the highest revenue share in the digital world.",
-        payHead: "Secure Payment",
-        verifyMsg: "Verification initiated. Please wait for blockchain confirmation."
+        mDesc: "A powerful book about leadership and rules. Written by BAKRI.",
+        b1T: "The Art of War", b1D: "Learn the best secrets of strategy.",
+        b2T: "The Prince", b2D: "A famous guide about power.",
+        b3T: "Think & Grow Rich", b3D: "The master plan for success.",
+        offT: "Publish Your Book Here!",
+        offD: "Are you an author? Sell your book on InkVerse. You keep 90% of the money. We only take 10%.",
+        payH: "Easy Payment",
+        vMsg: "Checking payment... Please wait 60 seconds."
     },
     ar: {
         btn: "English",
         mTitle: "عندما يصبح الحق خطأ",
-        mDesc: "استكشاف عميق لكيفية تحول القواعد الصحيحة إلى فخ للمؤسسات. بقلم بكري.",
-        awTitle: "فن الحرب",
-        pTitle: "الأمير",
-        oTitle: "مفاجأة للمؤلفين!",
-        oDesc: "احصل على أعلى نسبة عوائد في العالم الرقمي.",
-        payHead: "دفع رقمي آمن",
-        verifyMsg: "بدأ التحقق. يرجى الانتظار لتأكيد البلوكشين."
+        mDesc: "كتاب قوي عن القيادة والقواعد. تأليف بكري.",
+        b1T: "فن الحرب", b1D: "تعلم أفضل أسرار الاستراتيجية.",
+        b2T: "الأمير", b2D: "دليل شهير عن القوة والسياسة.",
+        b3T: "فكر وازدد ثراءً", b3D: "الخطة الشاملة للنجاح المالي.",
+        offT: "انشر كتابك هنا!",
+        offD: "هل أنت مؤلف؟ بع كتابك على متجرنا. ستحصل على 90% من الأرباح ونحن نأخذ 10% فقط.",
+        payH: "دفع سهل",
+        vMsg: "جاري التحقق... يرجى الانتظار 60 ثانية."
     }
 };
 
-// Toggle Language Function
 function toggleLang() {
     const html = document.getElementById('mainHtml');
-    const currentLang = html.lang === 'en' ? 'ar' : 'en';
-    
-    // Update HTML attribute and Body class
-    html.lang = currentLang;
-    document.body.className = currentLang === 'ar' ? 'rtl' : 'ltr';
-    
-    // Update Text Elements
-    document.getElementById('langBtn').innerText = texts[currentLang].btn;
-    document.getElementById('m-title').innerText = texts[currentLang].mTitle;
-    document.getElementById('m-desc').innerText = texts[currentLang].mDesc;
-    document.getElementById('aw-title').innerText = texts[currentLang].awTitle;
-    document.getElementById('p-title').innerText = texts[currentLang].pTitle;
-    document.getElementById('o-title').innerText = texts[currentLang].oTitle;
-    document.getElementById('o-desc').innerText = texts[currentLang].oDesc;
-    document.getElementById('pay-head').innerText = texts[currentLang].payHead;
+    const lang = html.lang === 'en' ? 'ar' : 'en';
+    html.lang = lang;
+    document.body.className = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.getElementById('langBtn').innerText = dictionary[lang].btn;
+    document.getElementById('m-title').innerText = dictionary[lang].mTitle;
+    document.getElementById('m-desc').innerText = dictionary[lang].mDesc;
+    document.getElementById('book1-title').innerText = dictionary[lang].b1T;
+    document.getElementById('book1-desc').innerText = dictionary[lang].b1D;
+    document.getElementById('book2-title').innerText = dictionary[lang].b2T;
+    document.getElementById('book2-desc').innerText = dictionary[lang].b2D;
+    document.getElementById('book3-title').innerText = dictionary[lang].b3T;
+    document.getElementById('book3-desc').innerText = dictionary[lang].b3D;
+    document.getElementById('offer-title').innerText = dictionary[lang].offT;
+    document.getElementById('offer-desc').innerText = dictionary[lang].offD;
+    document.getElementById('pay-head').innerText = dictionary[lang].payH;
 }
 
-// Modal Control Functions
-function openPay(price) {
+function openPay(amt) {
     document.getElementById('payModal').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
-    
-    // Ensure the QR starts with the local file, but the fallback is handled by the 'onerror' in HTML
-    console.log("Opening payment for amount: " + price + " USDT");
 }
 
 function closePay() {
@@ -59,6 +56,6 @@ function closePay() {
 }
 
 function verifyStatus() {
-    const currentLang = document.getElementById('mainHtml').lang;
-    alert(texts[currentLang].verifyMsg);
+    const lang = document.getElementById('mainHtml').lang;
+    alert(dictionary[lang].vMsg);
 }
