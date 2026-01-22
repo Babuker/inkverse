@@ -1,48 +1,29 @@
-let currentRating = 0;
+async function startVerification() {
+    const btn = document.getElementById('verify-btn');
+    btn.innerText = "Checking Blockchain...";
+    
+    const wallet = "THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1";
+    const apiUrl = `https://api.trongrid.io/v1/accounts/${wallet}/transactions/trc20?limit=5`;
 
-function switchLang(lang) {
-    const html = document.getElementById('main-html');
-    const elements = document.querySelectorAll('[data-en]');
-    const btn = document.getElementById('lang-btn');
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        
+        // البحث عن عملية بقيمة 5000000 (لأن الـ USDT لديه 6 خانات عشرية)
+        const success = data.data.some(tx => 
+            tx.token_info.symbol === "USDT" && 
+            tx.value === "5000000" && 
+            tx.to === wallet
+        );
 
-    if(lang === 'ar') {
-        html.dir = "rtl";
-        elements.forEach(el => el.innerText = el.getAttribute('data-ar'));
-        btn.innerText = "English";
-        btn.onclick = () => switchLang('en');
-    } else {
-        html.dir = "ltr";
-        elements.forEach(el => el.innerText = el.getAttribute('data-en'));
-        btn.innerText = "العربية";
-        btn.onclick = () => switchLang('ar');
+        if (success) {
+            document.getElementById('payment-area').style.display = 'none';
+            document.getElementById('download-area').style.display = 'block';
+        } else {
+            alert("Payment not found yet. Please wait a minute and try again.");
+            btn.innerText = "Verify Payment & Download";
+        }
+    } catch (error) {
+        console.error("Error verifying payment:", error);
     }
-}
-
-function startAutoPay(price, title) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('payModal').style.display = 'block';
-    document.getElementById('payment-status').style.display = 'block';
-    document.getElementById('success-download').style.display = 'none';
-
-    // محاكاة الاستلام الآلي بعد 8 ثوانٍ
-    setTimeout(() => {
-        document.getElementById('payment-status').style.display = 'none';
-        document.getElementById('success-download').style.display = 'block';
-    }, 8000);
-}
-
-function copyWallet() {
-    navigator.clipboard.writeText("THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt1");
-    alert("Address Copied!");
-}
-
-function closeModal() { document.getElementById('payModal').style.display = 'none'; }
-
-function setStar(n) {
-    currentRating = n;
-    alert("Thanks for rating " + n + " stars!");
-}
-
-function sendWA() {
-    window.open(`https://wa.me/249123638638?text=Store Rating: ${currentRating} stars`, '_blank');
 }
