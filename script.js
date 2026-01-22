@@ -1,19 +1,17 @@
 const dictionary = {
     en: {
         btn: "العربية",
-        aboutT: "About InkVerse",
-        aboutX: "InkVerse is a leading digital platform for high-quality e-books and digital products. We empower creators by using safe Crypto Payments to ensure global access.",
+        slogan: "The leading platform for digital books and products, powered by secure Crypto payments.",
         mTitle: "When Right Becomes Wrong", mDesc: "A powerful book about leadership and rules. Written by BAKRI.",
-        offT: "Publish Your Book Here!", offD: "Sell your digital products and keep 90% of the revenue.",
-        payH: "Crypto Payment", vMsg: "Checking blockchain... please wait."
+        offT: "Publish Your Book!", offD: "Sell your digital works and keep 90% of revenue.",
+        payH: "Crypto Payment", vMsg: "Verifying... please wait."
     },
     ar: {
         btn: "English",
-        aboutT: "حول إنك فيرس",
-        aboutX: "إنك فيرس هي منصة رقمية رائدة للكتب والمنتجات الإلكترونية عالية الجودة. نحن نمكّن المبدعين عبر استخدام الدفع بالعملات الرقمية المشفرة لضمان وصول عالمي سريع وآمن.",
+        slogan: "المنصة الرائدة للكتب والمنتجات الرقمية، مدعومة بوسائل دفع كريبتو آمنة.",
         mTitle: "عندما يصبح الحق خطأ", mDesc: "كتاب قوي عن القيادة والقواعد. تأليف بكري.",
-        offT: "انشر كتابك هنا!", offD: "بع منتجاتك الرقمية واحتفظ بـ 90% من الأرباح.",
-        payH: "الدفع بالكريبتو", vMsg: "جاري التحقق من الشبكة... يرجى الانتظار."
+        offT: "انشر كتابك هنا!", offD: "بع أعمالك الرقمية واحتفظ بـ 90% من الأرباح.",
+        payH: "الدفع بالكريبتو", vMsg: "جاري التحقق... يرجى الانتظار."
     }
 };
 
@@ -24,8 +22,7 @@ function toggleLang() {
     document.body.className = lang === 'ar' ? 'rtl' : 'ltr';
 
     document.getElementById('langBtn').innerText = dictionary[lang].btn;
-    document.getElementById('about-title').innerText = dictionary[lang].aboutT;
-    document.getElementById('about-text').innerText = dictionary[lang].aboutX;
+    document.getElementById('site-slogan').innerText = dictionary[lang].slogan;
     document.getElementById('m-title').innerText = dictionary[lang].mTitle;
     document.getElementById('m-desc').innerText = dictionary[lang].mDesc;
     document.getElementById('offer-title').innerText = dictionary[lang].offT;
