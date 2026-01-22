@@ -1,3 +1,13 @@
+// إضافة مسارات الملفات
+const bookFiles = {
+    main: "books/right-wrong.pdf",
+    book1: "books/art-of-war.pdf",
+    book2: "books/the-prince.pdf",
+    book3: "books/think-grow-rich.pdf"
+};
+
+let currentBookId = ""; // متغير لحفظ الكتاب المختار حالياً
+
 const dictionary = {
     en: {
         btn: "العربية",
@@ -10,7 +20,8 @@ const dictionary = {
         offT: "Publish Your Book!",
         offD: "Sell your digital works and keep 90% of revenue.",
         payH: "Crypto Payment",
-        vMsg: "Verifying... please wait."
+        vMsg: "Thank you! Your download will start now.",
+        vErr: "Verification pending. Please ensure the transfer is complete."
     },
     ar: {
         btn: "English",
@@ -23,7 +34,8 @@ const dictionary = {
         offT: "انشر كتابك هنا!",
         offD: "بع أعمالك الرقمية واحتفظ بـ 90% من الأرباح.",
         payH: "الدفع بالكريبتو",
-        vMsg: "جاري التحقق... يرجى الانتظار."
+        vMsg: "شكراً لك! سيبدأ تحميل كتابك الآن.",
+        vErr: "جاري التحقق. يرجى التأكد من إتمام عملية التحويل."
     }
 };
 
@@ -31,29 +43,26 @@ function toggleLang() {
     const html = document.getElementById('mainHtml');
     const lang = html.lang === 'en' ? 'ar' : 'en';
     html.lang = lang;
-    
-    // تغيير اتجاه الصفحة
     document.body.className = (lang === 'ar') ? 'rtl' : 'ltr';
-
-    // تحديث النصوص
+    
     document.getElementById('langBtn').innerText = dictionary[lang].btn;
     document.getElementById('site-slogan').innerText = dictionary[lang].slogan;
     document.getElementById('m-title').innerText = dictionary[lang].mTitle;
     document.getElementById('m-desc').innerText = dictionary[lang].mDesc;
-    
     document.getElementById('book1-title').innerText = dictionary[lang].b1T;
     document.getElementById('book1-desc').innerText = dictionary[lang].b1D;
     document.getElementById('book2-title').innerText = dictionary[lang].b2T;
     document.getElementById('book2-desc').innerText = dictionary[lang].b2D;
     document.getElementById('book3-title').innerText = dictionary[lang].b3T;
     document.getElementById('book3-desc').innerText = dictionary[lang].b3D;
-    
     document.getElementById('offer-title').innerText = dictionary[lang].offT;
     document.getElementById('offer-desc').innerText = dictionary[lang].offD;
     document.getElementById('pay-head').innerText = dictionary[lang].payH;
 }
 
-function openPay(amt) {
+// تعديل وظيفة فتح الدفع لتحديد نوع الكتاب
+function openPay(bookKey) {
+    currentBookId = bookKey; // حفظ مفتاح الكتاب (main, book1, etc)
     document.getElementById('payModal').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
 }
@@ -63,7 +72,18 @@ function closePay() {
     document.getElementById('overlay').style.display = 'none';
 }
 
+// وظيفة التحقق وبدء التحميل
 function verifyStatus() {
     const lang = document.getElementById('mainHtml').lang;
     alert(dictionary[lang].vMsg);
+    
+    // محاكاة بدء التحميل
+    const link = document.createElement('a');
+    link.href = bookFiles[currentBookId];
+    link.download = bookFiles[currentBookId].split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    closePay();
 }
