@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Easy Crypto Payments</title>
+    <title>InkVerse Store | Premium Digital Books</title>
     <style>
         :root {
             --primary: #0f172a;
             --gold: #d4af37;
             --gold-gradient: linear-gradient(135deg, #bd9333 0%, #fcf6ba 50%, #bf953f 100%);
             --white: #ffffff;
-            --bg-body: #f8fafc;
+            --bg-body: #f1f5f9;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { box-sizing: border-box; transition: all 0.3s ease; }
 
         body {
             margin: 0;
-            padding-top: 200px; /* مساحة للشعار الثابت الضخم */
+            padding-top: 220px; /* مساحة للشعار الثابت في المنتصف */
             background-color: var(--bg-body);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* 1. الشعار الرئيسي المثبت في القمة - InkVerse Store */
-        .header-fixed {
+        /* 1. الشعار الرئيسي - ثابت في أعلى وسط الصفحة */
+        .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 180px;
+            height: 200px;
             background: var(--white);
             z-index: 2000;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border-bottom: 3px solid var(--gold);
+            align-items: center;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.07);
+            border-bottom: 4px solid var(--gold);
         }
 
         .main-logo {
-            width: 520px; /* الحجم الأكبر والواضح */
-            max-width: 85%;
+            width: 600px; /* حجم الشعار المهيمن */
+            max-width: 90%;
             height: auto;
-            object-fit: contain;
         }
 
-        /* 2. العملات الذهبية المعدنية الراقية (أعلى اليسار) */
-        .gold-coins-box {
+        /* 2. العملات الذهبية الدوارة (أعلى اليسار) */
+        .gold-coins {
             position: fixed;
             top: 25px;
             left: 25px;
@@ -57,9 +54,9 @@
             z-index: 3000;
         }
 
-        .coin-3d {
-            width: 58px;
-            height: 58px;
+        .coin {
+            width: 55px;
+            height: 55px;
             background: var(--gold-gradient);
             border-radius: 50%;
             display: flex;
@@ -67,8 +64,8 @@
             justify-content: center;
             font-weight: 900;
             color: #5c4410;
-            font-size: 13px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25), inset 0 0 10px rgba(255,255,255,0.6);
+            font-size: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             border: 2px solid #b38728;
             animation: spin3D 4s linear infinite;
         }
@@ -78,103 +75,84 @@
             100% { transform: perspective(500px) rotateY(360deg); }
         }
 
-        /* 3. محول اللغة والوصف */
-        .nav-controls {
+        /* 3. زر اللغة */
+        .lang-toggle {
             position: fixed;
-            top: 40px;
-            right: 40px;
+            top: 30px;
+            right: 30px;
             z-index: 3000;
-            display: flex;
-            align-items: center;
-            gap: 20px;
         }
 
         .btn-lang {
             background: var(--primary);
-            color: var(--white);
-            border: 1.5px solid var(--gold);
-            padding: 10px 22px;
-            border-radius: 50px;
+            color: white;
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: bold;
         }
 
-        /* 4. حاوية المنتجات */
-        .store-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        /* 4. الحاوية والكتب */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* قسم الكتاب الرئيسي */
-        .featured-product {
-            background: var(--white);
-            border-radius: 30px;
-            padding: 45px;
+        /* الكتاب الرئيسي */
+        .main-product {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
             display: flex;
             align-items: center;
             gap: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             margin-bottom: 50px;
-            border: 1px solid #edf2f7;
+            border: 1px solid #e2e8f0;
         }
 
-        .product-cover {
-            width: 300px; 
-            border-radius: 12px;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
-        }
-
-        .product-info { flex: 1; text-align: left; }
-        .rtl .product-info { text-align: right; }
-
-        .price-crypto {
-            font-size: 26px;
-            color: #16a34a;
-            font-weight: 800;
-            margin: 15px 0;
-            display: block;
-        }
+        .main-cover { width: 300px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
         /* شبكة الكتب العامة */
-        .product-grid {
+        .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
-        .product-card {
-            background: var(--white);
-            padding: 30px;
+        .card {
+            background: white;
+            padding: 25px;
             border-radius: 20px;
             text-align: center;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e2e8f0;
         }
 
-        .card-img { width: 170px; border-radius: 8px; margin-bottom: 20px; }
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .price { font-size: 22px; color: #15803d; font-weight: bold; margin: 15px 0; display: block; }
 
         .btn-buy {
             background: var(--primary);
-            color: var(--white);
+            color: white;
             border: none;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             width: 100%;
-            font-size: 17px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
 
-        .btn-buy:hover { background: #1e293b; transform: translateY(-3px); }
+        .btn-buy:hover { background: #334155; transform: translateY(-2px); }
 
-        /* نافذة الدفع المبتكرة */
-        .modal-pay { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 35px; border-radius: 25px; z-index: 5000; width: 380px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); z-index: 4500; backdrop-filter: blur(6px); }
+        /* نافذة الدفع */
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 20px; z-index: 5000; width: 350px; text-align: center; box-shadow: 0 0 50px rgba(0,0,0,0.2); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 4500; backdrop-filter: blur(4px); }
 
         .rtl { direction: rtl; }
         .ltr { direction: ltr; }
@@ -182,102 +160,97 @@
 </head>
 <body class="ltr">
 
-    <header class="header-fixed">
-        <img src="logo-app.jpg" alt="InkVerse Store Logo" class="main-logo">
+    <header class="fixed-header">
+        <img src="logo-app.jpg" alt="InkVerse Store" class="main-logo">
     </header>
 
-    <div class="gold-coins-box">
-        <div class="coin-3d">USDT</div>
-        <div class="coin-3d">PI</div>
+    <div class="gold-coins">
+        <div class="coin">USDT</div>
+        <div class="coin">PI</div>
     </div>
 
-    <div class="nav-controls">
-        <button class="btn-lang" onclick="toggleLanguage()" id="langBtn">العربية</button>
+    <div class="lang-toggle">
+        <button class="btn-lang" onclick="toggleLang()" id="langBtn">العربية</button>
     </div>
 
-    <div class="store-container">
-        <section class="featured-product">
-            <img src="when-right-becomes-wrong-old.jpg.jpg" alt="Main Book" class="product-cover">
-            <div class="product-info">
-                <h1 id="txt-m-title">When Right Becomes Wrong</h1>
-                <p id="txt-m-desc">A deep dive into how institutional blindness and rigid rules can lead to disaster. Written by <strong>BAKRI</strong>.</p>
-                <span class="price-crypto">5.00 USDT</span>
-                <button class="btn-buy" onclick="openPayment(5)">Pay with Crypto</button>
+    <div class="container">
+        <section class="main-product">
+            <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover" alt="Main Book">
+            <div>
+                <h1 id="m-title">When Right Becomes Wrong</h1>
+                <p id="m-desc">A deep exploration of how correct rules can become a trap for institutions and leaders. By BAKRI.</p>
+                <span class="price">5.00 USDT</span>
+                <button class="btn-buy" onclick="openPay(5)">Get PDF Now</button>
             </div>
         </section>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://m.media-amazon.com/images/I/712K4PpuSlL.jpg" alt="Art of War" class="card-img">
-                <h2 id="txt-aw-title">The Art of War</h2>
-                <p id="txt-aw-desc">Master the ancient strategies of conflict and leadership by Sun Tzu.</p>
-                <span class="price-crypto">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPayment(2)">Pay with Crypto</button>
+        <div class="books-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400" class="card-img" alt="Art of War">
+                <h3 id="aw-title">The Art of War</h3>
+                <p id="aw-desc">Master the ancient strategies of leadership by Sun Tzu.</p>
+                <span class="price">2.00 USDT</span>
+                <button class="btn-buy" onclick="openPay(2)">Purchase</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400" class="card-img" alt="The Prince">
+                <h3 id="p-title">The Prince</h3>
+                <p id="p-desc">Machiavelli's classic study on power and political strategy.</p>
+                <span class="price">2.00 USDT</span>
+                <button class="btn-buy" onclick="openPay(2)">Purchase</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1592492159418-39f319320569?auto=format&fit=crop&w=400" class="card-img" alt="Think Rich">
+                <h3 id="tr-title">Think & Grow Rich</h3>
+                <p id="tr-desc">The ultimate guide to financial success and mindset by Napoleon Hill.</p>
+                <span class="price">2.00 USDT</span>
+                <button class="btn-buy" onclick="openPay(2)">Purchase</button>
             </div>
         </div>
     </div>
 
-    <div class="overlay" id="overlay" onclick="closePayment()"></div>
-    <div class="modal-pay" id="payModal">
-        <h2 id="txt-pay-head">Secure Crypto Payment</h2>
-        <p id="pay-msg">Scan QR to pay via USDT (TRC20) instantly</p>
-        <img src="QR code.jpeg" style="width: 210px; border-radius: 12px; margin: 20px 0; border: 1px solid #eee;">
-        <div style="background:#f8fafc; padding:12px; border-radius:8px; font-family:monospace; font-size:11px; margin-bottom:20px; word-break:break-all;">
-            THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1
-        </div>
-        <button class="btn-buy" style="background:#16a34a;" onclick="verifyStatus()">Verify Payment</button>
+    <div class="overlay" id="overlay" onclick="closePay()"></div>
+    <div class="modal" id="payModal">
+        <h2 id="pay-head">Crypto Payment</h2>
+        <p>Scan to pay via USDT (TRC20)</p>
+        <img src="QR code.jpeg" style="width: 200px; margin: 15px 0;">
+        <code style="font-size: 11px; background: #eee; padding: 5px;">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</code>
+        <button class="btn-buy" style="margin-top:20px; background:#16a34a;" onclick="alert('Verifying on Blockchain...')">Verify Transaction</button>
     </div>
 
     <script>
-        const storeData = {
-            en: {
-                btn: "العربية",
-                mTitle: "When Right Becomes Wrong",
-                mDesc: "A deep dive into how institutional blindness and rigid rules can lead to disaster. Written by BAKRI.",
-                awTitle: "The Art of War",
-                awDesc: "Master the ancient strategies of conflict and leadership by Sun Tzu.",
-                payHead: "Secure Crypto Payment",
-                verify: "Verify Payment"
-            },
-            ar: {
-                btn: "English",
-                mTitle: "عندما يصبح الحق خطأ",
-                mDesc: "تعمق في كيفية تسبب العمى المؤسسي والقواعد الجامدة في كوارث حقيقية. بقلم بكري.",
-                awTitle: "فن الحرب",
-                awDesc: "أتقن الاستراتيجيات القديمة للقيادة والتحكم بقلم صن تزو.",
-                payHead: "دفع رقمي آمن",
-                verify: "التحقق من الدفع"
-            }
+        const dict = {
+            en: { btn: "العربية", mTitle: "When Right Becomes Wrong", mDesc: "A deep exploration of how correct rules can become a trap. By BAKRI.", awTitle: "The Art of War", awDesc: "Master leadership by Sun Tzu.", pTitle: "The Prince", pDesc: "Classic study on power by Machiavelli.", trTitle: "Think & Grow Rich", trDesc: "Guide to success by Napoleon Hill.", payHead: "Crypto Payment" },
+            ar: { btn: "English", mTitle: "عندما يصبح الحق خطأ", mDesc: "استكشاف عميق لكيفية تحول القواعد الصحيحة إلى فخ للمؤسسات. بقلم بكري.", awTitle: "فن الحرب", awDesc: "أتقن القيادة مع صن تزو.", pTitle: "الأمير", pDesc: "دراسة كلاسيكية في القوة لمكيافيلي.", trTitle: "فكر وازدد ثراءً", trDesc: "دليل النجاح المالي لنابليون هيل.", payHead: "الدفع الرقمي" }
         };
 
-        function toggleLanguage() {
+        function toggleLang() {
             const html = document.getElementById('mainHtml');
-            const isEn = html.lang === 'en';
-            const lang = isEn ? 'ar' : 'en';
-            
+            const lang = html.lang === 'en' ? 'ar' : 'en';
             html.lang = lang;
             document.body.className = lang === 'ar' ? 'rtl' : 'ltr';
-            
-            document.getElementById('langBtn').innerText = storeData[lang].btn;
-            document.getElementById('txt-m-title').innerText = storeData[lang].mTitle;
-            document.getElementById('txt-m-desc').innerHTML = storeData[lang].mDesc;
-            document.getElementById('txt-aw-title').innerText = storeData[lang].awTitle;
-            document.getElementById('txt-aw-desc').innerText = storeData[lang].awDesc;
-            document.getElementById('txt-pay-head').innerText = storeData[lang].payHead;
+            document.getElementById('langBtn').innerText = dict[lang].btn;
+            document.getElementById('m-title').innerText = dict[lang].mTitle;
+            document.getElementById('m-desc').innerText = dict[lang].mDesc;
+            document.getElementById('aw-title').innerText = dict[lang].awTitle;
+            document.getElementById('aw-desc').innerText = dict[lang].awDesc;
+            document.getElementById('p-title').innerText = dict[lang].pTitle;
+            document.getElementById('p-desc').innerText = dict[lang].pDesc;
+            document.getElementById('tr-title').innerText = dict[lang].trTitle;
+            document.getElementById('tr-desc').innerText = dict[lang].trDesc;
+            document.getElementById('pay-head').innerText = dict[lang].payHead;
         }
 
-        function openPayment(amt) {
+        function openPay(amt) {
             document.getElementById('payModal').style.display = 'block';
             document.getElementById('overlay').style.display = 'block';
         }
 
-        function closePayment() {
+        function closePay() {
             document.getElementById('payModal').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
-        }
-
-        function verifyStatus() {
-            alert("Verification initiated. Please allow up to 60 seconds for the blockchain to confirm your transaction.");
         }
     </script>
 </body>
