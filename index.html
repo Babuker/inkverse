@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Digital Excellence</title>
+    <title>InkVerse Store | Digital Books & Crypto</title>
     <style>
         :root {
             --primary: #0f172a;
@@ -17,12 +17,12 @@
 
         body {
             margin: 0;
-            padding-top: 180px; /* مساحة للهيدر المثبت */
+            padding-top: 180px; /* مساحة للهيدر المثبت في القمة */
             background-color: var(--bg-body);
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* 1. الهيدر المثبت - الشعار والاسم بجانب بعضهما */
+        /* 1. الهيدر المثبت: الشعار (PNG) + اسم المتجر في الوسط */
         .fixed-header {
             position: fixed;
             top: 0;
@@ -34,30 +34,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.06);
             border-bottom: 3px solid var(--gold);
-            gap: 20px; /* مسافة بين الشعار والاسم */
         }
 
         .header-content {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
+        /* تحميل الشعار من ملف logo-app.png */
         .main-logo {
-            height: 100px; /* حجم الشعار المتناسق مع الاسم */
+            height: 110px; 
             width: auto;
             object-fit: contain;
         }
 
         .store-name {
-            font-size: 42px;
+            font-size: 45px;
             font-weight: 900;
             color: var(--primary);
-            letter-spacing: -1px;
+            font-family: 'Georgia', serif;
             margin: 0;
-            font-family: 'Georgia', serif; /* خط كلاسيكي فخم للاسم */
+            letter-spacing: -1px;
         }
 
         /* 2. العملات الذهبية الدوارة (أعلى اليسار) */
@@ -71,16 +71,11 @@
         }
 
         .coin {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             background: var(--gold-gradient);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            color: #5c4410;
-            font-size: 11px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; color: #5c4410; font-size: 11px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             border: 2px solid #b38728;
             animation: spin3D 4s linear infinite;
@@ -103,64 +98,63 @@
             background: var(--primary);
             color: white;
             border: 1px solid var(--gold);
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
         }
 
-        /* 4. الحاوية والكتب */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
+        /* تنسيق المنتجات */
         .main-product {
             background: white;
             border-radius: 25px;
             padding: 40px;
             display: flex;
-            align-items: center;
-            gap: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            align-items: center; gap: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
             margin-bottom: 50px;
             border: 1px solid #e2e8f0;
         }
 
-        .main-cover { width: 280px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .main-cover { width: 280px; border-radius: 12px; }
 
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
         .card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
+            background: white; padding: 30px; border-radius: 20px;
+            text-align: center; border: 1px solid #e2e8f0;
         }
 
-        .card-img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+        .card-img { width: 100%; height: 280px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
 
-        .price { font-size: 22px; color: #15803d; font-weight: bold; margin: 15px 0; display: block; }
+        .price { font-size: 24px; color: #16a34a; font-weight: 800; margin: 15px 0; display: block; }
 
         .btn-buy {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+            background: var(--primary); color: white; border: none;
+            padding: 15px; border-radius: 12px; width: 100%;
+            font-size: 18px; font-weight: bold; cursor: pointer;
         }
 
-        .btn-buy:hover { background: #334155; transform: translateY(-2px); }
+        /* قسم مفاجأة المؤلفين */
+        .surprise-offer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white; padding: 60px; border-radius: 35px;
+            text-align: center; border: 2px solid var(--gold);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .revenue-split { font-size: 55px; font-weight: 900; color: var(--gold); margin: 25px 0; }
 
         /* نافذة الدفع */
-        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 20px; z-index: 5000; width: 350px; text-align: center; box-shadow: 0 0 50px rgba(0,0,0,0.2); }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 4500; backdrop-filter: blur(4px); }
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 25px; z-index: 5000; width: 380px; text-align: center; box-shadow: 0 0 100px rgba(0,0,0,0.4); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); z-index: 4500; backdrop-filter: blur(8px); }
 
         .rtl { direction: rtl; }
         .ltr { direction: ltr; }
@@ -171,7 +165,7 @@
 
     <header class="fixed-header">
         <div class="header-content">
-            <img src="logo-app.jpg" alt="Logo" class="main-logo">
+            <img src="logo-app.png" alt="InkVerse Logo" class="main-logo">
             <h1 class="store-name">InkVerse Store</h1>
         </div>
     </header>
@@ -187,55 +181,56 @@
 
     <div class="container">
         <section class="main-product">
-            <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover" alt="Main Book">
+            <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover" alt="Featured Book">
             <div>
                 <h1 id="m-title">When Right Becomes Wrong</h1>
                 <p id="m-desc">A deep exploration of how correct rules can become a trap for institutions and leaders. By BAKRI.</p>
                 <span class="price">5.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(5)">Purchase PDF</button>
+                <button class="btn-buy" onclick="openPay(5)">Purchase PDF Now</button>
             </div>
         </section>
 
         <div class="books-grid">
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400" class="card-img" alt="Art of War">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format" class="card-img" alt="Strategy Book">
                 <h3 id="aw-title">The Art of War</h3>
-                <p id="aw-desc">Master the ancient strategies of leadership by Sun Tzu.</p>
                 <span class="price">2.00 USDT</span>
                 <button class="btn-buy" onclick="openPay(2)">Purchase</button>
             </div>
-
+            
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400" class="card-img" alt="The Prince">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format" class="card-img" alt="Power Book">
                 <h3 id="p-title">The Prince</h3>
-                <p id="p-desc">Machiavelli's classic study on power and political strategy.</p>
-                <span class="price">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(2)">Purchase</button>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1592492159418-39f319320569?auto=format&fit=crop&w=400" class="card-img" alt="Think Rich">
-                <h3 id="tr-title">Think & Grow Rich</h3>
-                <p id="tr-desc">The ultimate guide to financial success by Napoleon Hill.</p>
                 <span class="price">2.00 USDT</span>
                 <button class="btn-buy" onclick="openPay(2)">Purchase</button>
             </div>
         </div>
+
+        <section class="surprise-offer">
+            <h2 id="o-title" style="color:var(--gold)">Excellent Publishing Offer!</h2>
+            <p id="o-desc">Publish your digital work with us and keep the lion's share.</p>
+            <div class="revenue-split">
+                90% <small style="font-size:20px; color:white">Author</small> 
+                / 10% <small style="font-size:20px; color:white">Store</small>
+            </div>
+            <button class="btn-buy" style="max-width:320px; background:var(--gold); color:#5c4410;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact to Publish</button>
+        </section>
     </div>
 
     <div class="overlay" id="overlay" onclick="closePay()"></div>
     <div class="modal" id="payModal">
-        <h2 id="pay-head">Crypto Payment</h2>
-        <p>Scan to pay via USDT (TRC20)</p>
-        <img src="QR code.jpeg" style="width: 200px; margin: 15px 0;">
-        <code style="font-size: 11px; background: #eee; padding: 5px; display:block;">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</code>
-        <button class="btn-buy" style="margin-top:20px; background:#16a34a;" onclick="alert('Verifying...')">Verify Payment</button>
+        <h2 id="pay-head">Secure Crypto Payment</h2>
+        <img src="QR code.jpeg" style="width: 220px; margin: 20px 0; border-radius: 10px;">
+        <div style="background:#f1f5f9; padding:10px; font-family:monospace; font-size:11px; margin-bottom:20px;">
+            THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1
+        </div>
+        <button class="btn-buy" style="background:#16a34a;" onclick="alert('Checking...')">Verify Transaction</button>
     </div>
 
     <script>
         const dict = {
-            en: { btn: "العربية", mTitle: "When Right Becomes Wrong", mDesc: "A deep exploration of how correct rules can become a trap. By BAKRI.", awTitle: "The Art of War", awDesc: "Master leadership by Sun Tzu.", pTitle: "The Prince", pDesc: "Classic study on power by Machiavelli.", trTitle: "Think & Grow Rich", trDesc: "Guide to success by Napoleon Hill.", payHead: "Crypto Payment" },
-            ar: { btn: "English", mTitle: "عندما يصبح الحق خطأ", mDesc: "استكشاف عميق لكيفية تحول القواعد الصحيحة إلى فخ للمؤسسات. بقلم بكري.", awTitle: "فن الحرب", awDesc: "أتقن القيادة مع صن تزو.", pTitle: "الأمير", pDesc: "دراسة كلاسيكية في القوة لمكيافيلي.", trTitle: "فكر وازدد ثراءً", trDesc: "دليل النجاح المالي لنابليون هيل.", payHead: "الدفع الرقمي" }
+            en: { btn: "العربية", mTitle: "When Right Becomes Wrong", mDesc: "A deep exploration of how correct rules can become a trap for institutions and leaders. By BAKRI.", awTitle: "The Art of War", pTitle: "The Prince", oTitle: "Excellent Publishing Offer!", oDesc: "Publish your digital work with us and keep the lion's share.", payHead: "Secure Crypto Payment" },
+            ar: { btn: "English", mTitle: "عندما يصبح الحق خطأ", mDesc: "استكشاف عميق لكيفية تحول القواعد الصحيحة إلى فخ للمؤسسات والقيادات. بقلم بكري.", awTitle: "فن الحرب", pTitle: "الأمير", oTitle: "عرض نشر ممتاز!", oDesc: "انشر عملك الرقمي معنا واحصل على نصيب الأسد من الأرباح.", payHead: "دفع رقمي آمن" }
         };
 
         function toggleLang() {
@@ -247,23 +242,14 @@
             document.getElementById('m-title').innerText = dict[lang].mTitle;
             document.getElementById('m-desc').innerText = dict[lang].mDesc;
             document.getElementById('aw-title').innerText = dict[lang].awTitle;
-            document.getElementById('aw-desc').innerText = dict[lang].awDesc;
             document.getElementById('p-title').innerText = dict[lang].pTitle;
-            document.getElementById('p-desc').innerText = dict[lang].pDesc;
-            document.getElementById('tr-title').innerText = dict[lang].trTitle;
-            document.getElementById('tr-desc').innerText = dict[lang].trDesc;
+            document.getElementById('o-title').innerText = dict[lang].oTitle;
+            document.getElementById('o-desc').innerText = dict[lang].oDesc;
             document.getElementById('pay-head').innerText = dict[lang].payHead;
         }
 
-        function openPay(amt) {
-            document.getElementById('payModal').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closePay() {
-            document.getElementById('payModal').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
+        function openPay(amt) { document.getElementById('payModal').style.display = 'block'; document.getElementById('overlay').style.display = 'block'; }
+        function closePay() { document.getElementById('payModal').style.display = 'none'; document.getElementById('overlay').style.display = 'none'; }
     </script>
 </body>
 </html>
