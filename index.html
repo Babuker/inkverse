@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Crypto Digital Marketplace</title>
+    <title>InkVerse Store | Digital Marketplace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="ltr">
 
     <header class="fixed-header">
-        <div class="header-content">
-            <img src="logo-app.png" alt="InkVerse Logo" class="main-logo">
-            <h1 class="store-name">InkVerse Store</h1>
+        <div class="header-container">
+            <div class="brand-row">
+                <img src="logo-app.png" alt="InkVerse Logo" class="main-logo">
+                <h1 class="store-name">InkVerse Store</h1>
+            </div>
+            <p class="site-slogan" id="site-slogan">
+                The leading platform for digital books and products, powered by secure Crypto payments.
+            </p>
         </div>
     </header>
 
@@ -24,15 +29,6 @@
     </div>
 
     <div class="container">
-        <section class="about-section">
-            <h2 id="about-title">About InkVerse</h2>
-            <p id="about-text">
-                InkVerse is a leading digital platform for high-quality e-books and digital products. 
-                We empower creators and readers by using safe, fast, and modern <b>Crypto Payments</b> 
-                (USDT & Pi Network) to ensure global access without banking limits.
-            </p>
-        </section>
-
         <section class="main-product">
             <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover">
             <div>
@@ -47,31 +43,31 @@
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format" class="card-img">
                 <h3 id="book1-title">The Art of War</h3>
-                <p id="book1-desc">Learn the best secrets of strategy.</p>
+                <p id="book1-desc">Strategy secrets for everyone.</p>
                 <span class="price">2.00 USDT</span>
                 <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format" class="card-img">
                 <h3 id="book2-title">The Prince</h3>
-                <p id="book2-desc">A famous guide about power.</p>
+                <p id="book2-desc">Classic guide on power.</p>
                 <span class="price">2.00 USDT</span>
                 <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1592492159418-39f319320569?auto=format" class="card-img">
                 <h3 id="book3-title">Think & Grow Rich</h3>
-                <p id="book3-desc">The master plan for success.</p>
+                <p id="book3-desc">Master plan for success.</p>
                 <span class="price">2.00 USDT</span>
                 <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
             </div>
         </div>
 
         <section class="surprise-offer">
-            <h2 id="offer-title">Publish Your Book Here!</h2>
-            <p id="offer-desc">Sell your digital products and keep 90% of the revenue. Only 10% commission.</p>
+            <h2 id="offer-title">Publish Your Book!</h2>
+            <p id="offer-desc">Sell your digital works and keep 90% of revenue.</p>
             <div class="revenue-split">90% FOR YOU</div>
-            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#1a1a1a;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact Us</button>
+            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#111;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact Us</button>
         </section>
     </div>
 
