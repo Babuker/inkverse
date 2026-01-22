@@ -3,45 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Premium Digital Books</title>
+    <title>InkVerse Store | Digital Excellence</title>
     <style>
         :root {
             --primary: #0f172a;
             --gold: #d4af37;
             --gold-gradient: linear-gradient(135deg, #bd9333 0%, #fcf6ba 50%, #bf953f 100%);
             --white: #ffffff;
-            --bg-body: #f1f5f9;
+            --bg-body: #f8fafc;
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; }
 
         body {
             margin: 0;
-            padding-top: 220px; /* مساحة للشعار الثابت في المنتصف */
+            padding-top: 180px; /* مساحة للهيدر المثبت */
             background-color: var(--bg-body);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
-        /* 1. الشعار الرئيسي - ثابت في أعلى وسط الصفحة */
+        /* 1. الهيدر المثبت - الشعار والاسم بجانب بعضهما */
         .fixed-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 150px;
             background: var(--white);
             z-index: 2000;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.07);
-            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-bottom: 3px solid var(--gold);
+            gap: 20px; /* مسافة بين الشعار والاسم */
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .main-logo {
-            width: 600px; /* حجم الشعار المهيمن */
-            max-width: 90%;
-            height: auto;
+            height: 100px; /* حجم الشعار المتناسق مع الاسم */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .store-name {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -1px;
+            margin: 0;
+            font-family: 'Georgia', serif; /* خط كلاسيكي فخم للاسم */
         }
 
         /* 2. العملات الذهبية الدوارة (أعلى اليسار) */
@@ -55,8 +71,8 @@
         }
 
         .coin {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             background: var(--gold-gradient);
             border-radius: 50%;
             display: flex;
@@ -64,7 +80,7 @@
             justify-content: center;
             font-weight: 900;
             color: #5c4410;
-            font-size: 12px;
+            font-size: 11px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             border: 2px solid #b38728;
             animation: spin3D 4s linear infinite;
@@ -87,7 +103,7 @@
             background: var(--primary);
             color: white;
             border: 1px solid var(--gold);
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
@@ -96,7 +112,6 @@
         /* 4. الحاوية والكتب */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* الكتاب الرئيسي */
         .main-product {
             background: white;
             border-radius: 25px;
@@ -104,14 +119,13 @@
             display: flex;
             align-items: center;
             gap: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             margin-bottom: 50px;
             border: 1px solid #e2e8f0;
         }
 
-        .main-cover { width: 300px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .main-cover { width: 280px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* شبكة الكتب العامة */
         .books-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -126,13 +140,7 @@
             border: 1px solid #e2e8f0;
         }
 
-        .card-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+        .card-img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
 
         .price { font-size: 22px; color: #15803d; font-weight: bold; margin: 15px 0; display: block; }
 
@@ -140,7 +148,7 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             border-radius: 10px;
             width: 100%;
             font-size: 16px;
@@ -156,12 +164,16 @@
 
         .rtl { direction: rtl; }
         .ltr { direction: ltr; }
+        .rtl .header-content { flex-direction: row-reverse; }
     </style>
 </head>
 <body class="ltr">
 
     <header class="fixed-header">
-        <img src="logo-app.jpg" alt="InkVerse Store" class="main-logo">
+        <div class="header-content">
+            <img src="logo-app.jpg" alt="Logo" class="main-logo">
+            <h1 class="store-name">InkVerse Store</h1>
+        </div>
     </header>
 
     <div class="gold-coins">
@@ -180,7 +192,7 @@
                 <h1 id="m-title">When Right Becomes Wrong</h1>
                 <p id="m-desc">A deep exploration of how correct rules can become a trap for institutions and leaders. By BAKRI.</p>
                 <span class="price">5.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(5)">Get PDF Now</button>
+                <button class="btn-buy" onclick="openPay(5)">Purchase PDF</button>
             </div>
         </section>
 
@@ -204,7 +216,7 @@
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1592492159418-39f319320569?auto=format&fit=crop&w=400" class="card-img" alt="Think Rich">
                 <h3 id="tr-title">Think & Grow Rich</h3>
-                <p id="tr-desc">The ultimate guide to financial success and mindset by Napoleon Hill.</p>
+                <p id="tr-desc">The ultimate guide to financial success by Napoleon Hill.</p>
                 <span class="price">2.00 USDT</span>
                 <button class="btn-buy" onclick="openPay(2)">Purchase</button>
             </div>
@@ -216,8 +228,8 @@
         <h2 id="pay-head">Crypto Payment</h2>
         <p>Scan to pay via USDT (TRC20)</p>
         <img src="QR code.jpeg" style="width: 200px; margin: 15px 0;">
-        <code style="font-size: 11px; background: #eee; padding: 5px;">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</code>
-        <button class="btn-buy" style="margin-top:20px; background:#16a34a;" onclick="alert('Verifying on Blockchain...')">Verify Transaction</button>
+        <code style="font-size: 11px; background: #eee; padding: 5px; display:block;">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</code>
+        <button class="btn-buy" style="margin-top:20px; background:#16a34a;" onclick="alert('Verifying...')">Verify Payment</button>
     </div>
 
     <script>
