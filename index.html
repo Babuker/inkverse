@@ -1,89 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>InkVerse Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+<div class="header-coins">
+    <div class="coin usdt-coin"></div>
+    <div class="coin pi-coin"></div>
+</div>
 
-<body>
+<div class="container">
+    <img src="logo-app.jpg" class="app-logo" alt="InkVerse Logo">
 
-<header class="site-header">
-  <!-- الشعار الرسمي بدون أي تعديل -->
-  <img src="assets/logo.png" alt="InkVerse Logo" class="site-logo">
-  <p class="tagline">Elegant Digital Books • Instant Delivery</p>
-</header>
+    <div class="book-section">
+        <img src="when-right-becomes-wrong-old.jpg.jpg" class="book-cover" alt="Main Book">
+        <h1>When Right Becomes Wrong</h1>
+        <p class="price">Price: 5 USDT (TRC20)</p>
+        
+        <div id="payment-area">
+            <p>Scan the QR Code to pay:</p>
+            <img src="QR code.jpeg" class="payment-qr" alt="Payment QR">
+            <p class="wallet-address">Wallet: <code>THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</code></p>
+            <button id="verify-btn" onclick="startVerification()">Verify Payment & Download</button>
+        </div>
 
-<section class="featured-book">
-  <img src="assets/cover-main.jpg" alt="When Right Becomes Wrong">
-
-  <div class="featured-info">
-    <h2>When Right Becomes Wrong</h2>
-    <p class="author">By Babuker</p>
-
-    <div class="price">
-      <span class="old-price">10 USDT</span>
-      <span class="new-price">5 USDT</span>
+        <div id="download-area" style="display: none;">
+            <p>✅ Payment Verified!</p>
+            <a href="When Right Becomes Wrong.pdf" download class="download-btn">Click here to Download PDF</a>
+        </div>
     </div>
-
-    <span class="badge-sale">50% OFF</span>
-
-    <p class="delivery-note">
-      📥 Automatic download immediately after payment
-    </p>
-  </div>
-</section>
-
-<section class="payment-section">
-  <h3>Secure Crypto Payment</h3>
-
-  <!-- QR الرسمي -->
-  <img
-    src="assets/payment-qr.png"
-    alt="USDT Payment QR"
-    class="payment-qr"
-  >
-
-  <p class="network">USDT • TRC20</p>
-
-  <a href="download.html" class="confirm-btn">
-    I Have Paid – Download Now
-  </a>
-
-  <p class="contact">
-    Support: WhatsApp +249123638638
-  </p>
-</section>
-
-<section class="books">
-  <h2>Public Domain Books</h2>
-
-  <div class="books-grid">
-
-    <div class="book-card">
-      <img src="assets/covers/art-of-war.jpg" alt="The Art of War">
-      <h3>The Art of War</h3>
-      <p class="author">Sun Tzu</p>
-      <span class="badge">Public Domain</span>
-      <p class="price free">FREE</p>
-    </div>
-
-    <div class="book-card">
-      <img src="assets/covers/pride-prejudice.jpg" alt="Pride and Prejudice">
-      <h3>Pride and Prejudice</h3>
-      <p class="author">Jane Austen</p>
-      <span class="badge">Public Domain</span>
-      <p class="price free">FREE</p>
-    </div>
-
-  </div>
-</section>
-
-<footer class="site-footer">
-  <p>© 2026 InkVerse</p>
-</footer>
-
-</body>
-</html>
+</div>
