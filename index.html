@@ -1,90 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" id="main-html">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>InkVerse | Digital Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>InkVerse Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="lang-switcher">
-    <button onclick="switchLang('ar')" id="lang-btn">العربية</button>
+<!-- Animated Crypto Logo -->
+<div class="crypto-logo">
+  <div class="coin pi">π</div>
+  <div class="coin usd">$</div>
 </div>
 
 <header class="site-header">
-    <img src="logo-app.jpg" alt="InkVerse Logo" class="main-logo">
-    <p class="tagline" data-en="Elegant Digital Books • Instant Delivery" data-ar="كتب رقمية فاخرة • تسليم فوري">Elegant Digital Books • Instant Delivery</p>
+  <h1>InkVerse</h1>
+  <p class="tagline">Elegant Digital Books • Instant Delivery</p>
 </header>
 
-<main class="container">
-    <section class="main-book-card">
-        <div class="grid-layout">
-            <div class="cover-area">
-                <img src="when-right-becomes-wrong-old.jpg" alt="Book Cover" class="main-img">
-                <span class="discount-badge">50% OFF</span>
-            </div>
-            <div class="info-area">
-                <h2 data-en="When Right Becomes Wrong" data-ar="عندما يتحول الحق إلى باطل">When Right Becomes Wrong</h2>
-                <p class="author" data-en="By Bakri" data-ar="تأليف: بكري">By Bakri</p>
-                <div class="price">
-                    <span class="new">5 USDT</span>
-                    <span class="old">10 USDT</span>
-                </div>
-                <button class="buy-btn" onclick="startAutoPay(5, 'When Right Becomes Wrong')" data-en="Buy Now - Instant Delivery" data-ar="شراء الآن - استلام فوري">Buy Now - Instant Delivery</button>
-            </div>
-        </div>
-    </section>
+<section class="featured-book">
+  <img src="assets/cover-main.jpg" alt="When Right Becomes Wrong">
+  <div class="featured-info">
+    <h2>When Right Becomes Wrong</h2>
+    <p class="author">By Babuker</p>
 
-    <section class="other-books">
-        <h3 data-en="Other Books (2 USDT)" data-ar="كتب أخرى (2 USDT)">Other Books (2 USDT)</h3>
-        <div class="small-grid">
-            <div class="book-item">
-                <img src="assets/covers/art-of-war.jpg" alt="Art of War">
-                <h4>The Art of War</h4>
-                <button class="buy-sm" onclick="startAutoPay(2, 'The Art of War')">2 USDT</button>
-            </div>
-            <div class="book-item">
-                <img src="assets/covers/pride-prejudice.jpg" alt="Pride & Prejudice">
-                <h4>Pride & Prejudice</h4>
-                <button class="buy-sm" onclick="startAutoPay(2, 'Pride & Prejudice')">2 USDT</button>
-            </div>
-        </div>
-    </section>
+    <p class="price">
+      <span class="old-price">10 USDT</span>
+      <span class="new-price">5 USDT</span>
+    </p>
 
-    <section class="rating-box">
-        <h3 data-en="Rate Our Store" data-ar="قيم متجرنا">Rate Our Store</h3>
-        <div class="stars" id="star-box">
-            <span onclick="setStar(5)">★</span><span onclick="setStar(4)">★</span><span onclick="setStar(3)">★</span><span onclick="setStar(2)">★</span><span onclick="setStar(1)">★</span>
-        </div>
-        <button class="wa-send" onclick="sendWA()" data-en="Send via WhatsApp" data-ar="إرسال عبر واتساب">Send via WhatsApp</button>
-    </section>
-</main>
+    <span class="badge-sale">50% OFF</span>
 
-<div id="payModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modalTitle"></h3>
-        <p data-en="Transfer to USDT (TRC20)" data-ar="حول عبر شبكة (TRC20)">Transfer to USDT (TRC20)</p>
-        <img src="QR code.jpeg" class="qr-pay" alt="QR Payment">
-        <div class="address-box">
-            <code id="wallet-text">THRhk1aRg2ntebnP2AMWNAg5zYeMU8idt1</code>
-            <button onclick="copyWallet()" class="copy-btn" data-en="Copy" data-ar="نسخ">Copy</button>
-        </div>
-        
-        <div id="payment-status">
-            <div class="spinner"></div>
-            <p data-en="Verifying payment..." data-ar="جاري التأكيد...">Verifying payment...</p>
-        </div>
+    <p class="delivery-note">
+      📦 Instant download after payment
+    </p>
+  </div>
+</section>
 
-        <div id="success-download" style="display:none;">
-            <p class="success-msg" data-en="✅ Confirmed!" data-ar="✅ تم التأكيد!">✅ Confirmed!</p>
-            <a href="books/main.pdf" class="dl-link" download data-en="Download Book" data-ar="تحميل الكتاب">Download Book</a>
-        </div>
+<section class="payment-section">
+  <h3>Scan to Pay (USDT)</h3>
+  <img src="assets/payment-qr.jpg" class="payment-qr" alt="USDT Payment QR">
+  <p class="network">Network: TRC20</p>
+
+  <a href="download.html" class="confirm-btn">
+    ✅ I Have Paid – Get My Book
+  </a>
+
+  <p class="contact">Support: WhatsApp +249123638638</p>
+</section>
+
+<section class="books">
+  <h2>Public Domain Classics</h2>
+
+  <div class="books-grid">
+    <div class="book-card">
+      <img src="assets/covers/art-of-war.jpg" alt="The Art of War">
+      <h3>The Art of War</h3>
+      <p class="author">Sun Tzu</p>
+      <span class="badge">Public Domain</span>
+      <p class="price free">FREE</p>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <div class="book-card">
+      <img src="assets/covers/pride-prejudice.jpg" alt="Pride and Prejudice">
+      <h3>Pride and Prejudice</h3>
+      <p class="author">Jane Austen</p>
+      <span class="badge">Public Domain</span>
+      <p class="price free">FREE</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2026 InkVerse</p>
+</footer>
+
 </body>
 </html>
