@@ -1,160 +1,28 @@
-:root {
-  --bg-main: #0b1220;
-  --bg-section: #111827;
-  --card-bg: #ffffff;
-
-  --text-main: #e5e7eb;
-  --text-dark: #0f172a;
-  --text-muted: #9ca3af;
-
-  --accent: #4f46e5;
-  --success: #22c55e;
-  --danger: #dc2626;
+.header-coins {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
 }
 
-* {
-  box-sizing: border-box;
+.coin {
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: spin 3s linear infinite;
 }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #0b1220, #0e1625);
-  color: var(--text-main);
+/* استبدل هذه الروابط بصور العملات لديك */
+.usdt-coin { background-image: url('usdt_logo_url'); } 
+.pi-coin { background-image: url('pi_logo_url'); }
+
+@keyframes spin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
 }
 
-/* Header */
-.site-header {
-  text-align: center;
-  padding: 50px 20px 30px;
-}
-
-.site-logo {
-  max-width: 260px;
-  margin-bottom: 14px;
-}
-
-.tagline {
-  color: var(--text-muted);
-}
-
-/* Featured Book */
-.featured-book {
-  max-width: 920px;
-  margin: 0 auto 60px;
-  background: var(--bg-section);
-  border-radius: 26px;
-  padding: 28px;
-  display: flex;
-  gap: 26px;
-  align-items: center;
-}
-
-.featured-book img {
-  width: 190px;
-  border-radius: 18px;
-  background: #fff;
-  padding: 8px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.45);
-}
-
-.author {
-  color: var(--text-muted);
-}
-
-.price {
-  margin: 14px 0;
-}
-
-.old-price {
-  text-decoration: line-through;
-  color: var(--text-muted);
-}
-
-.new-price {
-  margin-left: 12px;
-  color: var(--success);
-  font-weight: 700;
-}
-
-.badge-sale {
-  background: var(--danger);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: .75rem;
-}
-
-/* Payment */
-.payment-section {
-  text-align: center;
-  margin-bottom: 70px;
-}
-
-.payment-qr {
-  width: 230px;
-  background: #fff;
-  padding: 14px;
-  border-radius: 18px;
-  margin: 22px auto;
-  display: block;
-  box-shadow: 0 18px 35px rgba(0,0,0,.4);
-}
-
-.confirm-btn {
-  display: inline-block;
-  margin-top: 12px;
-  background: var(--accent);
-  color: #fff;
-  padding: 14px 30px;
-  border-radius: 18px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* Books */
-.books {
-  max-width: 1150px;
-  margin: auto;
-  padding: 20px;
-}
-
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 28px;
-}
-
-.book-card {
-  background: var(--card-bg);
-  border-radius: 22px;
-  padding: 18px;
-  text-align: center;
-  color: var(--text-dark);
-}
-
-.book-card img {
-  width: 100%;
-  border-radius: 16px;
-  margin-bottom: 12px;
-}
-
-.badge {
-  background: #020617;
-  color: var(--accent);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: .7rem;
-}
-
-.price.free {
-  font-weight: 700;
-  color: #0284c7;
-}
-
-/* Footer */
-.site-footer {
-  text-align: center;
-  padding: 40px;
-  color: var(--text-muted);
-}
+.app-logo { width: 200px; display: block; margin: 0 auto; }
+.book-cover { width: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.download-btn { background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; }
