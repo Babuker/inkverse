@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Publish & Buy</title>
+    <title>InkVerse Store | Crypto Digital Marketplace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="ltr">
@@ -19,14 +19,22 @@
         <div class="coin">USDT</div>
         <div class="coin">PI</div>
     </div>
-
     <div class="lang-toggle">
         <button class="btn-lang" onclick="toggleLang()" id="langBtn">العربية</button>
     </div>
 
     <div class="container">
+        <section class="about-section">
+            <h2 id="about-title">About InkVerse</h2>
+            <p id="about-text">
+                InkVerse is a leading digital platform for high-quality e-books and digital products. 
+                We empower creators and readers by using safe, fast, and modern <b>Crypto Payments</b> 
+                (USDT & Pi Network) to ensure global access without banking limits.
+            </p>
+        </section>
+
         <section class="main-product">
-            <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover" alt="Main Book">
+            <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover">
             <div>
                 <h1 id="m-title">When Right Becomes Wrong</h1>
                 <p id="m-desc">A powerful book about leadership and rules. Written by BAKRI.</p>
@@ -61,21 +69,20 @@
 
         <section class="surprise-offer">
             <h2 id="offer-title">Publish Your Book Here!</h2>
-            <p id="offer-desc">Are you an author? Sell your book on InkVerse. You keep 90% of the money. We only take 10%.</p>
+            <p id="offer-desc">Sell your digital products and keep 90% of the revenue. Only 10% commission.</p>
             <div class="revenue-split">90% FOR YOU</div>
-            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#1a1a1a;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact Us to Publish</button>
+            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#1a1a1a;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact Us</button>
         </section>
     </div>
 
     <div class="overlay" id="overlay" onclick="closePay()"></div>
     <div class="modal" id="payModal">
-        <h2 id="pay-head">Easy Payment</h2>
-        <p>Scan to pay with <strong>USDT (TRC20)</strong></p>
+        <h2 id="pay-head">Crypto Payment</h2>
         <div class="qr-frame">
-            <img src="QR code.jpeg" id="mainQR" alt="QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1'">
+            <img src="QR code.jpeg" id="mainQR" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1'">
         </div>
         <div class="wallet-address">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</div>
-        <button class="btn-buy" style="background:var(--success);" onclick="verifyStatus()">I Have Paid</button>
+        <button class="btn-buy" style="background:#16a34a;" onclick="verifyStatus()">I Have Paid</button>
     </div>
 
     <script src="script.js"></script>
