@@ -82,28 +82,29 @@
         <button class="btn-buy" style="background:#16a34a;" onclick="verifyStatus()">I Have Paid</button>
     </div>
 
-    <script src="script.js"></script>
-    <section class="reviews-section">
-    <h2 id="rev-title">Visitors Feedback</h2>
+   <section class="reviews-section">
+    <div class="reviews-header">
+        <h2 id="rev-title">Community Feedback</h2>
+        <div class="rating-summary">
+            <span id="avg-rating">4.8</span>
+            <span class="stars-gold">★★★★★</span>
+        </div>
+    </div>
     
-    <div class="comment-form">
-        <div class="star-rating">
+    <div class="comment-input-area">
+        <div class="star-rating" id="main-stars">
             <span class="star" data-value="5">★</span>
             <span class="star" data-value="4">★</span>
             <span class="star" data-value="3">★</span>
             <span class="star" data-value="2">★</span>
             <span class="star" data-value="1">★</span>
         </div>
-        <textarea id="comment-text" placeholder="Write your opinion about the book or the store..."></textarea>
-        <button class="btn-buy" style="width: auto; padding: 10px 30px;" onclick="submitComment()">Post Comment</button>
+        <textarea id="comment-text" placeholder="Share your experience with us..."></textarea>
+        <button class="btn-post" onclick="addNewComment()">Post Review</button>
     </div>
 
-    <div id="comments-list">
-        <div class="comment-box">
-            <strong>Alex M.</strong> <span class="stars-gold">★★★★★</span>
-            <p>Fast payment and high-quality PDF. Highly recommended!</p>
+    <div id="comments-container">
         </div>
-    </div>
 </section>
 </body>
 </html>
