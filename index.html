@@ -3,118 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Digital Excellence</title>
-    <style>
-        :root {
-            --primary: #0f172a;
-            --gold: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #bd9333 0%, #fcf6ba 50%, #bf953f 100%);
-            --white: #ffffff;
-            --bg-body: #f8fafc;
-        }
-
-        * { box-sizing: border-box; transition: all 0.3s ease; }
-
-        body {
-            margin: 0;
-            padding-top: 180px; /* Space for the permanent header */
-            background-color: var(--bg-body);
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        /* 1. PERMANENT TOP HEADER: Logo and Name Side-by-Side */
-        .fixed-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background: var(--white);
-            z-index: 2000;
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center;     /* Center vertically */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border-bottom: 3px solid var(--gold);
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 20px; /* Space between logo and text */
-        }
-
-        .main-logo {
-            height: 100px; /* Precise height for the logo */
-            width: auto;
-            display: block;
-        }
-
-        .store-name {
-            font-size: 42px;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Georgia', serif;
-            margin: 0;
-        }
-
-        /* 2. FLOATING ELEMENTS */
-        .gold-coins { position: fixed; top: 25px; left: 25px; display: flex; gap: 12px; z-index: 3000; }
-        .coin {
-            width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: #5c4410; font-size: 11px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 2px solid #b38728;
-            animation: spin3D 4s linear infinite;
-        }
-        @keyframes spin3D { 0% { transform: perspective(500px) rotateY(0deg); } 100% { transform: perspective(500px) rotateY(360deg); } }
-
-        .lang-toggle { position: fixed; top: 30px; right: 30px; z-index: 3000; }
-        .btn-lang { background: var(--primary); color: white; border: 1px solid var(--gold); padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; }
-
-        /* 3. CONTENT LAYOUT */
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-        .main-product {
-            background: white; border-radius: 25px; padding: 40px; 
-            display: flex; align-items: center; gap: 40px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04); margin-bottom: 50px;
-        }
-        .main-cover { width: 280px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-
-        .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .card { background: white; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid #eee; }
-        .card-img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
-
-        .price { font-size: 24px; color: #16a34a; font-weight: 800; margin-bottom: 15px; display: block; }
-        .btn-buy { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; width: 100%; font-size: 18px; font-weight: bold; cursor: pointer; }
-
-        /* 4. SURPRISE OFFER */
-        .surprise-offer {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white; padding: 50px; border-radius: 30px; text-align: center; border: 2px solid var(--gold);
-        }
-        .revenue-split { font-size: 50px; font-weight: 900; color: var(--gold); margin: 20px 0; }
-
-        /* 5. MODAL & QR CODE APPEARANCE */
-        .modal { 
-            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            background: white; padding: 35px; border-radius: 25px; z-index: 5000; 
-            width: 380px; text-align: center; box-shadow: 0 0 100px rgba(0,0,0,0.5); 
-        }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 4500; backdrop-filter: blur(5px); }
-        .qr-frame { margin: 20px auto; width: 220px; height: 220px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-
-        .rtl { direction: rtl; }
-        .ltr { direction: ltr; }
-        .rtl .header-content { flex-direction: row-reverse; }
-    </style>
+    <title>InkVerse Store | Publish & Buy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="ltr">
 
     <header class="fixed-header">
         <div class="header-content">
-            <img src="logo-app.png" alt="Logo" class="main-logo">
+            <img src="logo-app.png" alt="InkVerse Logo" class="main-logo">
             <h1 class="store-name">InkVerse Store</h1>
         </div>
     </header>
@@ -133,83 +29,55 @@
             <img src="when-right-becomes-wrong-old.jpg.jpg" class="main-cover" alt="Main Book">
             <div>
                 <h1 id="m-title">When Right Becomes Wrong</h1>
-                <p id="m-desc">A deep exploration of how correct rules can become a trap for institutions and leaders. By BAKRI.</p>
+                <p id="m-desc">A powerful book about leadership and rules. Written by BAKRI.</p>
                 <span class="price">5.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(5)">Purchase PDF Now</button>
+                <button class="btn-buy" onclick="openPay(5)">Buy Now</button>
             </div>
         </section>
 
         <div class="books-grid">
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format" class="card-img">
-                <h3 id="aw-title">The Art of War</h3>
+                <h3 id="book1-title">The Art of War</h3>
+                <p id="book1-desc">Learn the best secrets of strategy.</p>
                 <span class="price">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(2)">Purchase</button>
+                <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format" class="card-img">
-                <h3 id="p-title">The Prince</h3>
+                <h3 id="book2-title">The Prince</h3>
+                <p id="book2-desc">A famous guide about power.</p>
                 <span class="price">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(2)">Purchase</button>
+                <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1592492159418-39f319320569?auto=format" class="card-img">
+                <h3 id="book3-title">Think & Grow Rich</h3>
+                <p id="book3-desc">The master plan for success.</p>
+                <span class="price">2.00 USDT</span>
+                <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
             </div>
         </div>
 
         <section class="surprise-offer">
-            <h2 id="o-title" style="color:var(--gold)">Author Surprise!</h2>
-            <p id="o-desc">Get the highest revenue share in the digital world.</p>
-            <div class="revenue-split">90% / 10%</div>
-            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#1a1a1a;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact to Publish</button>
+            <h2 id="offer-title">Publish Your Book Here!</h2>
+            <p id="offer-desc">Are you an author? Sell your book on InkVerse. You keep 90% of the money. We only take 10%.</p>
+            <div class="revenue-split">90% FOR YOU</div>
+            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#1a1a1a;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact Us to Publish</button>
         </section>
     </div>
 
     <div class="overlay" id="overlay" onclick="closePay()"></div>
     <div class="modal" id="payModal">
-        <h2 id="pay-head">Secure Payment</h2>
-        <p>Scan the QR Code to pay via <strong>USDT (TRC20)</strong></p>
-        
+        <h2 id="pay-head">Easy Payment</h2>
+        <p>Scan to pay with <strong>USDT (TRC20)</strong></p>
         <div class="qr-frame">
-            <img src="QR code.jpeg" 
-                 id="mainQR"
-                 style="width: 100%; border-radius: 5px;" 
-                 onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1'">
+            <img src="QR code.jpeg" id="mainQR" alt="QR Code" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1'">
         </div>
-
-        <div style="background:#f8fafc; padding:10px; font-family:monospace; font-size:10px; border:1px solid #e2e8f0; margin-bottom:20px; word-break: break-all;">
-            THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1
-        </div>
-        <button class="btn-buy" style="background:#16a34a;" onclick="alert('Verification Started...')">Verify Transaction</button>
+        <div class="wallet-address">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</div>
+        <button class="btn-buy" style="background:var(--success);" onclick="verifyStatus()">I Have Paid</button>
     </div>
 
-    <script>
-        const texts = {
-            en: { btn: "العربية", mTitle: "When Right Becomes Wrong", mDesc: "A deep exploration of how correct rules can become a trap. By BAKRI.", awTitle: "The Art of War", pTitle: "The Prince", oTitle: "Author Surprise!", oDesc: "Get the highest revenue share in the digital world.", payHead: "Secure Payment" },
-            ar: { btn: "English", mTitle: "عندما يصبح الحق خطأ", mDesc: "استكشاف عميق لكيفية تحول القواعد الصحيحة إلى فخ. بقلم بكري.", awTitle: "فن الحرب", pTitle: "الأمير", oTitle: "مفاجأة للمؤلفين!", oDesc: "احصل على أعلى نسبة عوائد في العالم الرقمي.", payHead: "دفع رقمي آمن" }
-        };
-
-        function toggleLang() {
-            const html = document.getElementById('mainHtml');
-            const lang = html.lang === 'en' ? 'ar' : 'en';
-            html.lang = lang;
-            document.body.className = lang === 'ar' ? 'rtl' : 'ltr';
-            document.getElementById('langBtn').innerText = texts[lang].btn;
-            document.getElementById('m-title').innerText = texts[lang].mTitle;
-            document.getElementById('m-desc').innerText = texts[lang].mDesc;
-            document.getElementById('aw-title').innerText = texts[lang].awTitle;
-            document.getElementById('p-title').innerText = texts[lang].pTitle;
-            document.getElementById('o-title').innerText = texts[lang].oTitle;
-            document.getElementById('o-desc').innerText = texts[lang].oDesc;
-            document.getElementById('pay-head').innerText = texts[lang].payHead;
-        }
-
-        function openPay(amt) {
-            document.getElementById('payModal').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closePay() {
-            document.getElementById('payModal').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
