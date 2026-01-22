@@ -1,26 +1,145 @@
-<div class="header-coins">
-    <div class="coin usdt-coin"></div>
-    <div class="coin pi-coin"></div>
-</div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkVerse | مكتبة الكتب الرقمية</title>
+    <style>
+        :root { --main-bg: #f8f9fa; --primary: #1a1a2e; --success: #27ae60; }
+        body { margin: 0; background: var(--main-bg); font-family: 'Segoe UI', sans-serif; text-align: center; }
 
-<div class="container">
-    <img src="logo-app.jpg" class="app-logo" alt="InkVerse Logo">
+        /* العملات الدوارة - أعلى اليسار */
+        .spinning-coins { position: fixed; top: 20px; left: 20px; display: flex; gap: 15px; z-index: 1000; }
+        .coin { width: 45px; height: 45px; animation: spin 4s linear infinite; }
+        @keyframes spin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
 
-    <div class="book-section">
-        <img src="when-right-becomes-wrong-old.jpg.jpg" class="book-cover" alt="Main Book">
-        <h1>When Right Becomes Wrong</h1>
-        <p class="price">Price: 5 USDT (TRC20)</p>
-        
-        <div id="payment-area">
-            <p>Scan the QR Code to pay:</p>
-            <img src="QR code.jpeg" class="payment-qr" alt="Payment QR">
-            <p class="wallet-address">Wallet: <code>THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</code></p>
-            <button id="verify-btn" onclick="startVerification()">Verify Payment & Download</button>
-        </div>
+        /* شعار الموقع - الأكبر في الصفحة */
+        .header { padding: 40px 20px; }
+        .site-logo { width: 500px; max-width: 90%; height: auto; transition: 0.3s; }
 
-        <div id="download-area" style="display: none;">
-            <p>✅ Payment Verified!</p>
-            <a href="When Right Becomes Wrong.pdf" download class="download-btn">Click here to Download PDF</a>
+        /* حاوية الكتب */
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* الكتاب الرئيسي (5 USDT) */
+        .main-book { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 50px; }
+        .main-cover { width: 300px; border-radius: 12px; margin-bottom: 20px; }
+
+        /* شبكة الكتب العامة (2 USDT) */
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .book-item { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #eee; }
+        .general-cover { width: 180px; height: auto; border-radius: 8px; margin-bottom: 15px; } /* أصغر من الشعار والكتاب الرئيسي */
+
+        .price-label { font-size: 20px; font-weight: bold; color: var(--success); margin: 10px 0; }
+        .intro-text { font-size: 14px; color: #666; line-height: 1.5; margin-bottom: 20px; padding: 0 10px; }
+
+        /* أزرار الدفع والتحقق */
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.3s; width: 100%; }
+        .btn:hover { background: #303050; transform: translateY(-2px); }
+
+        /* نافذة الدفع */
+        .payment-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.2); z-index: 2000; width: 90%; max-width: 400px; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; }
+        .qr-img { width: 180px; margin: 15px 0; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="spinning-coins">
+        <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" class="coin" alt="USDT">
+        <img src="https://cryptologos.cc/logos/pi-network-pi-logo.png" class="coin" alt="PI">
+    </div>
+
+    <header class="header">
+        <img src="logo-app.jpg" alt="InkVerse" class="site-logo">
+    </header>
+
+    <div class="container">
+        <section class="main-book">
+            <img src="when-right-becomes-wrong-old.jpg.jpg" alt="Main Book" class="main-cover">
+            <h2>When Right Becomes Wrong</h2>
+            <p class="intro-text">استكشاف عميق لكيفية تحول القواعد المثالية إلى عوائق قاتلة في الإدارة والحياة.</p>
+            <div class="price-label">5 USDT</div>
+            <button class="btn" onclick="openPayment(5, 'When Right Becomes Wrong.pdf')">شراء وتحميل الآن</button>
+        </section>
+
+        <hr style="opacity: 0.1; margin-bottom: 50px;">
+        <h3>مكتبة الكتب العامة</h3>
+
+        <div class="books-grid">
+            <div class="book-item">
+                <img src="general_book1.jpg" alt="Book 1" class="general-cover">
+                <h4>فن القيادة الرقمية</h4>
+                <p class="intro-text">دليل عملي للنجاح في عصر التحول الرقمي والذكاء الاصطناعي.</p>
+                <div class="price-label">2 USDT</div>
+                <button class="btn" onclick="openPayment(2, 'digital_leadership.pdf')">شراء الكتاب</button>
+            </div>
+
+            <div class="book-item">
+                <img src="general_book2.jpg" alt="Book 2" class="general-cover">
+                <h4>سيكولوجية اتخاذ القرار</h4>
+                <p class="intro-text">كيف نتخذ قراراتنا؟ وما هي الفخاخ الذهنية التي نقع فيها يومياً.</p>
+                <div class="price-label">2 USDT</div>
+                <button class="btn" onclick="openPayment(2, 'decision_making.pdf')">شراء الكتاب</button>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
+    <div class="payment-modal" id="paymentModal">
+        <h3>اتمام الدفع</h3>
+        <p id="payment-info"></p>
+        <img src="QR code.jpeg" class="qr-img" alt="QR Code">
+        <p style="font-size: 12px; background: #eee; padding: 10px; word-break: break-all;">THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1</p>
+        <button class="btn" id="verifyBtn" onclick="checkPayment()">تحقق من الدفع (Blockchain)</button>
+        <div id="dl-link" class="hidden">
+            <p style="color: green;">✅ تم التأكد! اضغط للتحميل:</p>
+            <a id="fileLink" href="#" download class="btn" style="display: block; text-decoration: none;">تنزيل الملف PDF</a>
+        </div>
+    </div>
+
+    <script>
+        let currentAmount = 0;
+        let currentFile = "";
+
+        function openPayment(amount, file) {
+            currentAmount = amount;
+            currentFile = file;
+            document.getElementById('payment-info').innerText = `يرجى إرسال مبلغ ${amount} USDT (TRC20)`;
+            document.getElementById('paymentModal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        async function checkPayment() {
+            const btn = document.getElementById('verifyBtn');
+            btn.innerText = "جاري الفحص...";
+            const wallet = "THRhk1ARg2ntebnP2AMWNAg5zYeMU8idt1";
+            
+            try {
+                const res = await fetch(`https://api.trongrid.io/v1/accounts/${wallet}/transactions/trc20?limit=5`);
+                const data = await res.json();
+                
+                // البحث عن المعاملة بالمبلغ المطلوب (5 أو 2)
+                const expectedValue = currentAmount * 1000000;
+                const paid = data.data.some(tx => parseInt(tx.value) >= expectedValue && tx.token_info.symbol === "USDT");
+
+                if (paid) {
+                    btn.style.display = 'none';
+                    document.getElementById('dl-link').classList.remove('hidden');
+                    document.getElementById('fileLink').href = currentFile;
+                } else {
+                    alert("لم يتم العثور على الدفعة بالمبلغ المطلوب بعد. انتظر دقيقة وحاول مجدداً.");
+                    btn.innerText = "تحقق من الدفع (Blockchain)";
+                }
+            } catch (e) {
+                alert("خطأ في الاتصال بالشبكة.");
+            }
+        }
+    </script>
+</body>
+</html>
