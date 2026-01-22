@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InkVerse Store | Digital Marketplace</title>
+    <title>InkVerse Store | Digital Excellence</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="ltr">
@@ -36,7 +36,7 @@
                 <h1 id="m-title">When Right Becomes Wrong</h1>
                 <p id="m-desc">A powerful book about leadership and rules. Written by BAKRI.</p>
                 <span class="price">5.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(5)">Buy Now</button>
+                <button class="btn-buy" onclick="openPay('main')">Buy Now</button>
             </div>
         </section>
 
@@ -46,29 +46,40 @@
                 <h3 id="book1-title">The Art of War</h3>
                 <p id="book1-desc">Strategy secrets for everyone.</p>
                 <span class="price">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
+                <button class="btn-buy" onclick="openPay('book1')">Buy Now</button>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format" class="card-img">
                 <h3 id="book2-title">The Prince</h3>
                 <p id="book2-desc">Classic guide on power.</p>
                 <span class="price">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1592492159418-39f319320569?auto=format" class="card-img">
-                <h3 id="book3-title">Think & Grow Rich</h3>
-                <p id="book3-desc">Master plan for success.</p>
-                <span class="price">2.00 USDT</span>
-                <button class="btn-buy" onclick="openPay(2)">Buy Now</button>
+                <button class="btn-buy" onclick="openPay('book2')">Buy Now</button>
             </div>
         </div>
 
-        <section class="surprise-offer">
-            <h2 id="offer-title">Publish Your Book!</h2>
-            <p id="offer-desc">Sell your digital works and keep 90% of revenue.</p>
-            <div class="revenue-split">90% FOR YOU</div>
-            <button class="btn-buy" style="max-width:300px; background:var(--gold); color:#111;" onclick="window.location.href='mailto:contact@inkverse.com'">Contact Us</button>
+        <section class="reviews-section">
+            <div class="reviews-header">
+                <h2 id="rev-title">Community Feedback</h2>
+                <div class="rating-summary">
+                    <span id="avg-rating">4.9</span>
+                    <span class="stars-gold">★★★★★</span>
+                </div>
+            </div>
+            
+            <div class="comment-input-area">
+                <div class="star-rating" id="main-stars">
+                    <span class="star" data-value="5">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="1">★</span>
+                </div>
+                <textarea id="comment-text" placeholder="Share your experience with us..."></textarea>
+                <button class="btn-post" id="post-btn" onclick="addNewComment()">Post Review</button>
+            </div>
+
+            <div id="comments-container">
+                </div>
         </section>
     </div>
 
@@ -82,29 +93,6 @@
         <button class="btn-buy" style="background:#16a34a;" onclick="verifyStatus()">I Have Paid</button>
     </div>
 
-   <section class="reviews-section">
-    <div class="reviews-header">
-        <h2 id="rev-title">Community Feedback</h2>
-        <div class="rating-summary">
-            <span id="avg-rating">4.8</span>
-            <span class="stars-gold">★★★★★</span>
-        </div>
-    </div>
-    
-    <div class="comment-input-area">
-        <div class="star-rating" id="main-stars">
-            <span class="star" data-value="5">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="1">★</span>
-        </div>
-        <textarea id="comment-text" placeholder="Share your experience with us..."></textarea>
-        <button class="btn-post" onclick="addNewComment()">Post Review</button>
-    </div>
-
-    <div id="comments-container">
-        </div>
-</section>
+    <script src="script.js"></script>
 </body>
 </html>
